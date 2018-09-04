@@ -1,0 +1,72 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 2,
+        "name": "verify that is posible create a account",
+        "description": "",
+        "id": "create-account;verify-that-is-posible-create-a-account",
+        "after": [
+          {
+            "result": {
+              "duration": 593400,
+              "status": "passed"
+            },
+            "match": {
+              "location": "ScenarioHooks.afterScenarioFailsTakeScreenshot(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 55000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "ScenarioHooks.afterScenarioFailsCloseDriver(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 11947519800,
+              "status": "passed"
+            },
+            "line": 3,
+            "name": "I navigate to Login page",
+            "match": {
+              "location": "LoginSteps.navigateToLoginPage()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 3353649500,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I login as \"danny\" User",
+            "match": {
+              "arguments": [
+                {
+                  "val": "danny",
+                  "offset": 12
+                }
+              ],
+              "location": "LoginSteps.loginAsUser(String)"
+            },
+            "keyword": "And "
+          }
+        ]
+      }
+    ],
+    "name": "create Account",
+    "description": "",
+    "id": "create-account",
+    "keyword": "Feature",
+    "uri": "features/account.feature"
+  }
+]

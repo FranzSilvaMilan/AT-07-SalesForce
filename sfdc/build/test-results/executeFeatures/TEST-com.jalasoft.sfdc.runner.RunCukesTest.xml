@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.jalasoft.sfdc.runner.RunCukesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-09-03T23:15:36" hostname="coding1" time="15.488">
+  <properties/>
+  <testcase name="feature[0](create Account)" classname="com.jalasoft.sfdc.runner.RunCukesTest" time="15.488"/>
+  <system-out><![CDATA[Feature: create Account
+Initialize the page transporter
+
+  Scenario: verify that is posible create a account ?[90m# features/account.feature:2?[0m
+    ?[32mGiven ?[0m?[32mI navigate to Login page?[0m                  ?[90m# LoginSteps.navigateToLoginPage()?[0m
+    ?[32mAnd ?[0m?[32mI login as "?[0m?[32m?[1mdanny?[0m?[32m" User?[0m                     ?[90m# LoginSteps.loginAsUser(String)?[0m
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
