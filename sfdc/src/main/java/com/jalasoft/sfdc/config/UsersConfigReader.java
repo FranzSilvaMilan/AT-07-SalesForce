@@ -1,9 +1,13 @@
 package com.jalasoft.sfdc.config;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.jalasoft.sfdc.entities.User;
 import com.jalasoft.utils.JsonReader;
 import org.apache.log4j.Logger;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -48,10 +52,25 @@ public final class UsersConfigReader {
         log.info("UsersConfigReader initialize: Read the users settings from " + UsersConfigFileName);
         listAlias = new ArrayList<>();
         mapUsers = new HashMap<>();
-        listAlias.add("admin user");listAlias.add("other role user");  listAlias.add("erick");
-        listAlias.add("danny"); listAlias.add("franz");
-        usersReader = new JsonReader(UsersConfigFileName);
+        JsonParser parser = new JsonParser();
+        FileReader fileReader = null;
+        try {
+            fileReader = new FileReader(UsersConfigFileName);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        JsonElement jsonElement = parser.parse(fileReader);
+        String[] element = jsonElement.toString().replace("{", "").
+                replace("}", "").split(",");
+        for (String key : element) {
 
+            if (key.contains(USER_NAME)) {
+                String[] alias = key.split(":");
+                listAlias.add(alias[0].substring(1,alias[0].length()-1));
+            }
+        }
+
+        usersReader = new JsonReader(UsersConfigFileName);
         // ToDo update the following 2 lines
 
         for(String keys: listAlias){
