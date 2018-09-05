@@ -66,27 +66,30 @@ public final class UsersConfigReader {
 
             if (key.contains(USER_NAME)) {
                 String[] alias = key.split(":");
-                listAlias.add(alias[0].substring(1,alias[0].length()-1));
+                listAlias.add(alias[0].substring(1, alias[0].length() - 1));
             }
         }
-
         usersReader = new JsonReader(UsersConfigFileName);
         // ToDo update the following 2 lines
 
-        for(String keys: listAlias){
+        for (String keys : listAlias) {
             User userNew = new User();
-            userNew.setUserName(usersReader.getKeyValue (keys, USER_NAME));
-            userNew.setPassword(usersReader.getKeyValue (keys, USER_PASSWORD));
-            mapUsers.put(keys,userNew);
+            userNew.setUserName(usersReader.getKeyValue(keys, USER_NAME));
+            userNew.setPassword(usersReader.getKeyValue(keys, USER_PASSWORD));
+            mapUsers.put(keys, userNew);
         }
 
         /* review how to read the all the users from the SFDCUsers.json, and manage in a List or a Map or whenever
         you want to be able later to get the user according the alias
          */
-        //user.setUserName(usersReader.getKeyValue (ADMIN_USER.toString(), USER_NAME));
-        //user.setPassword(usersReader.getKeyValue(ADMIN_USER.toString(), USER_PASSWORD));
     }
 
+    /**
+     * Return the alias that has an user.
+     *
+     * @param userAlias is the alias of the user that his logged.
+     * @return a user.
+     */
     public User getUserByAlias(String userAlias) {
         //ToDo select the specific user by alias
         user = mapUsers.get(userAlias);
