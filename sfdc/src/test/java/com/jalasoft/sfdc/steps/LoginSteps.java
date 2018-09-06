@@ -46,6 +46,7 @@ public class LoginSteps {
     //****************************************************************
     //Login Step Definitions
     //****************************************************************
+
     /**
      * Verifies if the desired user is logged.
      *
@@ -61,7 +62,7 @@ public class LoginSteps {
 
             // ToDo Evaluates if the proper user is logged
 //            if (homePage.getTopBar().getCurrentUser().equals(user.getUserName())) {
-                isUserLogged = true;
+            isUserLogged = true;
 //            } else {
 //                homePage.getTopBar().logout();
 //            }
@@ -99,10 +100,10 @@ public class LoginSteps {
         homePage = loginPage.login(username, password);
     }
 
-    @Then("^I should login successfully \"([^\"]*)\"$")
+    @Then("^I should login successfully$")
     public void iShouldLoginSuccessfully(String arg0) throws Throwable {
         profilePage = homePage.topMenu.goToProfilePage();
-        assertEquals(profilePage.isUserNameDisplayed().trim(),arg0);
+        assertEquals(profilePage.isUserNameDisplayed().trim(), arg0);
     }
 
 
@@ -127,13 +128,13 @@ public class LoginSteps {
     public void afterLoginScenario() {
         log.info("After hook @Login");
         Skin skin = ServersConfigReader.getInstance().getSkin();
-        if (skin == Skin.LIGHT){
+        if (skin == Skin.LIGHT) {
             homePage.topMenu.logout();
         }
     }
 
     @Then("^I should not login successfully \"([^\"]*)\"$")
     public void iShouldNotLoginSuccessfully(String errore) throws Throwable {
-        assertEquals(loginPage.getError(),errore);
+        assertEquals(loginPage.getError(), errore);
     }
 }
