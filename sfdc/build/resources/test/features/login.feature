@@ -14,7 +14,7 @@ Feature: Login
 
   Scenario Outline: Users should not be able to login using invalid credentials
     When I login as "<User Name>" with password "<Password>"
-    Then I should not login successfully
+    Then I should not login successfully "<Message>"
     Examples: Short pass
 
       | User Name      | Password | Message                                                                                                |

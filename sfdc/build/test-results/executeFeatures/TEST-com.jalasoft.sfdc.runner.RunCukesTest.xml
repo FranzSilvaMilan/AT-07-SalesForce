@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.jalasoft.sfdc.runner.RunCukesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-09-03T23:15:36" hostname="coding1" time="15.488">
+<testsuite name="com.jalasoft.sfdc.runner.RunCukesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-09-04T20:52:27" hostname="coding1" time="21.39">
   <properties/>
-  <testcase name="feature[0](create Account)" classname="com.jalasoft.sfdc.runner.RunCukesTest" time="15.488"/>
+  <testcase name="feature[0](create Account)" classname="com.jalasoft.sfdc.runner.RunCukesTest" time="21.39"/>
   <system-out><![CDATA[Feature: create Account
 Initialize the page transporter
 

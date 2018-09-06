@@ -1,8 +1,11 @@
 package com.jalasoft.sfdc.ui.components;
 
 import com.jalasoft.sfdc.ui.BasePage;
+import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.LoginPage;
+import com.jalasoft.sfdc.ui.pages.ProfilePage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
+import org.openqa.selenium.By;
 
 /**
  * Top bar that contains the user name information, settings and logout options.
@@ -20,4 +23,9 @@ public abstract class TopMenu extends BasePage {
     }
 
     public abstract HomePage goToHomePage ();
+
+    public ProfilePage goToProfilePage(){
+        return PageFactory.getProfilePage();
+    }
+
 }
