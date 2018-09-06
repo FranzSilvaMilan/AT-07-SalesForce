@@ -12,10 +12,11 @@ Feature: Login
       | User Name            | Password    |
       | daniels@estudent.com | blackmoon10 |
 
+  @SmokeTest @Logout
   Scenario Outline: Users should not be able to login using invalid credentials
     When I login as "<User Name>" with password "<Password>"
     Then I should not login successfully "<Message>"
-    Examples: Short pass
 
-      | User Name      | Password | Message                                                                                                |
-      | svala@at05.com | Con123!  | Check your username and password. If you still can not sign in, contact your Salesforce administrator. |
+    Examples: Short pass
+      | User Name            | Password | Message                                                                                                                                 |
+      | daniels@estudent.com | Co84547  | Compruebe su nombre de usuario y contraseña. Si sigue sin poder iniciar sesión, póngase en contacto con su administrador de Salesforce. |
