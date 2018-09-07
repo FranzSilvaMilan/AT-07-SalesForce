@@ -8,12 +8,15 @@ import com.jalasoft.sfdc.ui.components.TopMenuLight;
 import com.jalasoft.sfdc.ui.pages.AppLauncher;
 import com.jalasoft.sfdc.ui.pages.AppLauncherClassic;
 import com.jalasoft.sfdc.ui.pages.AppLuncherLight;
+import com.jalasoft.sfdc.ui.pages.DetailPage;
 import com.jalasoft.sfdc.ui.pages.ProfilePage;
 import com.jalasoft.sfdc.ui.pages.ProfilePageClassic;
 import com.jalasoft.sfdc.ui.pages.ProfilePageLight;
 import com.jalasoft.sfdc.ui.pages.account.AccountHomePage;
 import com.jalasoft.sfdc.ui.pages.account.AccountHomePageClassic;
 import com.jalasoft.sfdc.ui.pages.account.AccountHomePageLight;
+import com.jalasoft.sfdc.ui.pages.account.DetailAccountPageClassic;
+import com.jalasoft.sfdc.ui.pages.account.DetailAccountPageLight;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.home.HomePageClassic;
 import com.jalasoft.sfdc.ui.pages.home.HomePageLight;
@@ -82,6 +85,17 @@ public class PageFactory {
             default:
                 System.out.println("return account home page light ++++++++++++++++++++++++++++++++");
                 return new AccountHomePageLight();
+        }
+    }
+
+    public static DetailPage getDetailAccountPage() {
+        switch (skin) {
+            case CLASSIC:
+                System.out.println("return detail account home page Classic ++++++++++++++++++++++++++++++++");
+                return new DetailAccountPageClassic();
+            default:
+                System.out.println("return detail account home page light ++++++++++++++++++++++++++++++++");
+                return new DetailAccountPageLight();
         }
     }
 }
