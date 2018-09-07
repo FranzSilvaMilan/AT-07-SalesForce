@@ -66,6 +66,6 @@ public final class AutomationSFDC {
      */
     public void shutDown() {
 //        MainSetup.afterExecution();
-        WebDriverManager.getInstance().quitDriver();
+        WebDriverManager.getInstance();//.quitDriver();
     }
 }

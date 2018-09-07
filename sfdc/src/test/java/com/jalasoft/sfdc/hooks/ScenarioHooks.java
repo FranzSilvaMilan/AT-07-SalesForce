@@ -77,7 +77,7 @@ public class ScenarioHooks {
     @After(order = 1)
     public void afterScenarioFailsCloseDriver(final Scenario scenario) {
         if (scenario.getStatus().equals(FAILED)) {
-//            WebDriverManager.getInstance().quitDriver();
+          //WebDriverManager.getInstance().quitDriver();
         }
     }
 }

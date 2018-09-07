@@ -228,6 +228,21 @@ public class WebDriverTools {
     }
 
     /**
+     * Waits for an element is displayed.
+     *
+     * @param byElement - Element to wait.
+     * @return True if the element is found, false otherwise.
+     */
+    public boolean waitUntilElementDisplayed(WebElement byElement) {
+        try {
+            wait.until(ExpectedConditions.visibilityOf(byElement));
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
+    }
+
+    /**
      * Selects the CheckBox.
      *
      * @param element WebElement.
@@ -525,5 +540,18 @@ public class WebDriverTools {
         setInputField(selector, text);
         WebElement element = driver.findElement(selector);
         element.sendKeys(Keys.ENTER);
+    }
+    /**
+     * @param element Any WebElement.
+     * @param text    set a text on a field.
+     */
+    public void setTextElement(final WebElement element, final String text) {
+        waitWebElementVisible(element);
+        clearTextField(element);
+        element.sendKeys(text);
+    }
+
+    public WebElement waitWebElementVisible(final WebElement webElement) {
+        return wait.until(ExpectedConditions.visibilityOf(webElement));
     }
 }

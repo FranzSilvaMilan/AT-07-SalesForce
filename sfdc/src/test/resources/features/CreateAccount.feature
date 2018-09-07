@@ -1,5 +1,7 @@
 Feature: Create Account
-
+ Background:
+   Given I navigate to Login page
+   And I login as "franz" User
   Scenario: verify that is not posible create a new Account with empty name
     Given I go to "Account" Home Page
     And I click on New "Account"
@@ -19,10 +21,11 @@ Feature: Create Account
       | ACCOUNT_INDUSTRY         | jalasoft                   |
       | ACCOUNT_EMPLOYEES        | 18                         |
       | ACCOUNT_STREET           | Some Street                |
-      | ACCOUNT_CITY             | Cochabamba                 |
+      | SHIPPING_CITY             | Cochabamba                 |
       | ACCOUNT_ZIP              | 3001                       |
       | ACCOUNT_STATE            | Cercado                    |
       | ACCOUNT_COUNTRY          | Bolivia                    |
+
     Then "Account "${ACCOUNT_NAME}" was created." message should be displayed in "Account" Detail Page
     And the Account should be displayed
     And I go to "Account" Home Page

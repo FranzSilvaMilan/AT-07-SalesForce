@@ -6,6 +6,7 @@ import com.jalasoft.sfdc.constants.SFDCEnums.Skin;
 import com.jalasoft.sfdc.entities.User;
 import com.jalasoft.sfdc.ui.PageTransporter;
 import com.jalasoft.sfdc.ui.pages.LoginPage;
+import com.jalasoft.sfdc.ui.pages.ProfilePage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import cucumber.api.PendingException;
 import cucumber.api.java.After;
@@ -17,6 +18,7 @@ import org.testng.Assert;
 
 import java.net.MalformedURLException;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 /**
@@ -32,6 +34,7 @@ public class LoginSteps {
     //Pages
     private LoginPage loginPage;
     private HomePage homePage;
+    private ProfilePage profilePage;
 
     // Entities
     private User user;
@@ -43,6 +46,7 @@ public class LoginSteps {
     //****************************************************************
     //Login Step Definitions
     //****************************************************************
+
     /**
      * Verifies if the desired user is logged.
      *
@@ -58,7 +62,7 @@ public class LoginSteps {
 
             // ToDo Evaluates if the proper user is logged
 //            if (homePage.getTopBar().getCurrentUser().equals(user.getUserName())) {
-                isUserLogged = true;
+            isUserLogged = true;
 //            } else {
 //                homePage.getTopBar().logout();
 //            }
@@ -97,10 +101,9 @@ public class LoginSteps {
     }
 
     @Then("^I should login successfully$")
-    public void verifyMainPageIsDisplayed() {
-//        profilePage = homePage.topMenu.goToProfilePage();
-//        assertTrue(profilePage.isUserNameDisplayed(), "User email displayed in Web");
-        assertTrue(true, "User email displayed in Web");
+    public void iShouldLoginSuccessfully() throws Throwable {
+        profilePage = homePage.topMenu.goToProfilePage();
+        //assertEquals(profilePage.isUserNameDisplayed().trim());
     }
 
 
@@ -125,14 +128,23 @@ public class LoginSteps {
     public void afterLoginScenario() {
         log.info("After hook @Login");
         Skin skin = ServersConfigReader.getInstance().getSkin();
-        if (skin == Skin.LIGHT){
+        if (skin == Skin.LIGHT) {
             homePage.topMenu.logout();
         }
     }
 
     @Then("^I should not login successfully \"([^\"]*)\"$")
-    public void iShouldNotLoginSuccessfully(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    public void iShouldNotLoginSuccessfully(String errore) throws Throwable {
+        assertEquals(loginPage.getError(), errore);
+    }
+
+
+
+    @Then("^I should login successfully \"([^\"]*)\"$")
+    public void iShouldLoginSuccessfully(String userName) throws Throwable {
+        profilePage = homePage.topMenu.goToProfilePage();
+        System.out.println("hizo click");
+        //System.out.println( + "    +++++++++++++++++++++++++");
+       assertTrue(profilePage.isUserNameDisplayed().trim().equalsIgnoreCase(userName));
     }
 }
