@@ -8,17 +8,17 @@ Feature: Login
   @SmokeTest @Logout
   Scenario Outline: Users should be able to login using valid credentials
     When I login as "<User Name>" with password "<Password>"
-    Then I should login successfully
+    Then I should login successfully "<User>"
 
     Examples: Short pass
-      | User Name            | Password    |
-      | daniels@estudent.com | blackmoon10 |
+      | User Name           | Password  | User        |
+      | franzsilva@jala.com | 12franz34 | franz silva |
 
   @SmokeTest @Logout
   Scenario Outline: Users should not be able to login using invalid credentials
     When I login as "<User Name>" with password "<Password>"
     Then I should not login successfully "<Message>"
 
-    Examples: Short pass
-      | User Name            | Password | Message                                                                                                                                 |
-      | daniels@estudent.com | Co84547  | Compruebe su nombre de usuario y contraseña. Si sigue sin poder iniciar sesión, póngase en contacto con su administrador de Salesforce. |
+    Examples:
+      | User Name            | Password | Message                                                                                                    |
+      | daniels@estudent.com | Co84547  | Please check your username and password. If you still can't log in, contact your Salesforce administrator. |

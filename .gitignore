@@ -6,4 +6,10 @@
 /logs/
 /.allure/
 *.iml
-.DS_Store
+*.DS_Store
+*.class
+*.bin
+*.idx
+*.css
+*.html
+*.js

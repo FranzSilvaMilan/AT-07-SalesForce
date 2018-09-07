@@ -101,9 +101,9 @@ public class LoginSteps {
     }
 
     @Then("^I should login successfully$")
-    public void iShouldLoginSuccessfully(String arg0) throws Throwable {
+    public void iShouldLoginSuccessfully() throws Throwable {
         profilePage = homePage.topMenu.goToProfilePage();
-        assertEquals(profilePage.isUserNameDisplayed().trim(), arg0);
+        //assertEquals(profilePage.isUserNameDisplayed().trim());
     }
 
 
@@ -136,5 +136,15 @@ public class LoginSteps {
     @Then("^I should not login successfully \"([^\"]*)\"$")
     public void iShouldNotLoginSuccessfully(String errore) throws Throwable {
         assertEquals(loginPage.getError(), errore);
+    }
+
+
+
+    @Then("^I should login successfully \"([^\"]*)\"$")
+    public void iShouldLoginSuccessfully(String userName) throws Throwable {
+        profilePage = homePage.topMenu.goToProfilePage();
+        System.out.println("hizo click");
+        //System.out.println( + "    +++++++++++++++++++++++++");
+       assertTrue(profilePage.isUserNameDisplayed().trim().equalsIgnoreCase(userName));
     }
 }

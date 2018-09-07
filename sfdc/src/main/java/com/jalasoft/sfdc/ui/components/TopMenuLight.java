@@ -36,14 +36,14 @@ public class TopMenuLight extends TopMenu {
         return new HomePageLight();
     }
 
-    public ProfilePage goToProfilePage(){
-
+    /**public ProfilePage goToProfilePage(){
+        System.out.println("entra a go to profile del light ---------------------------------------------");
         //driver.findElement(profile).click();
-        wait.until(ExpectedConditions.visibilityOf(userProfile));
+        driverTools.waitUntilElementDisplayed(userProfile);
+
         //driver.findElement(By.cssSelector(".branding-user-profile")).click();
-        driverTools.clickElement(userProfile);
+        driverTools.clickElement(userProfileButton);
         //driver.findElement(By.linkText("My Profile")).click();
         return new ProfilePageLight();
-    }
-
+    }*/
 }

@@ -24,9 +24,8 @@ public class TopMenuClassic extends TopMenu {
         return new HomePageClassic();
     }
 
-    public ProfilePage goToProfilePage(){
-        driver.findElement(By.id("userNavButton")).click();
-        driver.findElement(By.linkText("My Profile")).click();
+   /** public ProfilePage goToProfilePage(){
+
         return new ProfilePageClassic();
-    }
+    }**/
 }

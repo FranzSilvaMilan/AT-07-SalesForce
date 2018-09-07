@@ -1,13 +1,10 @@
-2018-09-05 21:02:59 INFO  WebDriverConfigReader:45 - WebDriverConfigReader initialize: Read the driver configuration settings
-2018-09-05 21:02:59 INFO  WebDriverConfigReader:49 - Browser name --> Chrome
-2018-09-05 21:02:59 INFO  UsersConfigReader:52 - UsersConfigReader initialize: Read the users settings from C:\Users\Admin\Desktop\proyecto GUI\AT-07-SalesForce\sfdc\config\SFDCUsers.json
-2018-09-05 21:02:59 INFO  ServersConfigReader:43 - ServersConfigReader initialize: Read the sever settings from C:\Users\Admin\Desktop\proyecto GUI\AT-07-SalesForce\sfdc\config\SFDCServers.json
-2018-09-05 21:02:59 INFO  ServersConfigReader:49 - Server Alias --> DevOrg01
-2018-09-05 21:02:59 INFO  ServersConfigReader:52 - Skin --> LIGHT
-2018-09-05 21:02:59 INFO  ServersConfigReader:55 - Base URL --> https://login.salesforce.com/
-2018-09-05 21:02:59 INFO  AutomationSFDC:56 - -----Start Automation execution-----
-2018-09-05 21:02:59 INFO  WebDriverManager:38 - WebDriverManager initialize: Initializing the web driver
-2018-09-05 21:03:07 INFO  PageTransporter:48 - Initialize the page transporter
-2018-09-05 21:03:20 INFO  ScenarioHooks:33 - Take Screenshot for scenario: Users should be able to login using valid credentials
-2018-09-05 21:03:20 INFO  LoginSteps:129 - After hook @Login
-2018-09-05 21:04:06 INFO  LoginSteps:129 - After hook @Login
+2018-09-07 13:55:23 INFO  WebDriverConfigReader:45 - WebDriverConfigReader initialize: Read the driver configuration settings
+2018-09-07 13:55:23 INFO  WebDriverConfigReader:49 - Browser name --> Chrome
+2018-09-07 13:55:23 INFO  UsersConfigReader:52 - UsersConfigReader initialize: Read the users settings from C:\Users\Omen\Desktop\fundacion_jala\modulo3\gui automation\ProjectSF\AT-07-SalesForce\sfdc\config\SFDCUsers.json
+2018-09-07 13:55:23 INFO  ServersConfigReader:43 - ServersConfigReader initialize: Read the sever settings from C:\Users\Omen\Desktop\fundacion_jala\modulo3\gui automation\ProjectSF\AT-07-SalesForce\sfdc\config\SFDCServers.json
+2018-09-07 13:55:23 INFO  ServersConfigReader:49 - Server Alias --> DevOrg01
+2018-09-07 13:55:23 INFO  ServersConfigReader:52 - Skin --> LIGHT
+2018-09-07 13:55:23 INFO  ServersConfigReader:55 - Base URL --> https://login.salesforce.com/
+2018-09-07 13:55:23 INFO  AutomationSFDC:56 - -----Start Automation execution-----
+2018-09-07 13:55:23 INFO  WebDriverManager:38 - WebDriverManager initialize: Initializing the web driver
+2018-09-07 13:55:31 INFO  PageTransporter:48 - Initialize the page transporter
