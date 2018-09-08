@@ -28,4 +28,5 @@ public class TopMenuClassic extends TopMenu {
 
         return new ProfilePageClassic();
     }**/
+
 }

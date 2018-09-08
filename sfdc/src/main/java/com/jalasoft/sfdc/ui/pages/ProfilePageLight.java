@@ -18,4 +18,5 @@ public class ProfilePageLight extends ProfilePage {
     public void waitUntilPageObjectIsLoaded() {
 
     }
+
 }

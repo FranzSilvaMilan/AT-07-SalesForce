@@ -31,6 +31,7 @@ public class TopMenuLight extends TopMenu {
 
     }
 
+
     @Override
     public HomePage goToHomePage() {
         return new HomePageLight();

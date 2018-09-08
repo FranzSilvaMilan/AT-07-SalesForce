@@ -45,6 +45,7 @@ public abstract class TopMenu extends BasePage {
         driverTools.waitUntilElementDisplayed(userProfile);
         driverTools.clickElement(userProfile);
         return PageFactory.getProfilePage();
+
     }
     public AppLauncher gotToAppLaucher(){
         driverTools.waitUntilElementDisplayed(userProfile);

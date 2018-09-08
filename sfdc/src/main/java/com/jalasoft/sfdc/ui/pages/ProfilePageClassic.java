@@ -14,4 +14,5 @@ public class ProfilePageClassic extends ProfilePage {
     public void waitUntilPageObjectIsLoaded() {
 
     }
+
 }

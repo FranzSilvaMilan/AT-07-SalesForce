@@ -34,4 +34,5 @@ public abstract class ProfilePage extends BasePage {
         return usernameProfile.getText();
     }*/
     public abstract String isUserNameDisplayed();
+
 }
