@@ -27,5 +27,6 @@ public class AppLuncherLight extends AppLauncher {
     public PriceBookPage gotToPriceBookPage() {
         driverTools.clickElement(priceBookButton);
         return new PriceBookPageLight();
+
     }
 }

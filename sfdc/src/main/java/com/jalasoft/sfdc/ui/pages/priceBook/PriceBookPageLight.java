@@ -10,5 +10,6 @@ public class PriceBookPageLight extends PriceBookPage {
     public PriceBookFormPage clickButtonNew(){
         driverTools.clickElement(buttonNew);
         return new PriceBookFormPageLight();
+
     }
 }

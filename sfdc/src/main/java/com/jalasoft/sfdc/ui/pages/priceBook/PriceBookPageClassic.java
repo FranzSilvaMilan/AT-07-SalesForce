@@ -12,4 +12,5 @@ public class PriceBookPageClassic extends PriceBookPage {
         driverTools.clickElement(buttonNew);
         return new PriceBookFormPageLight();
     }
+
 }

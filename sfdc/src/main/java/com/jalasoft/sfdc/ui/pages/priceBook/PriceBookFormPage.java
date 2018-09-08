@@ -7,4 +7,5 @@ public abstract class PriceBookFormPage extends BasePage {
     public void waitUntilPageObjectIsLoaded() {
 
     }
+
 }

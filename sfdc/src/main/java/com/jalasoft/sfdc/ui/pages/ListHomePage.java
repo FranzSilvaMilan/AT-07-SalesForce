@@ -14,4 +14,5 @@ public abstract class ListHomePage extends BasePage {
      * getSaveNewAccountButton.
      */
     public abstract void clickSaveNewButton();
+
 }

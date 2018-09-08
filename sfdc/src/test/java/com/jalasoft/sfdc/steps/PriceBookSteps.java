@@ -19,6 +19,7 @@ public class PriceBookSteps {
         homePage = PageFactory.getHomePage();
         appLauncher = homePage.topMenu.gotToAppLaucher();
         priceBookPage = appLauncher.gotToPriceBookPage();
+
     }
 
     @When("^I click on button New$")

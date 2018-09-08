@@ -10,4 +10,5 @@ public abstract class PriceBookPage extends HomeBasePage {
 
     }
     public  abstract  PriceBookFormPage clickButtonNew();
+
 }

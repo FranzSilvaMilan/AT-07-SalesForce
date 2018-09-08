@@ -79,4 +79,5 @@ public class LoginPage extends BasePage {
     public String getError(){
         return error.getText();
     }
+
 }
