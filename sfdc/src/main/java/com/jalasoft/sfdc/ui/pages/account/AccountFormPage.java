@@ -264,7 +264,7 @@ public class AccountFormPage extends ListHomePage {
 
     @Override
     public void clickSaveNewButton() {
-        driverTools.waitUntilElementDisplayed(newAccountButton);
-        driverTools.clickElement(newAccountButton);
+        driverTools.waitUntilElementDisplayed(newButton);
+        driverTools.clickElement(newButton);
     }
 }

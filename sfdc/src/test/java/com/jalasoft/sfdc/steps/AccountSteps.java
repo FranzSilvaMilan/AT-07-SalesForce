@@ -5,8 +5,10 @@ import com.jalasoft.sfdc.ui.pages.AppLauncher;
 import com.jalasoft.sfdc.ui.pages.account.AccountFormPage;
 import com.jalasoft.sfdc.ui.pages.DetailPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class AccountSteps {
@@ -37,5 +39,11 @@ public class AccountSteps {
     public void iFillTheAccountFormNameWith(String arg0) throws Throwable {
         DetailPage detailAccountPage;
         detailAccountPage=accountFormPage.setRequeredFiel(arg0);
+    }
+
+    @Then("^BookPrice Details Page should be display with the information of the product created$")
+    public void bookpriceDetailsPageShouldBeDisplayWithTheInformationOfTheProductCreated() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
     }
 }

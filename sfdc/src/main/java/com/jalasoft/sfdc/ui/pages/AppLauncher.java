@@ -12,4 +12,6 @@ public abstract class AppLauncher extends BasePage {
 
         return new AccountFormPage();
     }
+
+    public abstract ListHomePage gotToBookPage();
 }

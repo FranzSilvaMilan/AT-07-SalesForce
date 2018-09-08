@@ -7,8 +7,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 public abstract class ListHomePage extends BasePage {
-    @FindBy(xpath = "//a[@class='forceActionLink' and @role='button' and @title='New']")
-    public WebElement newAccountButton;
+    @FindAll({
+            @FindBy(xpath = "//input[@title='New']"),
+            @FindBy(xpath = "//a[@class='forceActionLink' and @role='button' and @title='New']")
+    })
+    public WebElement newButton;
 
     /**
      * getSaveNewAccountButton.
