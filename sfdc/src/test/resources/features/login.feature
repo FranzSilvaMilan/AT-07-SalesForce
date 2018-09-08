@@ -12,7 +12,7 @@ Feature: Login
 
     Examples: Short pass
       | User Name           | Password  | User        |
-      | franzsilva@jala.com | 12franz34 | franz silva |
+      | Erik.Vargas@fundacion-jala.org | albertoerik8492 | Erik Vargas |
 
   @SmokeTest @Logout
   Scenario Outline: Users should not be able to login using invalid credentials

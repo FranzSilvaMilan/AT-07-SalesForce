@@ -116,7 +116,7 @@ public class LoginSteps {
     @Given("^I (?:am logged in|login) as \"(.*?)\" User$")
     public void loginAsUser(final String userAlias) throws MalformedURLException {
         user = UsersConfigReader.getInstance().getUserByAlias(userAlias);
-        if (!false) {
+        if (!isUserLogged(user)) {
             login(user.getUserName(), user.getPassword());
         }
     }
@@ -129,7 +129,7 @@ public class LoginSteps {
         log.info("After hook @Login");
         Skin skin = ServersConfigReader.getInstance().getSkin();
         if (skin == Skin.LIGHT) {
-            homePage.topMenu.logout();
+            //homePage.topMenu.logout();
         }
     }
 
@@ -147,4 +147,5 @@ public class LoginSteps {
         //System.out.println( + "    +++++++++++++++++++++++++");
        assertTrue(profilePage.isUserNameDisplayed().trim().equalsIgnoreCase(userName));
     }
+
 }
