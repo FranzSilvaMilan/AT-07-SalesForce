@@ -98,4 +98,5 @@ public class PageFactory {
                 return new DetailAccountPageLight();
         }
     }
+
 }
