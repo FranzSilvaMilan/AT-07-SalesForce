@@ -1,7 +1,7 @@
 package com.jalasoft.sfdc.ui.pages;
 
-import com.jalasoft.sfdc.ui.pages.products.ProductHomePage;
-import com.jalasoft.sfdc.ui.pages.products.ProductHomePageClassic;
+import com.jalasoft.sfdc.ui.pages.products.ProductListPage;
+import com.jalasoft.sfdc.ui.pages.products.ProductListPageClassic;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -22,8 +22,8 @@ public class AppLauncherClassic extends AppLauncher {
      * Method for go to product home page Classic.
      */
     @Override
-    public ProductHomePage goToProductPage() {
+    public ProductListPage goToProductPage() {
         driverTools.clickElement(productButton);
-        return new ProductHomePageClassic();
+        return new ProductListPageClassic();
     }
 }

@@ -1,14 +1,10 @@
 package com.jalasoft.sfdc.ui.pages;
 
-import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.account.AccountFormPage;
-import com.jalasoft.sfdc.ui.pages.account.AccountHomePage;
-import com.jalasoft.sfdc.ui.pages.products.ProducHomePageLight;
-import com.jalasoft.sfdc.ui.pages.products.ProductHomePage;
+import com.jalasoft.sfdc.ui.pages.products.ProductListPageLight;
+import com.jalasoft.sfdc.ui.pages.products.ProductListPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import javax.xml.xpath.XPath;
 
 public class AppLuncherLight extends AppLauncher {
     @FindBy(xpath = "//span[text()='Accounts' and @class]")
@@ -33,10 +29,10 @@ public class AppLuncherLight extends AppLauncher {
     /**
      * Method for go to product home page Light.
      */
-    public ProductHomePage goToProductPage() {
+    public ProductListPage goToProductPage() {
         driverTools.clickElement(productButton);
         driverTools.scrollDown(5);
-        return new ProducHomePageLight();
+        return new ProductListPageLight();
     }
 
 }
