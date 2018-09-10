@@ -95,8 +95,6 @@ public class LoginSteps {
      */
     @When("^I login as \"(.*?)\" with password \"(.*?)\"$")
     public void login(String username, String password) {
-
-        //Use this step for login feature scenarios
         homePage = loginPage.login(username, password);
     }
 
@@ -124,27 +122,36 @@ public class LoginSteps {
     //****************************************************************
     //Hooks for @Login scenarios
     //****************************************************************
-    @After(value = "@Login, @CrudOppy, @Stages, @Account", order = 999)
+    @After(value = "@Logout, @CrudOppy, @Stages, @Account", order = 999)
     public void afterLoginScenario() {
         log.info("After hook @Login");
         Skin skin = ServersConfigReader.getInstance().getSkin();
         if (skin == Skin.LIGHT) {
-            homePage.topMenu.logout();
+            homePage.topMenu.clickProfile();
+            profilePage = homePage.topMenu.goToProfilePage();
+            loginPage = profilePage.logout();
         }
     }
 
+    /**
+     * Logins to Salesforce.
+     *
+     * @param errore - Error that is displayed.
+     */
     @Then("^I should not login successfully \"([^\"]*)\"$")
     public void iShouldNotLoginSuccessfully(String errore) throws Throwable {
         assertEquals(loginPage.getError(), errore);
     }
 
-
-
+    /**
+     * Logins to Salesforce successfully.
+     *
+     * @param userName - User Name of user.
+     */
     @Then("^I should login successfully \"([^\"]*)\"$")
     public void iShouldLoginSuccessfully(String userName) throws Throwable {
         profilePage = homePage.topMenu.goToProfilePage();
-        System.out.println("hizo click");
-        //System.out.println( + "    +++++++++++++++++++++++++");
-       assertTrue(profilePage.isUserNameDisplayed().trim().equalsIgnoreCase(userName));
+        //assertTrue(profilePage.isUserNameDisplayed().trim().equalsIgnoreCase(userName));
+        assertEquals(profilePage.isUserNameDisplayed(),userName,"user is logged usccessfully");
     }
 }
