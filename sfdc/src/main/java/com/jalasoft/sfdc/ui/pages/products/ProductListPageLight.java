@@ -5,13 +5,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class ProducHomePageLight extends ProductHomePage {
+public class ProductListPageLight extends ProductListPage {
 
     /**
      * Element product home page light.
      */
     @FindBy(xpath = "//a[@class='forceActionLink' and @role='button' and @title='New']")
-    public WebElement buttonNew;
+    private WebElement buttonNew;
 
     @Override
     public void waitUntilPageObjectIsLoaded() {

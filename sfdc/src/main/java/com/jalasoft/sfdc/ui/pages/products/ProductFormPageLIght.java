@@ -9,22 +9,22 @@ public class ProductFormPageLIght extends ProductFormPage {
      * Elements form page Light create new product.
      */
     @FindBy(xpath = "//*[@aria-required='true']")
-    WebElement productName;
+    private WebElement productName;
 
     @FindBy(xpath = "")
-    WebElement productCode;
+    private WebElement productCode;
 
     @FindBy(xpath = "")
-    WebElement checkOptionActive;
+    private WebElement checkOptionActive;
 
     @FindBy(xpath = "")
-    WebElement productFamily;
+    private WebElement productFamily;
 
     @FindBy(xpath = "")
-    WebElement productDescription;
+    private WebElement productDescription;
 
     @FindBy(xpath = "//span[@class='genericError uiOutputText']")
-    WebElement message;
+    private WebElement message;
 
     /**
      * Elements Buttons form page Light.
@@ -33,10 +33,10 @@ public class ProductFormPageLIght extends ProductFormPage {
     WebElement saveButton;
 
     @FindBy(xpath = "")
-    WebElement saveNewButton;
+    private WebElement saveNewButton;
 
     @FindBy(xpath = "")
-    WebElement cancelButton;
+    private WebElement cancelButton;
 
     @Override
     public void waitUntilPageObjectIsLoaded() {
@@ -49,10 +49,9 @@ public class ProductFormPageLIght extends ProductFormPage {
      * @return product's details created.
      */
     @Override
-    public ProductDetails ClickSaveProduct(String name) {
+    public ProductDetails clickSaveProduct(String name) {
         driverTools.setInputField(productName, name);
         driverTools.clickElement(saveButton);
         return new ProductDetailsLight();
     }
-
 }

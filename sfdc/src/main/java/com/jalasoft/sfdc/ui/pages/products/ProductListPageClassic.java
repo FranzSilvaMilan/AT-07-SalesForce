@@ -3,16 +3,16 @@ package com.jalasoft.sfdc.ui.pages.products;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class ProductHomePageClassic extends ProductHomePage {
+public class ProductListPageClassic extends ProductListPage {
 
     /**
      * Element product home page classic.
      */
     @FindBy(xpath = "//input[@value=' New ']")
-    public WebElement buttonNew;
+    private WebElement buttonNew;
 
     @FindBy(css = "#tryLexDialogX")
-    WebElement buttonClosePopup;
+    private WebElement buttonClosePopup;
 
     @Override
     public void waitUntilPageObjectIsLoaded() {

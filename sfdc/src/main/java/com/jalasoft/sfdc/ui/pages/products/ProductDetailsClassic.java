@@ -5,11 +5,8 @@ import org.openqa.selenium.support.FindBy;
 
 public class ProductDetailsClassic extends ProductDetails {
 
-    /**
-     *
-     */
     @FindBy(xpath = "//h2[contains(@class,'pageDescription')]")
-    WebElement ProductName;
+    private WebElement ProductName;
 
     @Override
     public void waitUntilPageObjectIsLoaded() {

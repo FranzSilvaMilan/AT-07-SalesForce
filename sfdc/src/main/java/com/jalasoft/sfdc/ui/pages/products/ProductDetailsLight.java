@@ -9,7 +9,7 @@ public class ProductDetailsLight extends ProductDetails {
      * Element Product name of the product detail page.
      */
     @FindBy(xpath = "(//span[@class='uiOutputText'])[2]")
-    WebElement ProductName;
+    private WebElement ProductName;
 
     @Override
     public void waitUntilPageObjectIsLoaded() {

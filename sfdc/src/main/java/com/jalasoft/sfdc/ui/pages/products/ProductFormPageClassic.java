@@ -9,13 +9,13 @@ public class ProductFormPageClassic extends ProductFormPage {
      * Elements form page Classic create new product.
      */
     @FindBy(xpath = "//input[contains(@id,'Name')]")
-    WebElement productName;
+    private WebElement productName;
 
     /**
      * Elements Buttons form page Classic.
      */
     @FindBy(xpath = "//input[contains(@tabindex,'6')]")
-    WebElement saveButton;
+    private WebElement saveButton;
 
     @Override
     public void waitUntilPageObjectIsLoaded() {
@@ -28,7 +28,7 @@ public class ProductFormPageClassic extends ProductFormPage {
      * @return product's details created.
      */
     @Override
-    public ProductDetails ClickSaveProduct(String name) {
+    public ProductDetails clickSaveProduct(String name) {
         driverTools.setInputField(productName, name);
         driverTools.clickElement(saveButton);
         return new ProductDetailsClassic();
