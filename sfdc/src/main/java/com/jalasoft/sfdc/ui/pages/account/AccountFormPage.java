@@ -1,13 +1,12 @@
 package com.jalasoft.sfdc.ui.pages.account;
 
+import com.jalasoft.sfdc.ui.BasePage;
 import com.jalasoft.sfdc.ui.PageFactory;
-import com.jalasoft.sfdc.ui.pages.DetailPage;
-import com.jalasoft.sfdc.ui.pages.ListHomePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
-public class AccountFormPage extends ListHomePage {
+public class AccountFormPage extends BasePage {
 
     @FindBy(xpath = "//button[@title='Save']")
     WebElement saveButton;
@@ -255,16 +254,9 @@ public class AccountFormPage extends ListHomePage {
         //CommonWebActions.setTextElement(this.annualRevenueTextField, annualRevenue);
     }
 
-    public DetailPage setRequeredFiel(String value){
+    public AccountDetailPage setRequeredFiel(String value){
         setAccountNameTextField(value);
         driverTools.clickElement(saveButton);
         return PageFactory.getDetailAccountPage();
-    }
-
-
-    @Override
-    public void clickSaveNewButton() {
-        driverTools.waitUntilElementDisplayed(newAccountButton);
-        driverTools.clickElement(newAccountButton);
     }
 }
