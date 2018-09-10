@@ -1,11 +1,11 @@
-@Login
+
 Feature: Login
   Test successfully and unsuccessfully login and logout
 
   Background:
     Given I navigate to Login page
 
-  @SmokeTest @Logout
+  @Logout
   Scenario Outline: Users should be able to login using valid credentials
     When I login as "<User Name>" with password "<Password>"
     Then I should login successfully "<User>"
@@ -14,7 +14,7 @@ Feature: Login
       | User Name           | Password  | User        |
       | franzsilva@jala.com | 12franz34 | franz silva |
 
-  @SmokeTest @Logout
+
   Scenario Outline: Users should not be able to login using invalid credentials
     When I login as "<User Name>" with password "<Password>"
     Then I should not login successfully "<Message>"

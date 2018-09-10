@@ -29,24 +29,21 @@ public abstract class TopMenu extends BasePage {
             @FindBy(css = ".branding-user-profile")
     })
     private WebElement userProfile;
-
-
-
-
     public abstract void swithSkin();
 
-    public LoginPage logout(){
-        return new LoginPage();
-    }
 
-    public abstract HomePage goToHomePage ();
+    public abstract HomePage goToHomePage();
 
-    public ProfilePage goToProfilePage(){
+    public ProfilePage goToProfilePage() {
         driverTools.waitUntilElementDisplayed(userProfile);
         driverTools.clickElement(userProfile);
         return PageFactory.getProfilePage();
     }
-    public AppLauncher gotToAppLaucher(){
+    public void clickProfile(){
+        driverTools.clickElement(userProfile);
+    }
+
+    public AppLauncher gotToAppLaucher() {
         driverTools.waitUntilElementDisplayed(userProfile);
         driverTools.clickElement(buttonTab);
         return PageFactory.getAppLauncher();
