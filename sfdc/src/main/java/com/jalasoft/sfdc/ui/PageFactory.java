@@ -20,6 +20,12 @@ import com.jalasoft.sfdc.ui.pages.account.DetailAccountPageLight;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.home.HomePageClassic;
 import com.jalasoft.sfdc.ui.pages.home.HomePageLight;
+import com.jalasoft.sfdc.ui.pages.products.ProducHomePageLight;
+import com.jalasoft.sfdc.ui.pages.products.ProductFormPage;
+import com.jalasoft.sfdc.ui.pages.products.ProductFormPageClassic;
+import com.jalasoft.sfdc.ui.pages.products.ProductFormPageLIght;
+import com.jalasoft.sfdc.ui.pages.products.ProductHomePage;
+import com.jalasoft.sfdc.ui.pages.products.ProductHomePageClassic;
 
 public class PageFactory {
     private static Skin skin = ServersConfigReader.getInstance().getSkin();
@@ -98,4 +104,5 @@ public class PageFactory {
                 return new DetailAccountPageLight();
         }
     }
+
 }
