@@ -20,6 +20,9 @@ import com.jalasoft.sfdc.ui.pages.account.DetailAccountPageLight;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.home.HomePageClassic;
 import com.jalasoft.sfdc.ui.pages.home.HomePageLight;
+import com.jalasoft.sfdc.ui.pages.priceBook.PriceBookForm;
+import com.jalasoft.sfdc.ui.pages.priceBook.PriceBookFormLight;
+import com.jalasoft.sfdc.ui.pages.priceBook.PriceBookFromClassic;
 
 public class PageFactory {
     private static Skin skin = ServersConfigReader.getInstance().getSkin();
@@ -96,6 +99,17 @@ public class PageFactory {
             default:
                 System.out.println("return detail account home page light ++++++++++++++++++++++++++++++++");
                 return new DetailAccountPageLight();
+        }
+    }
+
+    public static PriceBookForm getPagFormBook() {
+        switch (skin) {
+            case CLASSIC:
+                System.out.println("return book form page Classic ++++++++++++++++++++++++++++++++");
+                return new PriceBookFromClassic();
+            default:
+                System.out.println("return book form page light ++++++++++++++++++++++++++++++++");
+                return new PriceBookFormLight();
         }
     }
 }
