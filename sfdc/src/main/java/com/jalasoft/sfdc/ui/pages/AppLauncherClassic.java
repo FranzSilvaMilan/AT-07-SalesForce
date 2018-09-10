@@ -36,11 +36,11 @@ public class AppLauncherClassic extends AppLauncher {
      * Method for go to Contact home page Classic.
      */
     @Override
-    public ContactListPage goToContactPage(){
+    public ContactListPage goToContactPage() {
         driverTools.clickElement(contactButton);
         driverTools.clickElement(closeWindows);
         return new ContactListPageClassic();
-
+    }
     /**
      * Method for go to Product home page Classic.
      */

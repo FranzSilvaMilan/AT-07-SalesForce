@@ -2,11 +2,10 @@ package com.jalasoft.sfdc.steps;
 
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.AppLauncher;
-import com.jalasoft.sfdc.ui.pages.account.AccountDetailPage;
+import com.jalasoft.sfdc.ui.pages.account.AccountDetailsPage;
 import com.jalasoft.sfdc.ui.pages.account.AccountFormPage;
 import com.jalasoft.sfdc.ui.pages.account.AccountListPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -19,7 +18,7 @@ public class AccountSteps {
     AppLauncher appLauncher;
     AccountFormPage accountFormPage;
     AccountListPage accountListPage;
-    AccountDetailPage accountDetailPage;
+    AccountDetailsPage accountDetailPage;
 
     @Given("^I go to Account Home Page$")
     public void iGoToHomePage(){

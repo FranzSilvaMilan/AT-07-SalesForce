@@ -1,8 +1,8 @@
 package com.jalasoft.sfdc.ui.pages.products;
 
-import com.jalasoft.sfdc.ui.pages.ListHomePage;
+import com.jalasoft.sfdc.ui.pages.ListBasePage;
 
-public abstract class ProductListPage extends ListHomePage {
+public abstract class ProductListPage extends ListBasePage {
 
     /**
      * Method abstract for implement click on button new.
