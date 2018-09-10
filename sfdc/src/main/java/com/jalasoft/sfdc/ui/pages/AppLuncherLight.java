@@ -1,6 +1,8 @@
 package com.jalasoft.sfdc.ui.pages;
 
 import com.jalasoft.sfdc.ui.pages.account.AccountFormPage;
+import com.jalasoft.sfdc.ui.pages.account.AccountListPage;
+import com.jalasoft.sfdc.ui.pages.account.AccountListPageLight;
 import com.jalasoft.sfdc.ui.pages.products.ProductListPageLight;
 import com.jalasoft.sfdc.ui.pages.products.ProductListPage;
 import org.openqa.selenium.WebElement;
@@ -9,10 +11,6 @@ import org.openqa.selenium.support.FindBy;
 public class AppLuncherLight extends AppLauncher {
     @FindBy(xpath = "//span[text()='Accounts' and @class]")
     WebElement accountButton;
-
-    /**
-     * Element product page pop up Light.
-     */
     @FindBy(xpath = "//span[text()='Products' and @class]")
     WebElement productButton;
 
@@ -20,10 +18,13 @@ public class AppLuncherLight extends AppLauncher {
     public void waitUntilPageObjectIsLoaded() {
 
     }
-    public AccountFormPage gotToAccountPage(){
+    /**
+     * Method for go to Account home page Light.
+     */
+    public AccountListPage gotToAccountPage(){
         driverTools.waitUntilElementDisplayed(accountButton);
         driverTools.clickElement(accountButton);
-        return new AccountFormPage();
+        return new AccountListPageLight();
     }
 
     /**
