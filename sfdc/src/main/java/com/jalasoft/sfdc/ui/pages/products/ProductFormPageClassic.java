@@ -3,17 +3,16 @@ package com.jalasoft.sfdc.ui.pages.products;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+/**
+ * Product Form Page Classic class.
+ *
+ * @author Erik Vargas
+ */
 public class ProductFormPageClassic extends ProductFormPage {
 
-    /**
-     * Elements form page Classic create new product.
-     */
     @FindBy(xpath = "//input[contains(@id,'Name')]")
-    private WebElement productName;
+    private WebElement productNameInput;
 
-    /**
-     * Elements Buttons form page Classic.
-     */
     @FindBy(xpath = "//input[contains(@tabindex,'6')]")
     private WebElement saveButton;
 
@@ -25,11 +24,11 @@ public class ProductFormPageClassic extends ProductFormPage {
     /**
      * Method for fill and create new product in the form page Classic.
      * @param name form's fields.
-     * @return product's details created.
+     * @return product's detail created.
      */
     @Override
     public ProductDetails clickSaveProduct(String name) {
-        driverTools.setInputField(productName, name);
+        driverTools.setInputField(productNameInput, name);
         driverTools.clickElement(saveButton);
         return new ProductDetailsClassic();
     }

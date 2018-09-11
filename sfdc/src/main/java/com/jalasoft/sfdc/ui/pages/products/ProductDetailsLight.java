@@ -3,13 +3,15 @@ package com.jalasoft.sfdc.ui.pages.products;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+/**
+ * Product Details Page Light class.
+ *
+ * @author Erik Vargas
+ */
 public class ProductDetailsLight extends ProductDetails {
 
-    /**
-     * Element Product name of the product detail page.
-     */
     @FindBy(xpath = "(//span[@class='uiOutputText'])[2]")
-    private WebElement ProductName;
+    private WebElement productNameLabel;
 
     @Override
     public void waitUntilPageObjectIsLoaded() {
@@ -22,6 +24,6 @@ public class ProductDetailsLight extends ProductDetails {
      */
     @Override
     public String isProductNameDisplayed() {
-        return ProductName.getText();
+        return productNameLabel.getText();
     }
 }

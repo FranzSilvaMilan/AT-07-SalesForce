@@ -12,30 +12,49 @@ import cucumber.api.java.en.When;
 
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
+/**
+ * Products steps class.
+ *
+ * @author Erik Vargas
+ */
 public class ProductSteps {
     private HomePage homePage;
     private AppLauncher appLauncher;
-    private ProductListPage productHomePage;
+    private ProductListPage productListPage;
     private ProductFormPage productFormPage;
     private ProductDetails productDetails;
 
-    @When("^I go to Product Home Page$")
-    public void iGoToHomePage() {
+    //****************************************************************
+    //Login Step Definitions
+    //****************************************************************
+
+    /**
+     * Navigate to Product list page
+     */
+    @When("^I go to Product list Page$")
+    public void goToProductListPage() {
         homePage = PageFactory.getHomePage();
         appLauncher = homePage.topMenu.gotToAppLaucher();
-        productHomePage = appLauncher.goToProductPage();
+        productListPage = appLauncher.goToProductPage();
     }
 
+    /**
+     * Fill required fields
+     * @param name - Name of the Product
+     */
     @And("^I fill in required fields \"([^\"]*)\"$")
     public void iFillInRequiredFields(String name) {
-        productFormPage = productHomePage.clickButtonNew();
+        productFormPage = productListPage.clickButtonNew();
         productDetails = productFormPage.clickSaveProduct(name);
     }
 
+    /**
+     * Validation of the product created
+     * @param name - Name of the project created
+     */
     @Then("^Should be displayed Detail Product Page with \"([^\"]*)\"$")
     public void shouldBeDisplayedDetailProductPageWith(String name) {
-        assertEquals(productDetails.isProductNameDisplayed(),name);
+        assertEquals(productDetails.isProductNameDisplayed(), name);
     }
 }
