@@ -23,7 +23,7 @@ public class ContactListPageLight extends ContactListPage {
      */
     @Override
     public ContactFormPage gotToNewButton() {
-        driverTools.clickElement(newAccountButton);
+        driverTools.clickElement(newButton);
         return new ContactFormPageLight();
     }
 }
