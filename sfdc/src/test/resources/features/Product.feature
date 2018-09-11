@@ -5,7 +5,7 @@ Feature: Create a new Product.
     And I login as "erik" User
 
   Scenario Outline: Verify that is possible create a new product with required fields.
-    When I go to Product Home Page
+    When I go to Product list Page
     And I fill in required fields "<Products name>"
     Then Should be displayed Detail Product Page with "<Products name>"
     Examples:

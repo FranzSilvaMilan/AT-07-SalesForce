@@ -3,34 +3,33 @@ package com.jalasoft.sfdc.ui.pages.products;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+/**
+ * Product Form Page Light class.
+ *
+ * @author Erik Vargas
+ */
 public class ProductFormPageLIght extends ProductFormPage {
 
-    /**
-     * Elements form page Light create new product.
-     */
     @FindBy(xpath = "//*[@aria-required='true']")
-    private WebElement productName;
+    private WebElement productNameInput;
 
     @FindBy(xpath = "")
-    private WebElement productCode;
+    private WebElement productCodeInput;
 
     @FindBy(xpath = "")
-    private WebElement checkOptionActive;
+    private WebElement actionOptionCheckBox;
 
     @FindBy(xpath = "")
-    private WebElement productFamily;
+    private WebElement productFamilyCombobox;
 
     @FindBy(xpath = "")
-    private WebElement productDescription;
+    private WebElement productDescriptionTextArea;
 
     @FindBy(xpath = "//span[@class='genericError uiOutputText']")
-    private WebElement message;
+    private WebElement messageError;
 
-    /**
-     * Elements Buttons form page Light.
-     */
     @FindBy(xpath = "//button[@title='Save']")
-    WebElement saveButton;
+    private WebElement saveButton;
 
     @FindBy(xpath = "")
     private WebElement saveNewButton;
@@ -46,11 +45,11 @@ public class ProductFormPageLIght extends ProductFormPage {
     /**
      * Method for fill and create new product in the form page Light.
      * @param name form's fields.
-     * @return product's details created.
+     * @return product's detail created.
      */
     @Override
     public ProductDetails clickSaveProduct(String name) {
-        driverTools.setInputField(productName, name);
+        driverTools.setInputField(productNameInput, name);
         driverTools.clickElement(saveButton);
         return new ProductDetailsLight();
     }
