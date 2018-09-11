@@ -6,54 +6,66 @@ import com.jalasoft.sfdc.ui.pages.contact.ContactDetailsPage;
 import com.jalasoft.sfdc.ui.pages.contact.ContactFormPage;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class ContactSteps {
+import static org.testng.Assert.assertEquals;
 
+/**
+ * Contact steps class.
+ *
+ * @author Daniel Sandoval.
+ * @since 9/11/2018
+ */
+public class ContactSteps {
+    //pages.
     private HomePage homePage;
     private PageFactory pageFactory;
     private AppLauncher appLauncher;
+
+    //pages Contacts.
     private ContactListPage contactListPage;
     private ContactFormPage contactFormPage;
     private ContactDetailsPage contactDetailsPage;
 
- /*   @When("^I click in the option AppLuncher$")//^I goes to "([^"]*)" home page$
-    public void iClickInTheOptionAppLuncher() throws Throwable {
-        homePage = pageFactory.getHomePage();
-        appLuncher = homePage.topMenu.clickAllLuncher();
-        contactListPage = appLuncher.clickContactButton();
-        //contactFormPage = contactListPage.clickButtonNew();
-        //homePage = PageFactory.
-        // Write code here that turns the phrase above into concrete actions
-
-    }*/
-
-   /* @When("^I click in New Button of Contatct$")
-    public void iClickInNewButtonOfContatct() throws Throwable {
-        contactFormPage = contactListPage.clickButtonNew();
-        // Write code here that turns the phrase above into concrete actions
-        //throw new PendingException();
-    }*/
-
-
-//-----------------------------------------------------------------------------------
+    /**
+     * Click the app launcher and contacts button.
+     *
+     * @param arg0 - option Contact.
+     */
     @When("^I goes to \"([^\"]*)\" home page$")
-    public void iGoesToHomePage(String arg0) throws Throwable {
+    public void iGoesToHomePage(String arg0) {
         homePage = pageFactory.getHomePage();
         appLauncher = homePage.topMenu.gotToAppLaucher();
         contactListPage = appLauncher.goToContactPage();
     }
 
-    @When("^I create a new contact \"([^\"]*)\"$")
-    public void iCreateANewContact(String newContact){
+    /**
+     * Create a new contact.
+     */
+    @And("^I click on New Contact$")
+    public void iClickOnNewContact() {
         contactFormPage = contactListPage.gotToNewButton();
+    }
+
+    /**
+     * Fill the spaces required to create a new Contact.
+     *
+     * @param newContact - Last name of the new contact.
+     */
+    @When("^I fill the Account form name with: \"([^\"]*)\"$")
+    public void iFillTheAccountFormNameWith(String newContact) {
         contactDetailsPage = contactFormPage.gotToSaveButton(newContact);
     }
 
-    @Then("^verify if is create a new contact$")
-    public void verifyIfIsCreateANewContact() throws Throwable {
-        throw new PendingException();
+    /**
+     * Verify if is create a new Contact.
+     *
+     * @param contactCreate - last name of the contact created.
+     */
+    @Then("^\"([^\"]*)\" name should be displayed in detail Page Contact$")
+    public void nameShouldBeDisplayedInDetailPageContact(String contactCreate) {
+        assertEquals(contactDetailsPage.isContactNameDisplayed(), contactCreate, "When is obtains the Contact ");
     }
 }

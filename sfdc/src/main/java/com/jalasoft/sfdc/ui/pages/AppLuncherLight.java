@@ -4,6 +4,7 @@ import com.jalasoft.sfdc.ui.pages.account.AccountFormPage;
 import com.jalasoft.sfdc.ui.pages.account.AccountListPage;
 import com.jalasoft.sfdc.ui.pages.account.AccountListPageLight;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPage;
+import com.jalasoft.sfdc.ui.pages.contact.ContactListPageLight;
 import com.jalasoft.sfdc.ui.pages.products.ProductListPageLight;
 import com.jalasoft.sfdc.ui.pages.products.ProductListPage;
 import org.openqa.selenium.WebElement;
@@ -14,6 +15,8 @@ public class AppLuncherLight extends AppLauncher {
     WebElement accountButton;
     @FindBy(xpath = "//span[text()='Products' and @class]")
     WebElement productButton;
+    @FindBy(xpath = "//span[text()='Contacts' and @class]")
+    WebElement contactButton;
 
     @Override
     public void waitUntilPageObjectIsLoaded() {
@@ -28,9 +31,13 @@ public class AppLuncherLight extends AppLauncher {
         return new AccountListPageLight();
     }
 
+    /**
+     * Method for go to Contact home page Light.
+     */
     @Override
     public ContactListPage goToContactPage() {
-        return null;
+        driverTools.clickElement(contactButton);
+        return new ContactListPageLight();
     }
 
     /**
@@ -41,5 +48,4 @@ public class AppLuncherLight extends AppLauncher {
         driverTools.scrollDown(5);
         return new ProductListPageLight();
     }
-
 }
