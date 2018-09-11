@@ -42,7 +42,7 @@ public class ContactSteps {
     @When("^I goes to \"([^\"]*)\" home page$")
     public void iGoesToHomePage(String arg0) throws Throwable {
         homePage = pageFactory.getHomePage();
-        appLauncher = homePage.topMenu.gotToAppLaucher();
+        appLauncher = homePage.topMenu.gotToAppLauncher();
         contactListPage = appLauncher.goToContactPage();
     }
 

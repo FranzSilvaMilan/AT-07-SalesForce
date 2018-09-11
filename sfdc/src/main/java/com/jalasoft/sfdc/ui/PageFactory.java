@@ -7,7 +7,7 @@ import com.jalasoft.sfdc.ui.components.TopMenuClassic;
 import com.jalasoft.sfdc.ui.components.TopMenuLight;
 import com.jalasoft.sfdc.ui.pages.AppLauncher;
 import com.jalasoft.sfdc.ui.pages.AppLauncherClassic;
-import com.jalasoft.sfdc.ui.pages.AppLuncherLight;
+import com.jalasoft.sfdc.ui.pages.AppLauncherLight;
 import com.jalasoft.sfdc.ui.pages.ProfilePage;
 import com.jalasoft.sfdc.ui.pages.ProfilePageClassic;
 import com.jalasoft.sfdc.ui.pages.ProfilePageLight;
@@ -21,6 +21,13 @@ import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.home.HomePageClassic;
 import com.jalasoft.sfdc.ui.pages.home.HomePageLight;
 
+/**
+ * PageFactory class.
+ *
+ * @author Franz Silva.
+ * @author Erik Vargas.
+ * @author Daniel Sandoval.
+ */
 public class PageFactory {
     private static Skin skin = ServersConfigReader.getInstance().getSkin();
 
@@ -77,7 +84,7 @@ public class PageFactory {
             case CLASSIC:
                 return new AppLauncherClassic();
             default:
-                return new AppLuncherLight();
+                return new AppLauncherLight();
         }
     }
 

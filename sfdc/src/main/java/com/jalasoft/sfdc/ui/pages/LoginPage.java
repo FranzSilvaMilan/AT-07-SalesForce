@@ -14,25 +14,25 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  * @since 6/21/2018
  */
 public class LoginPage extends BasePage {
+
     @FindBy(id = "username")
-    private WebElement userNameTxt;
+    private WebElement userNameTextBox;
 
     @FindBy(id = "password")
-    private WebElement passwordTxt;
+    private WebElement passwordTextBox;
 
     @FindBy(id = "Login")
-    private WebElement loginBtn;
+    private WebElement loginButton;
 
     @FindBy(id = "error")
     private WebElement error;
 
-
     /**
-     * {@inheritDoc}
+     * Waits until page object is loaded.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(loginBtn));
+        wait.until(ExpectedConditions.visibilityOf(loginButton));
     }
 
     /**
@@ -41,7 +41,7 @@ public class LoginPage extends BasePage {
      * @param username - The user name.
      */
     private void setUsername(final String username) {
-        driverTools.setInputField(userNameTxt, username);
+        driverTools.setInputField(userNameTextBox, username);
     }
 
     /**
@@ -50,7 +50,7 @@ public class LoginPage extends BasePage {
      * @param password - The user password.
      */
     private void setPassword(final String password) {
-        driverTools.setInputField(passwordTxt, password);
+        driverTools.setInputField(passwordTextBox, password);
     }
 
     /**
@@ -59,7 +59,7 @@ public class LoginPage extends BasePage {
      * @return a list page.
      */
     private HomePage clickLoginButton() {
-        driverTools.clickElement(loginBtn);
+        driverTools.clickElement(loginButton);
         return PageFactory.getHomePage();
     }
 
@@ -76,6 +76,10 @@ public class LoginPage extends BasePage {
         return clickLoginButton();
     }
 
+    /**
+     * get text of the element message error
+     * @return text error
+     */
     public String getError(){
         return error.getText();
     }

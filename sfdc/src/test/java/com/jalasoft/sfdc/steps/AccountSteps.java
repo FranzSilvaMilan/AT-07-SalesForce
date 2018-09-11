@@ -23,7 +23,7 @@ public class AccountSteps {
     @Given("^I go to Account Home Page$")
     public void iGoToHomePage(){
         homePage = PageFactory.getHomePage();
-        appLauncher = homePage.topMenu.gotToAppLaucher();
+        appLauncher = homePage.topMenu.gotToAppLauncher();
         accountListPage = appLauncher.gotToAccountPage();
 
     }

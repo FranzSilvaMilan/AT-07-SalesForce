@@ -16,7 +16,7 @@ import static org.testng.Assert.assertEquals;
 /**
  * Products steps class.
  *
- * @author Erik Vargas
+ * @author Erik Vargas.
  */
 public class ProductSteps {
     private HomePage homePage;
@@ -30,18 +30,18 @@ public class ProductSteps {
     //****************************************************************
 
     /**
-     * Navigate to Product list page
+     * Navigate to Product list page.
      */
     @When("^I go to Product list Page$")
     public void goToProductListPage() {
         homePage = PageFactory.getHomePage();
-        appLauncher = homePage.topMenu.gotToAppLaucher();
+        appLauncher = homePage.topMenu.gotToAppLauncher();
         productListPage = appLauncher.goToProductPage();
     }
 
     /**
-     * Fill required fields
-     * @param name - Name of the Product
+     * Fill required fields.
+     * @param name - Name of the Product.
      */
     @And("^I fill in required fields \"([^\"]*)\"$")
     public void iFillInRequiredFields(String name) {
@@ -50,8 +50,8 @@ public class ProductSteps {
     }
 
     /**
-     * Validation of the product created
-     * @param name - Name of the project created
+     * Validation of the product created.
+     * @param name - Name of the project created.
      */
     @Then("^Should be displayed Detail Product Page with \"([^\"]*)\"$")
     public void shouldBeDisplayedDetailProductPageWith(String name) {

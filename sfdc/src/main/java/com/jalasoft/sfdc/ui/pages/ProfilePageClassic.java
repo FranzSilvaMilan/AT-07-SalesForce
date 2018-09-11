@@ -3,19 +3,39 @@ package com.jalasoft.sfdc.ui.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+/**
+ * ProfilePageClassic class.
+ *
+ * @author Franz Silva.
+ * @author Erik Vargas.
+ * @author Daniel Sandoval.
+ */
 public class ProfilePageClassic extends ProfilePage {
     @FindBy(xpath = "//a[@title='Logout']")
-    private WebElement buttonLogout;
-    @FindBy(linkText = "My Profile")
-    private WebElement linkProfile;
-    @FindBy(id = "tailBreadcrumbNode")
-    private WebElement userName;
+    private WebElement logoutButton;
 
+    @FindBy(linkText = "My Profile")
+    private WebElement profileLink;
+
+    @FindBy(id = "tailBreadcrumbNode")
+    private WebElement userProfileNameLabel;
+
+    /**
+     * Waits until page object is loaded.
+     */
+    @Override
+    public void waitUntilPageObjectIsLoaded() {
+        driverTools.waitUntilElementDisplayed(profileLink);
+    }
+
+    /**
+     * get user name displayed
+     * @return user name
+     */
     @Override
     public String isUserNameDisplayed() {
-        driverTools.clickElement(linkProfile);
-        System.out.println(userName.getText() + " ++++++++++++++++++++++++++++++++++++++++++++++++++");
-        return userName.getText().trim();
+        driverTools.clickElement(profileLink);
+        return userProfileNameLabel.getText().trim();
     }
 
     /**
@@ -24,15 +44,7 @@ public class ProfilePageClassic extends ProfilePage {
      */
     @Override
     public LoginPage logout() {
-        driverTools.clickElement(buttonLogout);
+        driverTools.clickElement(logoutButton);
         return new LoginPage();
-    }
-
-    /**
-     * wait for a elelemt for
-     */
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
-        driverTools.waitUntilElementDisplayed(linkProfile);
     }
 }

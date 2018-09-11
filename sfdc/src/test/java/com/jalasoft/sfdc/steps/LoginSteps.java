@@ -8,18 +8,13 @@ import com.jalasoft.sfdc.ui.PageTransporter;
 import com.jalasoft.sfdc.ui.pages.LoginPage;
 import com.jalasoft.sfdc.ui.pages.ProfilePage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.apache.log4j.Logger;
-import org.testng.Assert;
-
 import java.net.MalformedURLException;
-
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
 /**
  * Login steps class.
@@ -70,10 +65,8 @@ public class LoginSteps {
         } else {
             navigateToLoginPage();
         }
-
         return isUserLogged;
     }
-
 
     /**
      * Navigates to the Login page.
@@ -82,13 +75,12 @@ public class LoginSteps {
      */
     @Given("^I navigate to Login page$")
     public void navigateToLoginPage() throws MalformedURLException {
-
         //Use this step for login feature scenarios
         loginPage = pageTransporter.navigateToLoginPage();
     }
 
     /**
-     * Logins to Salesforce.
+     * Login to Salesforce.
      *
      * @param username - Name of the user.
      * @param password - Password of the user.
@@ -99,11 +91,9 @@ public class LoginSteps {
     }
 
     @Then("^I should login successfully$")
-    public void iShouldLoginSuccessfully() throws Throwable {
+    public void iShouldLoginSuccessfully() {
         profilePage = homePage.topMenu.goToProfilePage();
-        //assertEquals(profilePage.isUserNameDisplayed().trim());
     }
-
 
     /**
      * Navigates and login to Salesforrce with the user received.
@@ -136,11 +126,11 @@ public class LoginSteps {
     /**
      * Logins to Salesforce.
      *
-     * @param errore - Error that is displayed.
+     * @param error - Error that is displayed.
      */
     @Then("^I should not login successfully \"([^\"]*)\"$")
-    public void iShouldNotLoginSuccessfully(String errore) throws Throwable {
-        assertEquals(loginPage.getError(), errore);
+    public void iShouldNotLoginSuccessfully(String error) {
+        assertEquals(loginPage.getError(), error);
     }
 
     /**
@@ -149,9 +139,8 @@ public class LoginSteps {
      * @param userName - User Name of user.
      */
     @Then("^I should login successfully \"([^\"]*)\"$")
-    public void iShouldLoginSuccessfully(String userName) throws Throwable {
+    public void iShouldLoginSuccessfully(String userName) {
         profilePage = homePage.topMenu.goToProfilePage();
-        //assertTrue(profilePage.isUserNameDisplayed().trim().equalsIgnoreCase(userName));
-        assertEquals(profilePage.isUserNameDisplayed(),userName,"user is logged usccessfully");
+        assertEquals(profilePage.isUserNameDisplayed(),userName,"user is logged unsuccessfully");
     }
 }

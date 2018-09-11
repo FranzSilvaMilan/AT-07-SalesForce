@@ -3,10 +3,8 @@ package com.jalasoft.sfdc.ui.components;
 import com.jalasoft.sfdc.ui.BasePage;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.AppLauncher;
-import com.jalasoft.sfdc.ui.pages.LoginPage;
 import com.jalasoft.sfdc.ui.pages.ProfilePage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -29,8 +27,8 @@ public abstract class TopMenu extends BasePage {
             @FindBy(css = ".branding-user-profile")
     })
     private WebElement userProfile;
-    public abstract void swithSkin();
 
+    public abstract void switchSkin();
 
     public abstract HomePage goToHomePage();
 
@@ -43,10 +41,9 @@ public abstract class TopMenu extends BasePage {
         driverTools.clickElement(userProfile);
     }
 
-    public AppLauncher gotToAppLaucher() {
+    public AppLauncher gotToAppLauncher() {
         driverTools.waitUntilElementDisplayed(userProfile);
         driverTools.clickElement(buttonTab);
         return PageFactory.getAppLauncher();
     }
-
 }

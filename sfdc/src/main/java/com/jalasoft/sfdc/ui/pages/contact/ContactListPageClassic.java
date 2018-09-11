@@ -9,7 +9,7 @@ public class ContactListPageClassic extends ContactListPage {
 
     @Override
     public ContactFormPage gotToNewButton() {
-        driverTools.clickElement(newAccountButton);
+        driverTools.clickElement(newButton);
         return new ContactFormPageClassic();
     }
 }
