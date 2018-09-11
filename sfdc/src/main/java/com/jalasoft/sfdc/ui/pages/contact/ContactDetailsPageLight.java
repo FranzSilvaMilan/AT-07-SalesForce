@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
  * ContacDetailsPageLight class.
  *
  * @author Daniel Sandoval.
- * @since 9/11/2018
+ * @since 9/11/2018.
  */
 public class ContactDetailsPageLight extends ContactDetailsPage {
     @FindBy(xpath = "(//*[@class='testonly-outputNameWithHierarchyIcon sfaOutputNameWithHierarchyIcon']//child::span)[1]")

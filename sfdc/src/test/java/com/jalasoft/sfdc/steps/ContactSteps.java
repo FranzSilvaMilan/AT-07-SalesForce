@@ -66,6 +66,6 @@ public class ContactSteps {
      */
     @Then("^\"([^\"]*)\" name should be displayed in detail Page Contact$")
     public void nameShouldBeDisplayedInDetailPageContact(String contactCreate) {
-        assertEquals(contactDetailsPage.isContactNameDisplayed(), contactCreate, "When is obtains the Contact ");
+        assertEquals(contactDetailsPage.isContactNameDisplayed(), contactCreate, "The contact you get is");
     }
 }

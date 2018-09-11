@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
  * ContacFormPageLight class.
  *
  * @author Daniel Sandoval.
- * @since 9/11/2018
+ * @since 9/11/2018.
  */
 public class ContactFormPageLight extends ContactFormPage {
     @FindBy(xpath = "//input[@placeholder='Last Name']")

@@ -6,7 +6,7 @@ import com.jalasoft.sfdc.ui.BasePage;
  * ContacDetailsPage class.
  *
  * @author Daniel Sandoval.
- * @since 9/11/2018
+ * @since 9/11/2018.
  */
 public abstract class ContactDetailsPage extends BasePage {
 

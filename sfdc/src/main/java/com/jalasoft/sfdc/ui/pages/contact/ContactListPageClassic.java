@@ -4,7 +4,7 @@ package com.jalasoft.sfdc.ui.pages.contact;
  * ContactListPageClassic class.
  *
  * @author Daniel Sandoval.
- * @since 9/11/2018
+ * @since 9/11/2018.
  */
 public class ContactListPageClassic extends ContactListPage {
 

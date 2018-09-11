@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
  * ContacFormPageClassic class.
  *
  * @author Daniel Sandoval.
- * @since 9/11/2018
+ * @since 9/11/2018.
  */
 public class ContactFormPageClassic extends ContactFormPage {
 

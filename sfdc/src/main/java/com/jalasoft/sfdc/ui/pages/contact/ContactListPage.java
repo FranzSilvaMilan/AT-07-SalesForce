@@ -6,7 +6,7 @@ import com.jalasoft.sfdc.ui.pages.ListBasePage;
  * ContactListPage class.
  *
  * @author Daniel Sandoval.
- * @since 9/11/2018
+ * @since 9/11/2018.
  */
 public abstract class ContactListPage extends ListBasePage {
 

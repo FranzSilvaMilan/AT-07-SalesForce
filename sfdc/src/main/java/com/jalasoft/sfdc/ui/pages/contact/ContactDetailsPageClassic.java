@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
  * ContacDetailsPageClassic class.
  *
  * @author Daniel Sandoval.
- * @since 9/11/2018
+ * @since 9/11/2018.
  */
 public class ContactDetailsPageClassic extends ContactDetailsPage {
     @FindBy(xpath = "//h2[contains(@class,'topName')]")
