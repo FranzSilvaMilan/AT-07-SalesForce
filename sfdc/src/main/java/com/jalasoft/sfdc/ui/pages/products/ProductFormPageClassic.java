@@ -16,6 +16,9 @@ public class ProductFormPageClassic extends ProductFormPage {
     @FindBy(xpath = "//input[contains(@tabindex,'6')]")
     private WebElement saveButton;
 
+    /**
+     * Waits until page object is loaded.
+     */
     @Override
     public void waitUntilPageObjectIsLoaded() {
 

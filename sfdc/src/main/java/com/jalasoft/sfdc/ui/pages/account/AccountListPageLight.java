@@ -8,8 +8,8 @@ public class AccountListPageLight extends AccountListPage {
 
     @Override
     public AccountFormPage clickNewButton() {
-        driverTools.waitUntilElementDisplayed(newAccountButton);
-        driverTools.clickElement(newAccountButton);
+        driverTools.waitUntilElementDisplayed(newButton);
+        driverTools.clickElement(newButton);
         return new AccountFormPage();
     }
 }

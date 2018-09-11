@@ -1,23 +1,37 @@
 package com.jalasoft.sfdc.ui.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+/**
+ * ProfilePageLight class.
+ *
+ * @author Franz Silva.
+ * @author Erik Vargas.
+ * @author Daniel Sandoval.
+ */
 public class ProfilePageLight extends ProfilePage {
     @FindBy(xpath = "//h1[@class='profile-card-name']/child::a")
-    private WebElement userProfileName;
+    private WebElement userProfileNameLabel;
+
     @FindBy(css = ".profile-link-label.logout.uiOutputURL")
-    private WebElement buttonLogout;
+    private WebElement logoutButton;
+
+    /**
+     * Waits until page object is loaded.
+     */
+    @Override
+    public void waitUntilPageObjectIsLoaded() {
+        driverTools.waitUntilElementDisplayed(userProfileNameLabel);
+    }
 
     /**
      * get user name displayed
-     * @return
+     * @return user name
      */
     @Override
     public String isUserNameDisplayed() {
-        System.out.println(userProfileName.getText() + "+++++++++++++++++++++++++++++");
-        return userProfileName.getText().trim();
+        return userProfileNameLabel.getText().trim();
     }
 
     /**
@@ -26,15 +40,7 @@ public class ProfilePageLight extends ProfilePage {
      */
     @Override
     public LoginPage logout() {
-        driverTools.clickElement(buttonLogout);
+        driverTools.clickElement(logoutButton);
         return new LoginPage();
-    }
-
-    /**
-     * wait for a element is displayed for load tthe page.
-     */
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
-        driverTools.waitUntilElementDisplayed(userProfileName);
     }
 }

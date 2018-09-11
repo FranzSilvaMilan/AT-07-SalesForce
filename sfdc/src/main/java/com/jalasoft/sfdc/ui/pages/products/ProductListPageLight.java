@@ -1,8 +1,5 @@
 package com.jalasoft.sfdc.ui.pages.products;
 
-
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
@@ -12,12 +9,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  */
 public class ProductListPageLight extends ProductListPage {
 
-    @FindBy(xpath = "//a[@class='forceActionLink' and @role='button' and @title='New']")
-    private WebElement newProductButton;
-
+    /**
+     * Waits until page object is loaded.
+     */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(newProductButton));
     }
 
     /**
@@ -26,7 +22,7 @@ public class ProductListPageLight extends ProductListPage {
      */
     @Override
     public ProductFormPage clickButtonNew() {
-        driverTools.clickElement(newAccountButton);
+        driverTools.clickElement(newButton);
         return new ProductFormPageLIght();
     }
 }

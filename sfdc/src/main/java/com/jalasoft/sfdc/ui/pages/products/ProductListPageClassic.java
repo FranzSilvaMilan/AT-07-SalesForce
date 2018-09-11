@@ -10,12 +10,12 @@ import org.openqa.selenium.support.FindBy;
  */
 public class ProductListPageClassic extends ProductListPage {
 
-    @FindBy(xpath = "//input[@value=' New ']")
-    private WebElement newProductButton;
-
     @FindBy(css = "#tryLexDialogX")
     private WebElement closePopupButton;
 
+    /**
+     * Waits until page object is loaded.
+     */
     @Override
     public void waitUntilPageObjectIsLoaded() {
 
@@ -28,7 +28,7 @@ public class ProductListPageClassic extends ProductListPage {
     @Override
     public ProductFormPage clickButtonNew() {
         driverTools.clickElement(closePopupButton);
-        driverTools.clickElement(newAccountButton);
+        driverTools.clickElement(newButton);
         return new ProductFormPageClassic();
     }
 }

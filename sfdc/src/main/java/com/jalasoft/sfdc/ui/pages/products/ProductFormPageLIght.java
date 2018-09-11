@@ -37,6 +37,9 @@ public class ProductFormPageLIght extends ProductFormPage {
     @FindBy(xpath = "")
     private WebElement cancelButton;
 
+    /**
+     * Waits until page object is loaded.
+     */
     @Override
     public void waitUntilPageObjectIsLoaded() {
 
