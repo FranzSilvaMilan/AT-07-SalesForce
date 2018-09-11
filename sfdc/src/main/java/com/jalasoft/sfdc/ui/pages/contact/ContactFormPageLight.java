@@ -4,36 +4,27 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * ContacFormPageClassic class.
+ * ContacFormPageLight class.
  *
  * @author Daniel Sandoval.
  * @since 9/11/2018.
  */
-public class ContactFormPageClassic extends ContactFormPage {
-
-    @FindBy(xpath = "//*[@id='name_lastcon2']")
+public class ContactFormPageLight extends ContactFormPage {
+    @FindBy(xpath = "//input[@placeholder='Last Name']")
     WebElement lastNameTextInput;
-    @FindBy(xpath = "//*[@id='topButtonRow']/input[1]")
+    @FindBy(xpath = "//button[@title='Save']")
     WebElement saveButton;
-
-    /**
-     * Waits until page object is loaded.
-     */
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
-
-    }
 
     /**
      * Method that set and save to new Contact.
      *
      * @param newContact - last name of the new contact.
-     * @return - new page Classic.
+     * @return - new page Light.
      */
     @Override
     public ContactDetailsPage gotToSaveButton(String newContact) {
         driverTools.setInputField(lastNameTextInput, newContact);
         driverTools.clickElement(saveButton);
-        return new ContactDetailsPageClassic();
+        return new ContactDetailsPageLight();
     }
 }
