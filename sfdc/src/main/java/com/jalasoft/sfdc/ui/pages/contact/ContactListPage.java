@@ -1,9 +1,8 @@
 package com.jalasoft.sfdc.ui.pages.contact;
 
-import com.jalasoft.sfdc.ui.BasePage;
-import com.jalasoft.sfdc.ui.pages.ListHomePage;
+import com.jalasoft.sfdc.ui.pages.ListBasePage;
 
-public abstract class ContactListPage extends ListHomePage {
+public abstract class ContactListPage extends ListBasePage {
 
     @Override
     public void waitUntilPageObjectIsLoaded() {

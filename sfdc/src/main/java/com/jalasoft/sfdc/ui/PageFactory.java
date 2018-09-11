@@ -11,12 +11,12 @@ import com.jalasoft.sfdc.ui.pages.AppLuncherLight;
 import com.jalasoft.sfdc.ui.pages.ProfilePage;
 import com.jalasoft.sfdc.ui.pages.ProfilePageClassic;
 import com.jalasoft.sfdc.ui.pages.ProfilePageLight;
-import com.jalasoft.sfdc.ui.pages.account.AccountDetailPage;
+import com.jalasoft.sfdc.ui.pages.account.AccountDetailsPage;
 import com.jalasoft.sfdc.ui.pages.account.AccountListPage;
 import com.jalasoft.sfdc.ui.pages.account.AccountListPageClassic;
 import com.jalasoft.sfdc.ui.pages.account.AccountListPageLight;
-import com.jalasoft.sfdc.ui.pages.account.AccountDetailPageClassic;
-import com.jalasoft.sfdc.ui.pages.account.AccountDetailPageLight;
+import com.jalasoft.sfdc.ui.pages.account.AccountDetailsPageClassic;
+import com.jalasoft.sfdc.ui.pages.account.AccountDetailsPageLight;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.home.HomePageClassic;
 import com.jalasoft.sfdc.ui.pages.home.HomePageLight;
@@ -85,12 +85,12 @@ public class PageFactory {
      *
      * @return
      */
-    public static AccountDetailPage getDetailAccountPage() {
+    public static AccountDetailsPage getDetailAccountPage() {
         switch (skin) {
             case CLASSIC:
-                return new AccountDetailPageClassic();
+                return new AccountDetailsPageClassic();
             default:
-                return new AccountDetailPageLight();
+                return new AccountDetailsPageLight();
         }
     }
 

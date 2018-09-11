@@ -3,6 +3,7 @@ package com.jalasoft.sfdc.ui.pages;
 import com.jalasoft.sfdc.ui.pages.account.AccountFormPage;
 import com.jalasoft.sfdc.ui.pages.account.AccountListPage;
 import com.jalasoft.sfdc.ui.pages.account.AccountListPageLight;
+import com.jalasoft.sfdc.ui.pages.contact.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductListPageLight;
 import com.jalasoft.sfdc.ui.pages.products.ProductListPage;
 import org.openqa.selenium.WebElement;
@@ -25,6 +26,11 @@ public class AppLuncherLight extends AppLauncher {
         driverTools.waitUntilElementDisplayed(accountButton);
         driverTools.clickElement(accountButton);
         return new AccountListPageLight();
+    }
+
+    @Override
+    public ContactListPage goToContactPage() {
+        return null;
     }
 
     /**

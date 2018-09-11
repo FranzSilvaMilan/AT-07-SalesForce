@@ -4,7 +4,7 @@ package com.jalasoft.sfdc.ui.pages.account;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class AccountDetailPageLight extends AccountDetailPage {
+public class AccountDetailsPageClassic extends AccountDetailsPage {
     @FindBy(xpath = "(//*[@class='testonly-outputNameWithHierarchyIcon sfaOutputNameWithHierarchyIcon']/child::span)[1]")
     private WebElement nameAccount;
     @Override

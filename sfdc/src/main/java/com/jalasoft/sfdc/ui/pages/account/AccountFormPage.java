@@ -254,7 +254,7 @@ public class AccountFormPage extends BasePage {
         //CommonWebActions.setTextElement(this.annualRevenueTextField, annualRevenue);
     }
 
-    public AccountDetailPage setRequeredFiel(String value){
+    public AccountDetailsPage setRequeredFiel(String value){
         setAccountNameTextField(value);
         driverTools.clickElement(saveButton);
         return PageFactory.getDetailAccountPage();
