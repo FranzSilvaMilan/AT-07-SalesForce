@@ -24,8 +24,7 @@ public class ProductListPageLight extends ProductListPage {
      */
     @Override
     public ProductFormPage clickButtonNew() {
-        driverTools.clickElement(buttonNew);
+        driverTools.clickElement(newAccountButton);
         return new ProductFormPageLIght();
     }
-
 }
