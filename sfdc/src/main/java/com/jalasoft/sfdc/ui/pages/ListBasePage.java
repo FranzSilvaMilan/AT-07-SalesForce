@@ -12,8 +12,7 @@ import org.openqa.selenium.support.FindBy;
  * @author Daniel Sandoval.
  */
 public abstract class ListBasePage extends BasePage {
-
-    //@FindBy(xpath = "//a[@class='forceActionLink' and @role='button' and @title='New']")
     @FindBy(xpath = "//*[@title='New']")
     public WebElement newButton;
+    public WebElement editButton;
 }

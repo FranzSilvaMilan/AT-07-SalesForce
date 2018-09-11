@@ -1,6 +1,7 @@
 package com.jalasoft.sfdc.ui.pages.account;
 
 /**
+ * @author Franz Silva
  * AccountInputs.
  */
 public enum AccountEnum {

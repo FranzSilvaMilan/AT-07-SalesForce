@@ -5,19 +5,26 @@ import com.jalasoft.sfdc.ui.pages.home.HomePageClassic;
 
 public class TopMenuClassic extends TopMenu {
 
+
     /**
-     * Waits until page object is loaded.
+     * {@inheritDoc}.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
 
     }
 
+    /**
+     * {@inheritDoc}.
+     */
     @Override
     public void switchSkin() {
 
     }
 
+    /**
+     * {@inheritDoc}.
+     */
     @Override
     public HomePage goToHomePage() {
         return new HomePageClassic();

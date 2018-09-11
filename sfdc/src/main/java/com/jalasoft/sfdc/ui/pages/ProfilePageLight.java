@@ -18,7 +18,7 @@ public class ProfilePageLight extends ProfilePage {
     private WebElement logoutButton;
 
     /**
-     * Waits until page object is loaded.
+     * {@inheritDoc}.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
@@ -26,8 +26,7 @@ public class ProfilePageLight extends ProfilePage {
     }
 
     /**
-     * get user name displayed
-     * @return user name
+     * {@inheritDoc}.
      */
     @Override
     public String isUserNameDisplayed() {
@@ -35,8 +34,7 @@ public class ProfilePageLight extends ProfilePage {
     }
 
     /**
-     * get out of sales force.
-     * @return a new login page.
+     * {@inheritDoc}.
      */
     @Override
     public LoginPage logout() {
