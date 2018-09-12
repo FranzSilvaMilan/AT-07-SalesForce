@@ -17,7 +17,7 @@ public class AccountListPageClassic extends AccountListPage {
      */
     @Override
     public AccountFormPage clickNewButton() {
-        driverTools.waitUntilElementDisplayed(newButton);
+        //driverTools.waitUntilElementDisplayed(newButton);
         driverTools.clickElement(newButton);
         return new AccountFormPage();
     }

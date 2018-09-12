@@ -5,18 +5,21 @@ import com.jalasoft.sfdc.ui.PageFactory;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.EnumMap;
+import java.util.Map;
+
 /**
  * @author Franz Silva
  * Form of account.
  */
 public class AccountFormPage extends BasePage {
 
-    @FindBy(xpath = "//button[@title='Save']")
+    @FindBy(xpath = "//*[@title='Save']")
     WebElement saveButton;
 
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        driverTools.waitUntilElementDisplayed(saveButton);
     }
 
     @FindAll({
@@ -261,6 +264,68 @@ public class AccountFormPage extends BasePage {
      */
     public AccountDetailsPage setRequeredFiel(String value) {
         setAccountNameTextField(value);
+        driverTools.clickElement(saveButton);
+        return PageFactory.getDetailAccountPage();
+    }
+    /**
+     * @param values account fields.
+     * @return map of account fields.
+     */
+    public Map<AccountEnum, StrategySetInputs> getStrategyStepMap(final Map<AccountEnum, String> values) {
+        EnumMap<AccountEnum, StrategySetInputs> strategyMap = new EnumMap<>(AccountEnum.class);
+
+        strategyMap.put(AccountEnum.ACCOUNT_NAME, () ->
+                this.setAccountNameTextField(String.valueOf(values.get(AccountEnum.ACCOUNT_NAME))));
+
+        strategyMap.put(AccountEnum.ACCOUNT_NUMBER, () ->
+                this.setAccountNumberTextField(String.valueOf(values.get(AccountEnum.ACCOUNT_NUMBER))));
+
+        strategyMap.put(AccountEnum.ACCOUNT_SITE, () ->
+                this.setAccountSiteTextField(String.valueOf(values.get(AccountEnum.ACCOUNT_SITE))));
+
+        strategyMap.put(AccountEnum.ANNUAL_REVENUE, () ->
+                this.setAnnualRevenueTextField(String.valueOf(values.get(AccountEnum.ANNUAL_REVENUE))));
+
+        strategyMap.put(AccountEnum.INDUSTRY, () ->
+                this.setIndustryList(String.valueOf(values.get(AccountEnum.INDUSTRY))));
+
+        strategyMap.put(AccountEnum.PARENT_ACCOUNT, () ->
+                this.setParentAccountTextField(String.valueOf(values.get(AccountEnum.PARENT_ACCOUNT))));
+
+        strategyMap.put(AccountEnum.TYPE, () ->
+                this.setAccountTypeList(String.valueOf(values.get(AccountEnum.TYPE))));
+
+        strategyMap.put(AccountEnum.RATING, () ->
+                this.setAccountRatingList(String.valueOf(values.get(AccountEnum.RATING))));
+
+        strategyMap.put(AccountEnum.PHONE, () ->
+                this.setAccountPhoneTextField(String.valueOf(values.get(AccountEnum.PHONE))));
+
+        strategyMap.put(AccountEnum.FAX, () ->
+                this.setAccountFaxTextField(String.valueOf(values.get(AccountEnum.FAX))));
+
+        strategyMap.put(AccountEnum.WEBSITE, () ->
+                this.setAccountWebsiteTextField(String.valueOf(values.get(AccountEnum.WEBSITE))));
+
+        strategyMap.put(AccountEnum.TICKER_SYMBOL, () ->
+                this.setAccountTickerSymbolTextField(String.valueOf(values.get(AccountEnum.TICKER_SYMBOL))));
+
+        strategyMap.put(AccountEnum.OWNERSHIP, () ->
+                this.setAccountOwnershipList(String.valueOf(values.get(AccountEnum.OWNERSHIP))));
+
+        strategyMap.put(AccountEnum.EMPLOYEES, () ->
+                this.setAccountEmployeeTextField(String.valueOf(values.get(AccountEnum.EMPLOYEES))));
+
+        strategyMap.put(AccountEnum.SIC_CODE, () ->
+                this.setAccountSICCodeTextField(String.valueOf(values.get(AccountEnum.SIC_CODE))));
+        return strategyMap;
+    }
+    /**
+     * set field requiered on form account.
+     * @return page with detail.
+     */
+    public AccountDetailsPage clickSaveButton() {
+
         driverTools.clickElement(saveButton);
         return PageFactory.getDetailAccountPage();
     }
