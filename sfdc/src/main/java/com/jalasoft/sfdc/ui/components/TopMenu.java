@@ -28,19 +28,38 @@ public abstract class TopMenu extends BasePage {
     })
     private WebElement userProfile;
 
+    /**
+     * change skin
+     */
     public abstract void switchSkin();
 
+    /**
+     * go to home Page of sales force.
+     * @return a page object of home page
+     */
     public abstract HomePage goToHomePage();
 
+    /**
+     * go to a profile page.
+     * @return a new profile page
+     */
     public ProfilePage goToProfilePage() {
         driverTools.waitUntilElementDisplayed(userProfile);
         driverTools.clickElement(userProfile);
         return PageFactory.getProfilePage();
     }
-    public void clickProfile(){
+
+    /**
+     * click on profile.
+     */
+    public void clickProfile() {
         driverTools.clickElement(userProfile);
     }
 
+    /**
+     * got to app laucher.
+     * @return  a new applauncher.
+     */
     public AppLauncher gotToAppLauncher() {
         driverTools.waitUntilElementDisplayed(userProfile);
         driverTools.clickElement(buttonTab);

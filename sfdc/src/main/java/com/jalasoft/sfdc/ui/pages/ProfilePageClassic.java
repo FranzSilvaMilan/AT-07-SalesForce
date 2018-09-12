@@ -21,7 +21,7 @@ public class ProfilePageClassic extends ProfilePage {
     private WebElement userProfileNameLabel;
 
     /**
-     * Waits until page object is loaded.
+     * {@inheritDoc}.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
@@ -29,8 +29,7 @@ public class ProfilePageClassic extends ProfilePage {
     }
 
     /**
-     * get user name displayed
-     * @return user name
+     * {@inheritDoc}.
      */
     @Override
     public String isUserNameDisplayed() {
@@ -39,8 +38,7 @@ public class ProfilePageClassic extends ProfilePage {
     }
 
     /**
-     * logout of sales force.
-     * @return a new login page.
+     * {@inheritDoc}.
      */
     @Override
     public LoginPage logout() {

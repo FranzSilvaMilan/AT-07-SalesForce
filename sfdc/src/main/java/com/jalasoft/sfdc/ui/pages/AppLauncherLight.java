@@ -5,6 +5,7 @@ import com.jalasoft.sfdc.ui.pages.account.AccountListPageLight;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.priceBook.PriceBookListPage;
 import com.jalasoft.sfdc.ui.pages.priceBook.PriceBookListPageLight;
+import com.jalasoft.sfdc.ui.pages.contact.ContactListPageLight;
 import com.jalasoft.sfdc.ui.pages.products.ProductListPageLight;
 import com.jalasoft.sfdc.ui.pages.products.ProductListPage;
 import org.openqa.selenium.WebElement;
@@ -28,6 +29,9 @@ public class AppLauncherLight extends AppLauncher {
     @FindBy(xpath = "//div/ul/li[26]/a")
     WebElement priceBookButton;
 
+    @FindBy(xpath = "//span[text()='Contacts' and @class]")
+    WebElement contactButton;
+
     /**
      * Waits until page object is loaded.
      */
@@ -47,7 +51,9 @@ public class AppLauncherLight extends AppLauncher {
 
     @Override
     public ContactListPage goToContactPage() {
-        return null;
+        driverTools.clickElement(contactButton);
+        return new ContactListPageLight();
+
     }
 
     /**

@@ -1,12 +1,12 @@
 package com.jalasoft.sfdc.ui.pages.contact;
 
 /**
- * ContactListPageClassic class.
+ * ContactListPageLight class.
  *
  * @author Daniel Sandoval.
  * @since 9/11/2018.
  */
-public class ContactListPageClassic extends ContactListPage {
+public class ContactListPageLight extends ContactListPage {
 
     /**
      * Waits until page object is loaded.
@@ -19,11 +19,11 @@ public class ContactListPageClassic extends ContactListPage {
     /**
      * Method that clicks on the option of the New button.
      *
-     * @return - new page Classic.
+     * @return - new page Light.
      */
     @Override
     public ContactFormPage gotToNewButton() {
         driverTools.clickElement(newButton);
-        return new ContactFormPageClassic();
+        return new ContactFormPageLight();
     }
 }

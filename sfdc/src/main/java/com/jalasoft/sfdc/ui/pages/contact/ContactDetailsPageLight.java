@@ -4,14 +4,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * ContacDetailsPageClassic class.
+ * ContacDetailsPageLight class.
  *
  * @author Daniel Sandoval.
  * @since 9/11/2018.
  */
-public class ContactDetailsPageClassic extends ContactDetailsPage {
-    @FindBy(xpath = "//h2[contains(@class,'topName')]")
-    WebElement contactLabelName;
+public class ContactDetailsPageLight extends ContactDetailsPage {
+    @FindBy(xpath = "(//*[@class='testonly-outputNameWithHierarchyIcon sfaOutputNameWithHierarchyIcon']//child::span)[1]")
+    WebElement contactlabelName;
 
     /**
      * Method that get the last name created.
@@ -20,7 +20,7 @@ public class ContactDetailsPageClassic extends ContactDetailsPage {
      */
     @Override
     public String isContactNameDisplayed() {
-        return contactLabelName.getText().trim();
+        return contactlabelName.getText().trim();
     }
 
 }
