@@ -7,7 +7,7 @@ import com.jalasoft.sfdc.ui.BasePage;
  *
  * @author Erik Vargas
  */
-public abstract class ProductDetails extends BasePage {
+public abstract class ProductDetailsPage extends BasePage {
 
     /**
      * Method abstract for validated, that Product was created.

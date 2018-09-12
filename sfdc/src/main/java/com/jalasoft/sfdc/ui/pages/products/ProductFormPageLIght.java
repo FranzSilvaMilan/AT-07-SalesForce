@@ -48,9 +48,9 @@ public class ProductFormPageLIght extends ProductFormPage {
      * @return product's detail created.
      */
     @Override
-    public ProductDetails clickSaveProduct(String name) {
+    public ProductDetailsPage clickSaveProduct(String name) {
         driverTools.setInputField(productNameInput, name);
         driverTools.clickElement(saveButton);
-        return new ProductDetailsLight();
+        return new ProductDetailsPageLight();
     }
 }

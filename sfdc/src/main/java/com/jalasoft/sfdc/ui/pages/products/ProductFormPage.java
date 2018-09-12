@@ -14,5 +14,5 @@ public abstract class ProductFormPage extends BasePage {
      * @param name form fields.
      * @return product's detail created.
      */
-    public abstract ProductDetails clickSaveProduct(String name);
+    public abstract ProductDetailsPage clickSaveProduct(String name);
 }

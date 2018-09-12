@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
  *
  * @author Erik Vargas
  */
-public class ProductDetailsLight extends ProductDetails {
+public class ProductDetailsPageLight extends ProductDetailsPage {
 
     @FindBy(xpath = "(//span[@class='uiOutputText'])[2]")
     private WebElement productNameLabel;

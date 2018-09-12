@@ -3,7 +3,7 @@ package com.jalasoft.sfdc.steps;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.AppLauncher;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import com.jalasoft.sfdc.ui.pages.products.ProductDetails;
+import com.jalasoft.sfdc.ui.pages.products.ProductDetailsPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductFormPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductListPage;
 import cucumber.api.java.en.And;
@@ -23,10 +23,10 @@ public class ProductSteps {
     private AppLauncher appLauncher;
     private ProductListPage productListPage;
     private ProductFormPage productFormPage;
-    private ProductDetails productDetails;
+    private ProductDetailsPage productDetailsPage;
 
     //****************************************************************
-    //Login Step Definitions
+    //Product Step Definitions
     //****************************************************************
 
     /**
@@ -46,7 +46,7 @@ public class ProductSteps {
     @And("^I fill in required fields \"([^\"]*)\"$")
     public void iFillInRequiredFields(String name) {
         productFormPage = productListPage.clickButtonNew();
-        productDetails = productFormPage.clickSaveProduct(name);
+        productDetailsPage = productFormPage.clickSaveProduct(name);
     }
 
     /**
@@ -55,6 +55,6 @@ public class ProductSteps {
      */
     @Then("^Should be displayed Detail Product Page with \"([^\"]*)\"$")
     public void shouldBeDisplayedDetailProductPageWith(String name) {
-        assertEquals(productDetails.isProductNameDisplayed(), name);
+        assertEquals(productDetailsPage.isProductNameDisplayed(), name);
     }
 }
