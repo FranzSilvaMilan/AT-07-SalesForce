@@ -3,6 +3,8 @@ package com.jalasoft.sfdc.ui.pages;
 import com.jalasoft.sfdc.ui.pages.account.AccountListPage;
 import com.jalasoft.sfdc.ui.pages.account.AccountListPageLight;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPage;
+import com.jalasoft.sfdc.ui.pages.priceBook.PriceBookListPage;
+import com.jalasoft.sfdc.ui.pages.priceBook.PriceBookListPageLight;
 import com.jalasoft.sfdc.ui.pages.products.ProductListPageLight;
 import com.jalasoft.sfdc.ui.pages.products.ProductListPage;
 import org.openqa.selenium.WebElement;
@@ -22,6 +24,9 @@ public class AppLauncherLight extends AppLauncher {
 
     @FindBy(xpath = "//span[text()='Products' and @class]")
     private WebElement productButton;
+
+    @FindBy(xpath = "//div/ul/li[26]/a")
+    WebElement priceBookButton;
 
     /**
      * Waits until page object is loaded.
@@ -52,5 +57,11 @@ public class AppLauncherLight extends AppLauncher {
         driverTools.scrollDown(7);
         driverTools.clickElement(productButton);
         return new ProductListPageLight();
+    }
+
+    @Override
+    public PriceBookListPage goToPriceBookPage() {
+        driverTools.clickElement(priceBookButton);
+        return new PriceBookListPageLight();
     }
 }

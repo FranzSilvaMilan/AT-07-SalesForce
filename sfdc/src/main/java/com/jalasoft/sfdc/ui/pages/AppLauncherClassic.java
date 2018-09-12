@@ -4,6 +4,8 @@ import com.jalasoft.sfdc.ui.pages.account.AccountListPage;
 import com.jalasoft.sfdc.ui.pages.account.AccountListPageLight;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPageClassic;
+import com.jalasoft.sfdc.ui.pages.priceBook.PriceBookListPage;
+import com.jalasoft.sfdc.ui.pages.priceBook.PriceBookListPageClassic;
 import com.jalasoft.sfdc.ui.pages.products.ProductListPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductListPageClassic;
 import org.openqa.selenium.WebElement;
@@ -26,6 +28,9 @@ public class AppLauncherClassic extends AppLauncher {
 
     @FindBy(xpath = "//a[@href='/01t/o'][contains(.,'Products')]")
     private WebElement productButton;
+
+    @FindBy(xpath = "//*[contains(text(),'Price Books')]")
+    WebElement priceBookButton;
 
     @FindBy(xpath = "//*[@id='tryLexDialogX']")
     private WebElement closeWindows;
@@ -64,5 +69,11 @@ public class AppLauncherClassic extends AppLauncher {
     public ProductListPage goToProductPage() {
         driverTools.clickElement(productButton);
         return new ProductListPageClassic();
+    }
+
+    @Override
+    public PriceBookListPage goToPriceBookPage() {
+        driverTools.clickElement(priceBookButton);
+        return new PriceBookListPageClassic();
     }
 }
