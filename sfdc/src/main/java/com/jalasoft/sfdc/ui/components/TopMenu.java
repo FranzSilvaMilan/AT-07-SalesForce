@@ -44,7 +44,7 @@ public abstract class TopMenu extends BasePage {
      * @return a new profile page
      */
     public ProfilePage goToProfilePage() {
-        driverTools.waitUntilElementDisplayed(userProfile);
+        //driverTools.waitUntilElementDisplayed(userProfile);
         driverTools.clickElement(userProfile);
         return PageFactory.getProfilePage();
     }
@@ -61,7 +61,7 @@ public abstract class TopMenu extends BasePage {
      * @return  a new applauncher.
      */
     public AppLauncher gotToAppLauncher() {
-        driverTools.waitUntilElementDisplayed(userProfile);
+        //driverTools.waitUntilElementDisplayed(userProfile);
         driverTools.clickElement(buttonTab);
         return PageFactory.getAppLauncher();
     }

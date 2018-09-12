@@ -47,8 +47,9 @@ public class AppLauncherClassic extends AppLauncher {
      * Method for go to Account home page Classic.
      */
     public AccountListPage gotToAccountPage(){
-        driverTools.waitUntilElementDisplayed(accountButton);
+        //driverTools.waitUntilElementDisplayed(accountButton);
         driverTools.clickElement(accountButton);
+        driverTools.clickElement(closeWindows);
         return new AccountListPageLight();
     }
 

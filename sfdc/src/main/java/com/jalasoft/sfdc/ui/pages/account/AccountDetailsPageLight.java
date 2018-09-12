@@ -13,7 +13,7 @@ public class AccountDetailsPageLight extends AccountDetailsPage {
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        driverTools.waitUntilElementDisplayed(nameAccount);
+
     }
 
     /**
