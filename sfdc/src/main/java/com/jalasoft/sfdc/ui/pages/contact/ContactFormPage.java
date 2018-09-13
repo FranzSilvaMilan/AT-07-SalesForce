@@ -1,5 +1,6 @@
 package com.jalasoft.sfdc.ui.pages.contact;
 
+import com.jalasoft.sfdc.entities.Contact;
 import com.jalasoft.sfdc.ui.BasePage;
 
 /**
@@ -21,8 +22,8 @@ public abstract class ContactFormPage extends BasePage {
     /**
      * Abstract method that set and save new Contact.
      *
-     * @param newContact - last name of the new contact.
+     * @param contact - is the object that contains the contact's data.
      * @return new page.
      */
-    public abstract ContactDetailsPage gotToSaveButton(String newContact);
+    public abstract ContactDetailsPage gotToSaveButton(Contact contact);
 }

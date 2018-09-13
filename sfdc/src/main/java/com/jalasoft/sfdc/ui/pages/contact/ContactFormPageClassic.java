@@ -1,5 +1,6 @@
 package com.jalasoft.sfdc.ui.pages.contact;
 
+import com.jalasoft.sfdc.entities.Contact;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -15,6 +16,18 @@ public class ContactFormPageClassic extends ContactFormPage {
     WebElement lastNameTextInput;
     @FindBy(xpath = "//*[@id='topButtonRow']/input[1]")
     WebElement saveButton;
+    @FindBy(xpath = "//*[@id='name_firstcon2']")
+    WebElement firstnameInput;
+    @FindBy(xpath = "//*[@id='con10']")
+    WebElement phoneInput;
+    @FindBy(xpath = "//*[@id='con13']")
+    WebElement homePhoneInput;
+    @FindBy(xpath = "//*[@id='con12']")
+    WebElement mobileInput;
+    @FindBy(xpath = "//*[@id='con5']")
+    WebElement titleInput;
+    @FindBy(xpath = "//*[@id='con14']")
+    WebElement otherPhoneInput;
 
     /**
      * Waits until page object is loaded.
@@ -25,14 +38,20 @@ public class ContactFormPageClassic extends ContactFormPage {
     }
 
     /**
-     * Method that set and save to new Contact.
+     * Method that set and save the date of a new Contact.
      *
-     * @param newContact - last name of the new contact.
+     * @param contact - is the object that contains the contact's data.
      * @return - new page Classic.
      */
     @Override
-    public ContactDetailsPage gotToSaveButton(String newContact) {
-        driverTools.setInputField(lastNameTextInput, newContact);
+    public ContactDetailsPage gotToSaveButton(Contact contact) {
+        driverTools.setInputField(lastNameTextInput, contact.getLastName());
+        driverTools.setInputField(firstnameInput, contact.getFirstName());
+        driverTools.setInputField(phoneInput, contact.getPhone());
+        driverTools.setInputField(homePhoneInput, contact.getHomePhone());
+        driverTools.setInputField(mobileInput, contact.getMobile());
+        driverTools.setInputField(titleInput, contact.getTitle());
+        driverTools.setInputField(otherPhoneInput, contact.getOtherPhone());
         driverTools.clickElement(saveButton);
         return new ContactDetailsPageClassic();
     }
