@@ -5,43 +5,36 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * ContacFormPageClassic class.
+ * ContacFormPageLight class.
  *
  * @author Daniel Sandoval.
  * @since 9/11/2018.
  */
-public class ContactFormPageClassic extends ContactFormPage {
-
-    @FindBy(xpath = "//*[@id='name_lastcon2']")
+public class ContactFormPageLight extends ContactFormPage {
+    @FindBy(xpath = "//input[@placeholder='Last Name']")
     WebElement lastNameTextInput;
-    @FindBy(xpath = "//*[@id='topButtonRow']/input[1]")
+    @FindBy(xpath = "//button[@title='Save']")
     WebElement saveButton;
-    @FindBy(xpath = "//*[@id='name_firstcon2']")
+    @FindBy(xpath = "//input[contains(@placeholder,'First Name')]")
     WebElement firstnameInput;
-    @FindBy(xpath = "//*[@id='con10']")
+    @FindBy(xpath = "(//input[@class=' input'])[1]")
     WebElement phoneInput;
-    @FindBy(xpath = "//*[@id='con13']")
+    @FindBy(xpath = "(//input[@class=' input'])[2]")
     WebElement homePhoneInput;
-    @FindBy(xpath = "//*[@id='con12']")
+    @FindBy(xpath = "(//input[@class=' input'])[3]")
     WebElement mobileInput;
-    @FindBy(xpath = "//*[@id='con5']")
+    @FindBy(xpath = "(//input[@class=' input'])[4]")
     WebElement titleInput;
-    @FindBy(xpath = "//*[@id='con14']")
+    @FindBy(xpath = "(//input[@class=' input'])[5]")
     WebElement otherPhoneInput;
 
-    /**
-     * Waits until page object is loaded.
-     */
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
 
-    }
 
     /**
      * Method that set and save the date of a new Contact.
      *
      * @param contact - is the object that contains the contact's data.
-     * @return - new page Classic.
+     * @return - new page Light.
      */
     @Override
     public ContactDetailsPage gotToSaveButton(Contact contact) {
@@ -51,8 +44,8 @@ public class ContactFormPageClassic extends ContactFormPage {
         driverTools.setInputField(homePhoneInput, contact.getHomePhone());
         driverTools.setInputField(mobileInput, contact.getMobile());
         driverTools.setInputField(titleInput, contact.getTitle());
-        driverTools.setInputField(otherPhoneInput, contact.getOtherPhone());
+        driverTools.setInputField(otherPhoneInput,contact.getOtherPhone());
         driverTools.clickElement(saveButton);
-        return new ContactDetailsPageClassic();
+        return new ContactDetailsPageLight();
     }
 }

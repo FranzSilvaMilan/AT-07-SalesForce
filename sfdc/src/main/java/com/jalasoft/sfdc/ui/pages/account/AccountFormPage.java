@@ -6,13 +6,20 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.EnumMap;
+import java.util.Map;
+
+/**
+ * @author Franz Silva
+ * Form of account.
+ */
 public class AccountFormPage extends BasePage {
 
-    @FindBy(xpath = "//button[@title='Save']")
+    @FindBy(xpath = "//*[@title='Save']")
     WebElement saveButton;
+
     @Override
     public void waitUntilPageObjectIsLoaded() {
-
     }
 
     @FindAll({
@@ -118,8 +125,9 @@ public class AccountFormPage extends BasePage {
                     "//span[text()='SIC Code']/parent::label/following-sibling::input")
     })
     private WebElement accountSICCode;
+
     /**
-     * Method to set accountEmployee attribute.
+     * set accountEmployee attribute.
      *
      * @param accountSICCode string value.
      */
@@ -128,7 +136,7 @@ public class AccountFormPage extends BasePage {
     }
 
     /**
-     * Method to set accountEmployee attribute.
+     * set accountEmployee attribute.
      *
      * @param accountEmployee string value.
      */
@@ -137,16 +145,15 @@ public class AccountFormPage extends BasePage {
     }
 
     /**
-     * Method to set accountOwnershipList attribute.
+     * set accountOwnershipList attribute.
      *
      * @param accountOwnershipList string value.
      */
     public void setAccountOwnershipList(final String accountOwnershipList) {
-        //webDriverTools.selectOnComboBox(this.ownershipList, accountOwnershipList);
     }
 
     /**
-     * Method to set accountTickerSymbol attribute.
+     * set accountTickerSymbol attribute.
      *
      * @param accountTickerSymbol string value.
      */
@@ -155,7 +162,7 @@ public class AccountFormPage extends BasePage {
     }
 
     /**
-     * Method to set accountWebsite attribute.
+     * set accountWebsite attribute.
      *
      * @param accountWebsite string value.
      */
@@ -164,7 +171,7 @@ public class AccountFormPage extends BasePage {
     }
 
     /**
-     * Method to set accountPhone attribute.
+     * set accountPhone attribute.
      *
      * @param accountFax string value.
      */
@@ -173,7 +180,7 @@ public class AccountFormPage extends BasePage {
     }
 
     /**
-     * Method to set accountPhone attribute.
+     * set accountPhone attribute.
      *
      * @param accountPhone string value.
      */
@@ -182,16 +189,15 @@ public class AccountFormPage extends BasePage {
     }
 
     /**
-     * Method to set ratingList attribute.
+     * set ratingList attribute.
      *
      * @param ratingList string value.
      */
     public void setAccountRatingList(final String ratingList) {
-        // webDriverTools.selectOnComboBox(this.ratingList, ratingList);
     }
 
     /**
-     * Method to set accountName attribute.
+     * set accountName attribute.
      *
      * @param accountName string value.
      */
@@ -200,17 +206,16 @@ public class AccountFormPage extends BasePage {
     }
 
     /**
-     * Method to set parentAccount attribute.
+     * set parentAccount attribute.
      *
      * @param parentAccount the value.
      */
     private void setParentAccountTextField(final String parentAccount) {
         driverTools.setTextElement(this.parentAccountTextField, parentAccount);
-        //webDriverTools.selectOnAutoCompleterTextField(this.parentAccountTextField, parentAccount);
     }
 
     /**
-     * Method to set accountNumber attribute.
+     * set accountNumber attribute.
      *
      * @param accountNumber the value.
      */
@@ -219,7 +224,7 @@ public class AccountFormPage extends BasePage {
     }
 
     /**
-     * Method to set accountSite attribute.
+     * set accountSite attribute.
      *
      * @param accountSite the value.
      */
@@ -233,29 +238,94 @@ public class AccountFormPage extends BasePage {
      * @param type the value.
      */
     private void setAccountTypeList(final String type) {
-        //webDriverTools.selectOnComboBox(this.typeList, type);
     }
 
     /**
-     * Method to set industry attribute.
+     * set industry attribute.
      *
      * @param industry the value.
      */
     private void setIndustryList(final String industry) {
-        //CommonActions.selectOnComboBox(this.industryList, industry);
     }
 
     /**
-     * Method to set annualRevenue attribute.
+     * set annualRevenue attribute.
      *
      * @param annualRevenue the value.
      */
     private void setAnnualRevenueTextField(final String annualRevenue) {
-        //CommonWebActions.setTextElement(this.annualRevenueTextField, annualRevenue);
+
     }
 
-    public AccountDetailsPage setRequeredFiel(String value){
+    /**
+     * set field requiered on form account.
+     * @param value requiered
+     * @return page with detail.
+     */
+    public AccountDetailsPage setRequeredFiel(String value) {
         setAccountNameTextField(value);
+        driverTools.clickElement(saveButton);
+        return PageFactory.getDetailAccountPage();
+    }
+    /**
+     * @param values account fields.
+     * @return map of account fields.
+     */
+    public Map<AccountEnum, StrategySetInputs> getStrategyStepMap(final Map<AccountEnum, String> values) {
+        EnumMap<AccountEnum, StrategySetInputs> strategyMap = new EnumMap<>(AccountEnum.class);
+
+        strategyMap.put(AccountEnum.ACCOUNT_NAME, () ->
+                this.setAccountNameTextField(String.valueOf(values.get(AccountEnum.ACCOUNT_NAME))));
+
+        strategyMap.put(AccountEnum.ACCOUNT_NUMBER, () ->
+                this.setAccountNumberTextField(String.valueOf(values.get(AccountEnum.ACCOUNT_NUMBER))));
+
+        strategyMap.put(AccountEnum.ACCOUNT_SITE, () ->
+                this.setAccountSiteTextField(String.valueOf(values.get(AccountEnum.ACCOUNT_SITE))));
+
+        strategyMap.put(AccountEnum.ANNUAL_REVENUE, () ->
+                this.setAnnualRevenueTextField(String.valueOf(values.get(AccountEnum.ANNUAL_REVENUE))));
+
+        strategyMap.put(AccountEnum.INDUSTRY, () ->
+                this.setIndustryList(String.valueOf(values.get(AccountEnum.INDUSTRY))));
+
+        strategyMap.put(AccountEnum.PARENT_ACCOUNT, () ->
+                this.setParentAccountTextField(String.valueOf(values.get(AccountEnum.PARENT_ACCOUNT))));
+
+        strategyMap.put(AccountEnum.TYPE, () ->
+                this.setAccountTypeList(String.valueOf(values.get(AccountEnum.TYPE))));
+
+        strategyMap.put(AccountEnum.RATING, () ->
+                this.setAccountRatingList(String.valueOf(values.get(AccountEnum.RATING))));
+
+        strategyMap.put(AccountEnum.PHONE, () ->
+                this.setAccountPhoneTextField(String.valueOf(values.get(AccountEnum.PHONE))));
+
+        strategyMap.put(AccountEnum.FAX, () ->
+                this.setAccountFaxTextField(String.valueOf(values.get(AccountEnum.FAX))));
+
+        strategyMap.put(AccountEnum.WEBSITE, () ->
+                this.setAccountWebsiteTextField(String.valueOf(values.get(AccountEnum.WEBSITE))));
+
+        strategyMap.put(AccountEnum.TICKER_SYMBOL, () ->
+                this.setAccountTickerSymbolTextField(String.valueOf(values.get(AccountEnum.TICKER_SYMBOL))));
+
+        strategyMap.put(AccountEnum.OWNERSHIP, () ->
+                this.setAccountOwnershipList(String.valueOf(values.get(AccountEnum.OWNERSHIP))));
+
+        strategyMap.put(AccountEnum.EMPLOYEES, () ->
+                this.setAccountEmployeeTextField(String.valueOf(values.get(AccountEnum.EMPLOYEES))));
+
+        strategyMap.put(AccountEnum.SIC_CODE, () ->
+                this.setAccountSICCodeTextField(String.valueOf(values.get(AccountEnum.SIC_CODE))));
+        return strategyMap;
+    }
+    /**
+     * set field requiered on form account.
+     * @return page with detail.
+     */
+    public AccountDetailsPage clickSaveButton() {
+
         driverTools.clickElement(saveButton);
         return PageFactory.getDetailAccountPage();
     }

@@ -1,60 +1,72 @@
 package com.jalasoft.sfdc.steps;
 
+import com.jalasoft.sfdc.entities.Product;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.AppLauncher;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.products.ProductDetailsPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductFormPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductListPage;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+
+import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 
 /**
  * Products steps class.
  *
- * @author Erik Vargas
+ * @author Erik Vargas.
  */
 public class ProductSteps {
     private HomePage homePage;
     private AppLauncher appLauncher;
     private ProductListPage productListPage;
     private ProductFormPage productFormPage;
-    private ProductDetailsPage productDetailsPage;
+    private ProductDetailsPage productDetails;
+    private  Product product1;
 
     //****************************************************************
     //Product Step Definitions
     //****************************************************************
 
     /**
-     * Navigate to Product list page
+     * Navigate to Product list page.
      */
     @When("^I go to Product list Page$")
     public void goToProductListPage() {
         homePage = PageFactory.getHomePage();
-        appLauncher = homePage.topMenu.gotToAppLaucher();
+        appLauncher = homePage.topMenu.gotToAppLauncher();
         productListPage = appLauncher.goToProductPage();
     }
 
     /**
-     * Fill required fields
-     * @param name - Name of the Product
+     * Create new Product
      */
-    @And("^I fill in required fields \"([^\"]*)\"$")
-    public void iFillInRequiredFields(String name) {
+    @And("^I click a New Product$")
+    public void iClickANewProduct() {
         productFormPage = productListPage.clickButtonNew();
-        productDetailsPage = productFormPage.clickSaveProduct(name);
     }
 
     /**
-     * Validation of the product created
-     * @param name - Name of the project created
+     * Fill required fields.
+     * @param product - Name of the Product.
      */
-    @Then("^Should be displayed Detail Product Page with \"([^\"]*)\"$")
-    public void shouldBeDisplayedDetailProductPageWith(String name) {
-        assertEquals(productDetailsPage.isProductNameDisplayed(), name);
+    @And("^I fill in required fields$")
+    public void iFillInRequiredFields(List<Product> product) {
+        product1 = product.get(0);
+        productDetails = productFormPage.clickSaveProduct(product1);
+    }
+
+    /**
+     * Validation of the product created.
+     */
+    @Then("^Should be displayed Detail Product Page$")
+    public void shouldBeDisplayedDetailProductPageWith() {
+        assertEquals(productDetails.isProductNameDisplayed(), product1.getProductName());
     }
 }

@@ -3,10 +3,8 @@ package com.jalasoft.sfdc.ui.components;
 import com.jalasoft.sfdc.ui.BasePage;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.AppLauncher;
-import com.jalasoft.sfdc.ui.pages.LoginPage;
 import com.jalasoft.sfdc.ui.pages.ProfilePage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -29,24 +27,42 @@ public abstract class TopMenu extends BasePage {
             @FindBy(css = ".branding-user-profile")
     })
     private WebElement userProfile;
-    public abstract void swithSkin();
 
+    /**
+     * change skin
+     */
+    public abstract void switchSkin();
 
+    /**
+     * go to home Page of sales force.
+     * @return a page object of home page
+     */
     public abstract HomePage goToHomePage();
 
+    /**
+     * go to a profile page.
+     * @return a new profile page
+     */
     public ProfilePage goToProfilePage() {
-        driverTools.waitUntilElementDisplayed(userProfile);
+        //driverTools.waitUntilElementDisplayed(userProfile);
         driverTools.clickElement(userProfile);
         return PageFactory.getProfilePage();
     }
-    public void clickProfile(){
+
+    /**
+     * click on profile.
+     */
+    public void clickProfile() {
         driverTools.clickElement(userProfile);
     }
 
-    public AppLauncher gotToAppLaucher() {
-        driverTools.waitUntilElementDisplayed(userProfile);
+    /**
+     * got to app laucher.
+     * @return  a new applauncher.
+     */
+    public AppLauncher gotToAppLauncher() {
+        //driverTools.waitUntilElementDisplayed(userProfile);
         driverTools.clickElement(buttonTab);
         return PageFactory.getAppLauncher();
     }
-
 }

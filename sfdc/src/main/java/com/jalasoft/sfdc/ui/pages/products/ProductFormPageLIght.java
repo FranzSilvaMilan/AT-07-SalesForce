@@ -1,5 +1,6 @@
 package com.jalasoft.sfdc.ui.pages.products;
 
+import com.jalasoft.sfdc.entities.Product;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -13,16 +14,16 @@ public class ProductFormPageLIght extends ProductFormPage {
     @FindBy(xpath = "//*[@aria-required='true']")
     private WebElement productNameInput;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = "(//div[@class ='uiInput uiInputText uiInput--default uiInput--input']/child::input)[2]")
     private WebElement productCodeInput;
 
-    @FindBy(xpath = "")
+    @FindBy(css = ".uiInput--checkbox input")
     private WebElement actionOptionCheckBox;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = "//a[@class='select']")
     private WebElement productFamilyCombobox;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = "//textarea[@role='textbox']")
     private WebElement productDescriptionTextArea;
 
     @FindBy(xpath = "//span[@class='genericError uiOutputText']")
@@ -31,12 +32,9 @@ public class ProductFormPageLIght extends ProductFormPage {
     @FindBy(xpath = "//button[@title='Save']")
     private WebElement saveButton;
 
-    @FindBy(xpath = "")
-    private WebElement saveNewButton;
-
-    @FindBy(xpath = "")
-    private WebElement cancelButton;
-
+    /**
+     * Waits until page object is loaded.
+     */
     @Override
     public void waitUntilPageObjectIsLoaded() {
 
@@ -44,12 +42,17 @@ public class ProductFormPageLIght extends ProductFormPage {
 
     /**
      * Method for fill and create new product in the form page Light.
-     * @param name form's fields.
+     * @param product form's fields.
      * @return product's detail created.
      */
     @Override
-    public ProductDetailsPage clickSaveProduct(String name) {
-        driverTools.setInputField(productNameInput, name);
+    public ProductDetailsPage clickSaveProduct(Product product) {
+        driverTools.setInputField(productNameInput, product.getProductName());
+        driverTools.setInputField(productCodeInput, product.getProductCode());
+        driverTools.setInputField(productDescriptionTextArea, product.getProductDescription());
+        if(true) {
+            driverTools.clickElement(actionOptionCheckBox);
+        }
         driverTools.clickElement(saveButton);
         return new ProductDetailsPageLight();
     }

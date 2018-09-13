@@ -13,6 +13,9 @@ public class ProductDetailsPageLight extends ProductDetailsPage {
     @FindBy(xpath = "(//span[@class='uiOutputText'])[2]")
     private WebElement productNameLabel;
 
+    /**
+     * Waits until page object is loaded.
+     */
     @Override
     public void waitUntilPageObjectIsLoaded() {
 

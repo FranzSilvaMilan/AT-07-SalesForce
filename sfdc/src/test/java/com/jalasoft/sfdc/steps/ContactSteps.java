@@ -1,59 +1,79 @@
 package com.jalasoft.sfdc.steps;
 
+import com.jalasoft.sfdc.entities.Contact;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.AppLauncher;
 import com.jalasoft.sfdc.ui.pages.contact.ContactDetailsPage;
 import com.jalasoft.sfdc.ui.pages.contact.ContactFormPage;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class ContactSteps {
+import java.util.List;
 
+import static org.testng.Assert.assertEquals;
+
+public class ContactSteps {
+    //pages.
     private HomePage homePage;
     private PageFactory pageFactory;
     private AppLauncher appLauncher;
+
+    //pages Contacts.
     private ContactListPage contactListPage;
     private ContactFormPage contactFormPage;
     private ContactDetailsPage contactDetailsPage;
+    private Contact contact;
 
- /*   @When("^I click in the option AppLuncher$")//^I goes to "([^"]*)" home page$
-    public void iClickInTheOptionAppLuncher() throws Throwable {
+    /**
+     * Click the app launcher and contacts button.
+     */
+    @When("^I go to Contact home page$")
+    public void iGoToContactHomePage() {
         homePage = pageFactory.getHomePage();
-        appLuncher = homePage.topMenu.clickAllLuncher();
-        contactListPage = appLuncher.clickContactButton();
-        //contactFormPage = contactListPage.clickButtonNew();
-        //homePage = PageFactory.
-        // Write code here that turns the phrase above into concrete actions
-
-    }*/
-
-   /* @When("^I click in New Button of Contatct$")
-    public void iClickInNewButtonOfContatct() throws Throwable {
-        contactFormPage = contactListPage.clickButtonNew();
-        // Write code here that turns the phrase above into concrete actions
-        //throw new PendingException();
-    }*/
-
-
-//-----------------------------------------------------------------------------------
-    @When("^I goes to \"([^\"]*)\" home page$")
-    public void iGoesToHomePage(String arg0) throws Throwable {
-        homePage = pageFactory.getHomePage();
-        appLauncher = homePage.topMenu.gotToAppLaucher();
+        appLauncher = homePage.topMenu.gotToAppLauncher();
         contactListPage = appLauncher.goToContactPage();
     }
 
-    @When("^I create a new contact \"([^\"]*)\"$")
-    public void iCreateANewContact(String newContact){
+    /**
+     * Create a new contact.
+     */
+    @And("^I click on New Contact$")
+    public void iClickOnNewContact() {
         contactFormPage = contactListPage.gotToNewButton();
-        contactDetailsPage = contactFormPage.gotToSaveButton(newContact);
     }
 
-    @Then("^verify if is create a new contact$")
-    public void verifyIfIsCreateANewContact() throws Throwable {
-        throw new PendingException();
+    /**
+     * Fill the spaces required to create a new Contact.
+     *
+     * //@param newContact - Last name of the new contact.
+     */
+    @When("^I fill the Account form name with$")
+    public void iFillTheAccountFormNameWith(final List<Contact> contactList) {
+        this.contact = contactList.get(0);
+        System.out.println(contact.getLastName()+" ----++++++++++++---- "+contact.getFirstName());
+        contactDetailsPage = contactFormPage.gotToSaveButton(contact);
+    }
+    /*
+    @When("^I fill the Account form name with: \"([^\"]*)\"$")
+    public void iFillTheAccountFormNameWith(String newContact) {
+        contactDetailsPage = contactFormPage.gotToSaveButton(newContact);
+    }*/
+
+
+    /**
+     * Verify if is create a new Contact.
+     */
+    @Then("^The name should be displayed in detail Page Contact$")
+    public void theNameShouldBeDisplayedInDetailPageContact() {
+        if(contact.getFirstName().isEmpty()){
+            assertEquals(contactDetailsPage.isContactNameDisplayed(), contact.getLastName(), "The contact you get is");
+        }
+        else{
+            assertEquals(contactDetailsPage.isContactNameDisplayed(), contact.getFirstName()+" "+contact.getLastName(), "The contact you get is");
+        }
+
     }
 }

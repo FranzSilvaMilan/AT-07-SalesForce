@@ -1,40 +1,44 @@
 package com.jalasoft.sfdc.ui.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+/**
+ * ProfilePageLight class.
+ *
+ * @author Franz Silva.
+ * @author Erik Vargas.
+ * @author Daniel Sandoval.
+ */
 public class ProfilePageLight extends ProfilePage {
     @FindBy(xpath = "//h1[@class='profile-card-name']/child::a")
-    private WebElement userProfileName;
+    private WebElement userProfileNameLabel;
+
     @FindBy(css = ".profile-link-label.logout.uiOutputURL")
-    private WebElement buttonLogout;
+    private WebElement logoutButton;
 
     /**
-     * get user name displayed
-     * @return
-     */
-    @Override
-    public String isUserNameDisplayed() {
-        System.out.println(userProfileName.getText() + "+++++++++++++++++++++++++++++");
-        return userProfileName.getText().trim();
-    }
-
-    /**
-     * get out of sales force.
-     * @return a new login page.
-     */
-    @Override
-    public LoginPage logout() {
-        driverTools.clickElement(buttonLogout);
-        return new LoginPage();
-    }
-
-    /**
-     * wait for a element is displayed for load tthe page.
+     * {@inheritDoc}.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        driverTools.waitUntilElementDisplayed(userProfileName);
+        driverTools.waitUntilElementDisplayed(userProfileNameLabel);
+    }
+
+    /**
+     * {@inheritDoc}.
+     */
+    @Override
+    public String isUserNameDisplayed() {
+        return userProfileNameLabel.getText().trim();
+    }
+
+    /**
+     * {@inheritDoc}.
+     */
+    @Override
+    public LoginPage logout() {
+        driverTools.clickElement(logoutButton);
+        return new LoginPage();
     }
 }

@@ -13,6 +13,9 @@ public class ProductDetailsPageClassic extends ProductDetailsPage {
     @FindBy(xpath = "//h2[contains(@class,'pageDescription')]")
     private WebElement productNameLabel;
 
+    /**
+     * Waits until page object is loaded.
+     */
     @Override
     public void waitUntilPageObjectIsLoaded() {
 

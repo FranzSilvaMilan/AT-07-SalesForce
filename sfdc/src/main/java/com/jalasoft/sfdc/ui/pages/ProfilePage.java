@@ -1,14 +1,24 @@
 package com.jalasoft.sfdc.ui.pages;
 
-import com.jalasoft.selenium.WebDriverTools;
 import com.jalasoft.sfdc.ui.BasePage;
-import com.jalasoft.sfdc.ui.PageFactory;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.By;
 
+/**
+ * ProfilePage class.
+ *
+ * @author Franz Silva.
+ * @author Erik Vargas.
+ * @author Daniel Sandoval.
+ */
 public abstract class ProfilePage extends BasePage {
+    /**
+     * get a user name of sales forece profile
+     * @return name of user.
+     */
     public abstract String isUserNameDisplayed();
 
+    /**
+     * log out of sales force.
+     * @return a page login
+     */
     public abstract LoginPage logout();
 }
