@@ -7,7 +7,7 @@ import com.jalasoft.sfdc.ui.BasePage;
  *
  * @author Erik Vargas
  */
-public abstract class ProductDetails extends BasePage {
+public abstract class ProductDetailsPage extends BasePage {
 
     public abstract String isProductNameDisplayed();
 }

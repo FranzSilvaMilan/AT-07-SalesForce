@@ -43,7 +43,8 @@ public class ProductFormPageClassic extends ProductFormPage {
      * @return product's detail created.
      */
     @Override
-    public ProductDetails clickSaveProduct(Product product) {
+
+    public ProductDetailsPage clickSaveProduct(Product product) {
         driverTools.setInputField(productNameInput, product.getProductName());
         driverTools.setInputField(productCodeInput, product.getProductCode());
         driverTools.setInputField(productDescriptionTextArea, product.getProductDescription());
@@ -51,6 +52,6 @@ public class ProductFormPageClassic extends ProductFormPage {
             driverTools.clickElement(actionOptionCheckBox);
         }
         driverTools.clickElement(saveButton);
-        return new ProductDetailsClassic();
+        return new ProductDetailsPageClassic();
     }
 }

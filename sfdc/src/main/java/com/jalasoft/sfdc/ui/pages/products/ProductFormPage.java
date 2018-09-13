@@ -10,5 +10,10 @@ import com.jalasoft.sfdc.ui.BasePage;
  */
 public abstract class ProductFormPage extends BasePage {
 
-    public abstract ProductDetails clickSaveProduct(Product product);
+    /**
+     * Method abstract for fill and create new product.
+     * @param product form fields.
+     * @return product's detail created.
+     */
+    public abstract ProductDetailsPage clickSaveProduct(Product product);
 }
