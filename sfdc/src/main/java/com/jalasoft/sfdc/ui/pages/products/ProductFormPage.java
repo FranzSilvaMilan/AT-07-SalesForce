@@ -1,5 +1,6 @@
 package com.jalasoft.sfdc.ui.pages.products;
 
+import com.jalasoft.sfdc.entities.Product;
 import com.jalasoft.sfdc.ui.BasePage;
 
 /**
@@ -9,5 +10,5 @@ import com.jalasoft.sfdc.ui.BasePage;
  */
 public abstract class ProductFormPage extends BasePage {
 
-    public abstract ProductDetails clickSaveProduct(String name);
+    public abstract ProductDetails clickSaveProduct(Product product);
 }
