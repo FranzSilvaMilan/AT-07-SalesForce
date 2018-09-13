@@ -1,15 +1,19 @@
 package com.jalasoft.sfdc.steps;
 
+import com.jalasoft.sfdc.entities.Product;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.AppLauncher;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.products.ProductDetails;
 import com.jalasoft.sfdc.ui.pages.products.ProductFormPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductListPage;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+
+import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 
@@ -24,6 +28,7 @@ public class ProductSteps {
     private ProductListPage productListPage;
     private ProductFormPage productFormPage;
     private ProductDetails productDetails;
+    private  Product product1;
 
     //****************************************************************
     //Login Step Definitions
@@ -40,21 +45,28 @@ public class ProductSteps {
     }
 
     /**
-     * Fill required fields.
-     * @param name - Name of the Product.
+     * Create new Product
      */
-    @And("^I fill in required fields \"([^\"]*)\"$")
-    public void iFillInRequiredFields(String name) {
+    @And("^I click a New Product$")
+    public void iClickANewProduct() {
         productFormPage = productListPage.clickButtonNew();
-        productDetails = productFormPage.clickSaveProduct(name);
+    }
+
+    /**
+     * Fill required fields.
+     * @param product - Name of the Product.
+     */
+    @And("^I fill in required fields$")
+    public void iFillInRequiredFields(List<Product> product) {
+        product1 = product.get(0);
+        productDetails = productFormPage.clickSaveProduct(product1);
     }
 
     /**
      * Validation of the product created.
-     * @param name - Name of the project created.
      */
-    @Then("^Should be displayed Detail Product Page with \"([^\"]*)\"$")
-    public void shouldBeDisplayedDetailProductPageWith(String name) {
-        assertEquals(productDetails.isProductNameDisplayed(), name);
+    @Then("^Should be displayed Detail Product Page$")
+    public void shouldBeDisplayedDetailProductPageWith() {
+        assertEquals(productDetails.isProductNameDisplayed(), product1.getProductName());
     }
 }

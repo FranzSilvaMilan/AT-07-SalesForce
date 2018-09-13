@@ -4,11 +4,13 @@ Feature: Create a new Product.
     Given I navigate to Login page
     And I login as "erik" User
 
-  Scenario Outline: Verify that is possible create a new product with required fields.
+  Scenario: Verify that is possible create a new product with required fields.
     When I go to Product list Page
-    And I fill in required fields "<Products name>"
-    Then Should be displayed Detail Product Page with "<Products name>"
-    Examples:
-      | Products name |
-      | Butter        |
+    And I click a New Product
+    And I fill in required fields
+      | Product Name | Product Code | Product Description | Active |
+      | butter 1     | 123          | sdfasdfas           | true   |
+    Then Should be displayed Detail Product Page
+
+
 
