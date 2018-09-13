@@ -1,12 +1,15 @@
 package com.jalasoft.sfdc.ui.pages.account;
 
+import com.jalasoft.sfdc.entities.Account;
 import com.jalasoft.sfdc.ui.BasePage;
 import com.jalasoft.sfdc.ui.PageFactory;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.Arrays;
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,6 +20,7 @@ public class AccountFormPage extends BasePage {
 
     @FindBy(xpath = "//*[@title='Save']")
     WebElement saveButton;
+
 
     @Override
     public void waitUntilPageObjectIsLoaded() {
@@ -328,5 +332,28 @@ public class AccountFormPage extends BasePage {
 
         driverTools.clickElement(saveButton);
         return PageFactory.getDetailAccountPage();
+    }
+
+    public AccountDetailsPage saveAccount(Account account) {
+        /**List<StrategySetInputs> strategies =
+                Arrays.asList(
+                        () -> {setAccountNameTextField(String.valueOf(account.getName()));},
+                        () -> {setAccountNameTextField(String.valueOf(account.getNumber()));},
+                        () -> {setAccountNameTextField(String.valueOf(account.getWeb()));},
+                        () -> {setAccountNameTextField(String.valueOf(account.getFax()));},
+                        () -> {setAccountNameTextField(String.valueOf(account.getPhone()));},
+                        () -> {setAccountNameTextField(String.valueOf(account.getSicCode()));},
+                        () -> {setAccountNameTextField(String.valueOf(account.getEmployees()));}
+                );
+*/
+        if(account.getName()!=null)setAccountNameTextField(String.valueOf(account.getName()));
+        if(account.getNumber()!=null)setAccountNumberTextField(String.valueOf(account.getNumber()));
+        if(account.getWeb()!=null)setAccountWebsiteTextField(String.valueOf(account.getWeb()));
+        if(account.getFax()!=null)setAccountFaxTextField(String.valueOf(account.getFax()));
+        if(account.getPhone()!=null)setAccountPhoneTextField(String.valueOf(account.getPhone()));
+        if(account.getSicCode()!=null)setAccountSICCodeTextField(String.valueOf(account.getSicCode()));
+        if(account.getEmployees()!=null)setAccountEmployeeTextField(String.valueOf(account.getEmployees()));
+        driverTools.clickElement(saveButton);
+        return  PageFactory.getDetailAccountPage();
     }
 }
