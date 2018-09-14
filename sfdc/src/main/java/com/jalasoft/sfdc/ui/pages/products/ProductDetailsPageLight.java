@@ -3,6 +3,8 @@ package com.jalasoft.sfdc.ui.pages.products;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 /**
  * Product Details Page Light class.
  *
@@ -28,5 +30,15 @@ public class ProductDetailsPageLight extends ProductDetailsPage {
     @Override
     public String isProductNameDisplayed() {
         return productNameLabel.getText();
+    }
+
+    @Override
+    public ProductFormPage clickEditBtn1() {
+        return null;
+    }
+
+    @Override
+    public List<String> validateInputs1() {
+        return null;
     }
 }

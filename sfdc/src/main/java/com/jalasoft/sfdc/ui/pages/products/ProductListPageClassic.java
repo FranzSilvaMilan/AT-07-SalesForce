@@ -3,6 +3,8 @@ package com.jalasoft.sfdc.ui.pages.products;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 /**
  * Product List Page Classic class.
  *
@@ -30,5 +32,16 @@ public class ProductListPageClassic extends ProductListPage {
         driverTools.clickElement(closePopupButton);
         driverTools.clickElement(newButton);
         return new ProductFormPageClassic();
+    }
+
+    @Override
+    public ProductFormPage clickEditBtn() {
+        driverTools.clickElement(closePopupButton);
+        return null;
+    }
+
+    @Override
+    public List<String> validateInputs() {
+        return null;
     }
 }

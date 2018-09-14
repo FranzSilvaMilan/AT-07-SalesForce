@@ -4,6 +4,9 @@ import com.jalasoft.sfdc.entities.Product;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Product Form Page Light class.
  *
@@ -56,4 +59,20 @@ public class ProductFormPageLIght extends ProductFormPage {
         driverTools.clickElement(saveButton);
         return new ProductDetailsPageLight();
     }
+
+    @Override
+    public ProductListPage clickSaveEditProduct(Product product) {
+        driverTools.clearTextField(productNameInput);
+        driverTools.clearTextField(productCodeInput);
+        driverTools.setInputField(productNameInput, product.getProductName());
+        driverTools.setInputField(productCodeInput, product.getProductCode());
+
+        return new ProductListPageLight();
+    }
+
+    @Override
+    public ProductDetailsPage clickSaveEditProduct1(Product product) {
+        return null;
+    }
+
 }
