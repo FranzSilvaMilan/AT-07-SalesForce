@@ -11,6 +11,7 @@ public class Product {
     private String productCode = "";
     private String productDescription = "";
     private boolean active;
+    private String productFamily = "";
 
     /**
      * Gets the product name.
@@ -74,5 +75,13 @@ public class Product {
      */
     public void setProductDescription(String productDescription) {
         this.productDescription = productDescription;
+    }
+
+    public String getProductFamily() {
+        return productFamily;
+    }
+
+    public void setProductFamily(String productFamily) {
+        this.productFamily = productFamily;
     }
 }

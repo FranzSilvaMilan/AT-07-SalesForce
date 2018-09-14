@@ -16,6 +16,7 @@ import cucumber.api.java.en.When;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertSame;
 
 /**
  * Products steps class.
@@ -28,7 +29,7 @@ public class ProductSteps {
     private ProductListPage productListPage;
     private ProductFormPage productFormPage;
     private ProductDetails productDetails;
-    private  Product product1;
+    private Product product1;
 
     //****************************************************************
     //Login Step Definitions
@@ -68,5 +69,10 @@ public class ProductSteps {
     @Then("^Should be displayed Detail Product Page$")
     public void shouldBeDisplayedDetailProductPageWith() {
         assertEquals(productDetails.isProductNameDisplayed(), product1.getProductName());
+        assertEquals(productDetails.validateInputs().get(0), product1.getProductName());
+        assertEquals(productDetails.validateInputs().get(1), product1.getProductCode());
+        assertEquals(productDetails.validateInputs().get(2),product1.getProductDescription());
+        assertEquals(productDetails.validateInputs().get(3),product1.getProductFamily());
+        assertEquals(productDetails.validateCheckBox(),product1.getActive());
     }
 }

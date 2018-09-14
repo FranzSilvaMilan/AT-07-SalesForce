@@ -1,6 +1,7 @@
 package com.jalasoft.sfdc.ui.pages.products;
 
 import com.jalasoft.sfdc.entities.Product;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -22,6 +23,9 @@ public class ProductFormPageLIght extends ProductFormPage {
 
     @FindBy(xpath = "//a[@class='select']")
     private WebElement productFamilyCombobox;
+
+    @FindBy(xpath = "//a[@aria-checked='false']")
+    WebElement itemComboBox;
 
     @FindBy(xpath = "//textarea[@role='textbox']")
     private WebElement productDescriptionTextArea;
@@ -50,9 +54,9 @@ public class ProductFormPageLIght extends ProductFormPage {
         driverTools.setInputField(productNameInput, product.getProductName());
         driverTools.setInputField(productCodeInput, product.getProductCode());
         driverTools.setInputField(productDescriptionTextArea, product.getProductDescription());
-        if(true) {
-            driverTools.clickElement(actionOptionCheckBox);
-        }
+        driverTools.selectChkBox(actionOptionCheckBox);
+        driverTools.clickElement(productFamilyCombobox);
+        driverTools.clickElement(By.xpath("//a[contains(@title,'"+product.getProductFamily()+"')]//following::a"));
         driverTools.clickElement(saveButton);
         return new ProductDetailsLight();
     }

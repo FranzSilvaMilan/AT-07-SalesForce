@@ -1,8 +1,10 @@
 package com.jalasoft.sfdc.ui.pages.products;
 
 import com.jalasoft.sfdc.entities.Product;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
 /**
  * Product Form Page Classic class.
@@ -20,7 +22,7 @@ public class ProductFormPageClassic extends ProductFormPage {
     @FindBy(xpath = "//input[@type='checkbox']")
     private WebElement actionOptionCheckBox;
 
-    @FindBy(xpath = "//select[@name='Family']")
+    @FindBy(xpath = "//select[contains(@id,'Family')]")
     private WebElement productFamilyCombobox;
 
     @FindBy(xpath = "//textarea[@type='text']")
@@ -47,9 +49,9 @@ public class ProductFormPageClassic extends ProductFormPage {
         driverTools.setInputField(productNameInput, product.getProductName());
         driverTools.setInputField(productCodeInput, product.getProductCode());
         driverTools.setInputField(productDescriptionTextArea, product.getProductDescription());
-        if(true) {
-            driverTools.clickElement(actionOptionCheckBox);
-        }
+        driverTools.selectChkBox(actionOptionCheckBox);
+        Select select = new Select(productFamilyCombobox);
+        select.selectByVisibleText(product.getProductFamily());
         driverTools.clickElement(saveButton);
         return new ProductDetailsClassic();
     }
