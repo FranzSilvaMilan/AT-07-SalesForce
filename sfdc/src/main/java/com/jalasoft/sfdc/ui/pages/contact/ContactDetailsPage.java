@@ -1,5 +1,6 @@
 package com.jalasoft.sfdc.ui.pages.contact;
 
+import com.jalasoft.sfdc.entities.Contact;
 import com.jalasoft.sfdc.ui.BasePage;
 
 /**
@@ -24,5 +25,11 @@ public abstract class ContactDetailsPage extends BasePage {
      * @return - the last name created.
      */
     public abstract String isContactNameDisplayed();
+
+    public abstract void clickOptionEdit(Contact contact);
+
+    public abstract void isSaveOfChangeMade();
+    public abstract String isMobileChangeDisplayed();
+    public abstract String isTitleChangeDisplayed();
 
 }
