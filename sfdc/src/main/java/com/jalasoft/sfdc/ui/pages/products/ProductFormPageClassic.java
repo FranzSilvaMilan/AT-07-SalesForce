@@ -4,6 +4,8 @@ import com.jalasoft.sfdc.entities.Product;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 /**
  * Product Form Page Classic class.
  *
@@ -54,4 +56,23 @@ public class ProductFormPageClassic extends ProductFormPage {
         driverTools.clickElement(saveButton);
         return new ProductDetailsPageClassic();
     }
+
+    @Override
+    public ProductListPage clickSaveEditProduct(Product product) {
+        return null;
+    }
+
+    @Override
+    public ProductDetailsPage clickSaveEditProduct1(Product product) {
+        driverTools.clearTextField(productNameInput);
+        driverTools.clearTextField(productCodeInput);
+        driverTools.setInputField(productNameInput, product.getProductName());
+        driverTools.setInputField(productCodeInput, product.getProductCode());
+
+        driverTools.clickElement(saveButton);
+        return new ProductDetailsPageClassic();
+    }
+
+
+
 }
