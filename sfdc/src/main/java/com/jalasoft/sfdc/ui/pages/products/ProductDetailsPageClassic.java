@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author Erik Vargas
  */
-public class ProductDetailsClassic extends ProductDetails {
+public class ProductDetailsPageClassic extends ProductDetailsPage {
 
     @FindBy(xpath = "//h2[contains(@class,'pageDescription')]")
     private WebElement productNameLabel;

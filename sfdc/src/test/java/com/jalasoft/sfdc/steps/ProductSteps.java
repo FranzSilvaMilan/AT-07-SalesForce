@@ -4,7 +4,7 @@ import com.jalasoft.sfdc.entities.Product;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.AppLauncher;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import com.jalasoft.sfdc.ui.pages.products.ProductDetails;
+import com.jalasoft.sfdc.ui.pages.products.ProductDetailsPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductFormPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductListPage;
 import cucumber.api.PendingException;
@@ -28,11 +28,11 @@ public class ProductSteps {
     private AppLauncher appLauncher;
     private ProductListPage productListPage;
     private ProductFormPage productFormPage;
-    private ProductDetails productDetails;
-    private Product product1;
+    private ProductDetailsPage productDetails;
+    private  Product product1;
 
     //****************************************************************
-    //Login Step Definitions
+    //Product Step Definitions
     //****************************************************************
 
     /**

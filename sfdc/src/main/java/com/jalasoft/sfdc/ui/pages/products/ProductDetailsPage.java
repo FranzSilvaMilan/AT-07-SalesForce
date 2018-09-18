@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @author Erik Vargas
  */
-public abstract class ProductDetails extends BasePage {
+public abstract class ProductDetailsPage extends BasePage {
 
     public abstract String isProductNameDisplayed();
     public abstract List<String> validateInputs();

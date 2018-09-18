@@ -50,7 +50,7 @@ public class ProductFormPageLIght extends ProductFormPage {
      * @return product's detail created.
      */
     @Override
-    public ProductDetails clickSaveProduct(Product product) {
+    public ProductDetailsPage clickSaveProduct(Product product) {
         driverTools.setInputField(productNameInput, product.getProductName());
         driverTools.setInputField(productCodeInput, product.getProductCode());
         driverTools.setInputField(productDescriptionTextArea, product.getProductDescription());
@@ -58,6 +58,6 @@ public class ProductFormPageLIght extends ProductFormPage {
         driverTools.clickElement(productFamilyCombobox);
         driverTools.clickElement(By.xpath("//a[contains(@title,'"+product.getProductFamily()+"')]//following::a"));
         driverTools.clickElement(saveButton);
-        return new ProductDetailsLight();
+        return new ProductDetailsPageLight();
     }
 }
