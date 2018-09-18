@@ -1,5 +1,6 @@
 package com.jalasoft.sfdc.ui.pages.contact;
 
+import com.jalasoft.sfdc.entities.Contact;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -21,6 +22,26 @@ public class ContactDetailsPageClassic extends ContactDetailsPage {
     @Override
     public String isContactNameDisplayed() {
         return contactLabelName.getText().trim();
+    }
+
+    @Override
+    public void clickOptionEdit(Contact contact) {
+
+    }
+
+    @Override
+    public void isSaveOfChangeMade() {
+       // return null;
+    }
+
+    @Override
+    public String isMobileChangeDisplayed() {
+        return null;
+    }
+
+    @Override
+    public String isTitleChangeDisplayed() {
+        return null;
     }
 
 }

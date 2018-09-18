@@ -7,6 +7,7 @@ import com.jalasoft.sfdc.ui.pages.contact.ContactDetailsPage;
 import com.jalasoft.sfdc.ui.pages.contact.ContactFormPage;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -48,20 +49,13 @@ public class ContactSteps {
     /**
      * Fill the spaces required to create a new Contact.
      *
-     * //@param newContact - Last name of the new contact.
+     * @param contactList - List of contacts.
      */
     @When("^I fill the Account form name with$")
     public void iFillTheAccountFormNameWith(final List<Contact> contactList) {
         this.contact = contactList.get(0);
-        System.out.println(contact.getLastName()+" ----++++++++++++---- "+contact.getFirstName());
         contactDetailsPage = contactFormPage.gotToSaveButton(contact);
     }
-    /*
-    @When("^I fill the Account form name with: \"([^\"]*)\"$")
-    public void iFillTheAccountFormNameWith(String newContact) {
-        contactDetailsPage = contactFormPage.gotToSaveButton(newContact);
-    }*/
-
 
     /**
      * Verify if is create a new Contact.
@@ -76,4 +70,24 @@ public class ContactSteps {
         }
 
     }
+    @When("^I click on Edit button$")
+    public void iClickOnEditButton(final List<Contact> contactChanges){
+        this.contact = contactChanges.get(0);
+        contactDetailsPage.clickOptionEdit(contact);
+    }
+
+    @When("^I save the changes made$")
+    public void iSaveTheChangesMade(){
+        contactDetailsPage.isSaveOfChangeMade();
+    }
+
+    @Then("^Shows me the changes made$")
+    public void showsMeTheChangesMade() {
+        System.out.println(contact.getMobile()+" ------------------");
+        System.out.println(contact.getTitle()+" --------------");
+        //assertEquals(contactDetailsPage.isMobileChangeDisplayed(),contact.getMobile());
+        assertEquals(contactDetailsPage.isTitleChangeDisplayed(), contact.getTitle());
+    }
+
+
 }
