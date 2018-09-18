@@ -546,7 +546,6 @@ public class WebDriverTools {
      * @param text    set a text on a field.
      */
     public void setTextElement(final WebElement element, final String text) {
-        waitWebElementVisible(element);
         clearTextField(element);
         element.sendKeys(text);
     }

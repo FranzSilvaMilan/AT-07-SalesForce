@@ -1,5 +1,6 @@
 package com.jalasoft.sfdc.ui.pages.account;
 
+import com.jalasoft.sfdc.entities.Account;
 import com.jalasoft.sfdc.ui.BasePage;
 
 public abstract class AccountDetailsPage extends BasePage {
@@ -8,4 +9,7 @@ public abstract class AccountDetailsPage extends BasePage {
      * @return a name of new account
      */
     public abstract String getNameNewAccount();
+
+    public abstract AccountFormPage clickAccount(Account account);
+    public abstract AccountFormPage clickEditButton();
 }
