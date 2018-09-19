@@ -31,6 +31,12 @@ public class ProductDetailsPageClassic extends ProductDetailsPage {
     @FindBy(xpath = "//div[@id='Family_ileinner']")
     private WebElement productFamilyComboBox;
 
+    @FindBy(xpath = "(//input[@title='Edit'])[1]")
+    private WebElement editButton;
+
+    @FindBy(xpath = "(//input[@value='Delete'])[1]")
+    WebElement deletButton;
+
     /**
      * Waits until page object is loaded.
      */
@@ -69,5 +75,24 @@ public class ProductDetailsPageClassic extends ProductDetailsPage {
     @Override
     public boolean validateCheckBox() {
         return productActiveCheckbox.isSelected();
+    }
+
+    /**
+     * Method for edit Product.
+     * @return Product form page Classic.
+     */
+    @Override
+    public ProductFormPage clickEditBtn() {
+        driverTools.clickElement(editButton);
+        return new ProductFormPageClassic();
+    }
+
+    /**
+     * Method for delete Product.
+     */
+    @Override
+    public void clickDeletButton() {
+        driverTools.clickElement(deletButton);
+        acceptAlertDialog();
     }
 }

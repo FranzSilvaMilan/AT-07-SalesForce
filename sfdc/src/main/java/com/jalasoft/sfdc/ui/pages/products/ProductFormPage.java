@@ -16,4 +16,5 @@ public abstract class ProductFormPage extends BasePage {
      * @return product's detail created.
      */
     public abstract ProductDetailsPage clickSaveProduct(Product product);
+    public abstract ProductDetailsPage clickSaveEditProduct(Product product);
 }

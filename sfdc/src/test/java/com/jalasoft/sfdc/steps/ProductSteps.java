@@ -7,7 +7,6 @@ import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.products.ProductDetailsPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductFormPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductListPage;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -28,7 +27,7 @@ public class ProductSteps {
     private AppLauncher appLauncher;
     private ProductListPage productListPage;
     private ProductFormPage productFormPage;
-    private ProductDetailsPage productDetails;
+    private ProductDetailsPage productDetailsPage;
     private  Product product1;
 
     //****************************************************************
@@ -60,7 +59,7 @@ public class ProductSteps {
     @And("^I fill in required fields$")
     public void iFillInRequiredFields(List<Product> product) {
         product1 = product.get(0);
-        productDetails = productFormPage.clickSaveProduct(product1);
+        productDetailsPage = productFormPage.clickSaveProduct(product1);
     }
 
     /**
@@ -68,11 +67,39 @@ public class ProductSteps {
      */
     @Then("^Should be displayed Detail Product Page$")
     public void shouldBeDisplayedDetailProductPageWith() {
-        assertEquals(productDetails.isProductNameDisplayed(), product1.getProductName());
-        assertEquals(productDetails.validateInputs().get(0), product1.getProductName());
-        assertEquals(productDetails.validateInputs().get(1), product1.getProductCode());
-        assertEquals(productDetails.validateInputs().get(2),product1.getProductDescription());
-        assertEquals(productDetails.validateInputs().get(3),product1.getProductFamily());
-        assertEquals(productDetails.validateCheckBox(),product1.getActive());
+        assertEquals(productDetailsPage.isProductNameDisplayed(), product1.getProductName());
+        assertEquals(productDetailsPage.validateInputs().get(0), product1.getProductName());
+        assertEquals(productDetailsPage.validateInputs().get(1), product1.getProductCode());
+        assertEquals(productDetailsPage.validateInputs().get(2),product1.getProductDescription());
+        assertEquals(productDetailsPage.validateInputs().get(3),product1.getProductFamily());
+        assertEquals(productDetailsPage.validateCheckBox(),product1.getActive());
+    }
+
+    /**
+     * Edit Product.
+     */
+    @When("^I edit Product$")
+    public void iClickAEditProduct() {
+        homePage = PageFactory.getHomePage();
+        productDetailsPage=PageFactory.getProductDetailsPage();
+        productFormPage = productDetailsPage.clickEditBtn();
+    }
+
+    /**
+     * Fill fields for edit.
+     * @param product Name of the Product.
+     */
+    @And("^I fill fields for edit$")
+    public void iFillFields(List<Product> product) {
+        product1 = product.get(0);
+        productDetailsPage = productFormPage.clickSaveEditProduct(product1);
+    }
+
+    /**
+     * Delete Product.
+     */
+    @When("^I delete Product$")
+    public void iClickDeleteProduct() {
+        productDetailsPage.clickDeletButton();
     }
 }

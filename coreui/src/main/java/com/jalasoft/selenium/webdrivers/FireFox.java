@@ -16,8 +16,8 @@ class FireFox implements IDriver {
      */
     @Override
     public WebDriver initDriver() {
-        //FirefoxDriverManager.getInstance().version("0.19.0").setup();
-        System.setProperty("webdriver.firefox.marionette","C:\\geckodrive.exe");
+        FirefoxDriverManager.getInstance().version("0.19.0").setup();
+        //System.setProperty("webdriver.firefox.marionette","C:\\geckodrive.exe");
         return new FirefoxDriver();
     }
 }

@@ -14,4 +14,7 @@ public abstract class ProductDetailsPage extends BasePage {
     public abstract String isProductNameDisplayed();
     public abstract List<String> validateInputs();
     public abstract boolean validateCheckBox();
+
+    public abstract ProductFormPage clickEditBtn();
+    public abstract void clickDeletButton();
 }

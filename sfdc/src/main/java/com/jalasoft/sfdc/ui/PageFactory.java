@@ -20,6 +20,9 @@ import com.jalasoft.sfdc.ui.pages.account.AccountDetailsPageLight;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.home.HomePageClassic;
 import com.jalasoft.sfdc.ui.pages.home.HomePageLight;
+import com.jalasoft.sfdc.ui.pages.products.ProductDetailsPage;
+import com.jalasoft.sfdc.ui.pages.products.ProductDetailsPageClassic;
+import com.jalasoft.sfdc.ui.pages.products.ProductDetailsPageLight;
 
 /**
  * PageFactory class.
@@ -114,4 +117,16 @@ public class PageFactory {
         }
     }
 
+    /**
+     * Returns an Instance of ProductDetailsPage for the respective Skin.
+     * @return ProductDetailsPageClassic or ProductDetailsPageLight.
+     */
+    public static ProductDetailsPage getProductDetailsPage() {
+        switch (skin) {
+            case CLASSIC:
+                return new ProductDetailsPageClassic();
+            default:
+                return new ProductDetailsPageLight();
+        }
+    }
 }

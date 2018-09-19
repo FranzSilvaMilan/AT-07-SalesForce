@@ -1,7 +1,6 @@
 package com.jalasoft.sfdc.ui.pages.products;
 
 import com.jalasoft.sfdc.entities.Product;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
@@ -47,6 +46,23 @@ public class ProductFormPageClassic extends ProductFormPage {
     @Override
 
     public ProductDetailsPage clickSaveProduct(Product product) {
+        if(product.getProductName() != null)driverTools.setInputField(productNameInput, product.getProductName());
+        driverTools.setInputField(productCodeInput, product.getProductCode());
+        driverTools.setInputField(productDescriptionTextArea, product.getProductDescription());
+        driverTools.selectChkBox(actionOptionCheckBox);
+        Select select = new Select(productFamilyCombobox);
+        select.selectByVisibleText(product.getProductFamily());
+        driverTools.clickElement(saveButton);
+        return new ProductDetailsPageClassic();
+    }
+
+    /**
+     * Methof for edit a Product in the form page Classic.
+     * @param product form's fields.
+     * @return product's detail edited.
+     */
+    @Override
+    public ProductDetailsPage clickSaveEditProduct(Product product) {
         driverTools.setInputField(productNameInput, product.getProductName());
         driverTools.setInputField(productCodeInput, product.getProductCode());
         driverTools.setInputField(productDescriptionTextArea, product.getProductDescription());

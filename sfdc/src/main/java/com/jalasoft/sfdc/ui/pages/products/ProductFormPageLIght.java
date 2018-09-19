@@ -60,4 +60,25 @@ public class ProductFormPageLIght extends ProductFormPage {
         driverTools.clickElement(saveButton);
         return new ProductDetailsPageLight();
     }
+
+    /**
+     * Methof for edit a Product in the form page light.
+     * @param product form's fields.
+     * @return product's detail edited.
+     */
+    @Override
+    public ProductDetailsPage clickSaveEditProduct(Product product) {
+        driverTools.clearTextField(productNameInput);
+        driverTools.clearTextField(productCodeInput);
+        driverTools.clearTextField(productDescriptionTextArea);
+        driverTools.setInputField(productNameInput, product.getProductName());
+        driverTools.setInputField(productCodeInput, product.getProductCode());
+        driverTools.setInputField(productDescriptionTextArea, product.getProductDescription());
+        //driverTools.selectChkBox(actionOptionCheckBox);
+        driverTools.clearChkBox(actionOptionCheckBox);
+        driverTools.clickElement(productFamilyCombobox);
+        driverTools.clickElement(By.xpath("//a[contains(@title,'"+product.getProductFamily()+"')]//following::a"));
+        driverTools.clickElement(saveButton);
+        return new ProductDetailsPageLight();
+    }
 }

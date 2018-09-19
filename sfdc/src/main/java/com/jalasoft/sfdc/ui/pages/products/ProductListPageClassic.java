@@ -27,7 +27,9 @@ public class ProductListPageClassic extends ProductListPage {
      */
     @Override
     public ProductFormPage clickButtonNew() {
-        driverTools.clickElement(closePopupButton);
+        if(closePopupButton.isDisplayed()){
+            driverTools.clickElement(closePopupButton);
+        }
         driverTools.clickElement(newButton);
         return new ProductFormPageClassic();
     }

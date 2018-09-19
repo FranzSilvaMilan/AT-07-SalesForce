@@ -31,6 +31,15 @@ public class ProductDetailsPageLight extends ProductDetailsPage {
     @FindBy(xpath = "(//span[contains(@class,'separator is-read-only')])[4]")
     private WebElement productFamilyComboBox;
 
+    @FindBy(css = ".sldsButtonHeightFix")
+    private WebElement dropdownEditButton;
+
+    @FindBy(css = "a[title = 'Edit']")
+    private WebElement editButton;
+
+    @FindBy(xpath = "\"//a[@title='Delete']")
+    private WebElement deletButton;
+
     /**
      * Waits until page object is loaded.
      */
@@ -69,5 +78,27 @@ public class ProductDetailsPageLight extends ProductDetailsPage {
     @Override
     public boolean validateCheckBox() {
         return productActiveCheckbox.isSelected();
+    }
+
+    /**
+     * Method for edit Product.
+     * @return Product form page light.
+     */
+    @Override
+    public ProductFormPage clickEditBtn() {
+        driverTools.clickElement(dropdownEditButton);
+        driverTools.waitUntilElementDisplayed(editButton);
+        driverTools.clickElement(editButton);
+        return new ProductFormPageLIght();
+    }
+
+    /**
+     * Method for delete Product.
+     */
+    @Override
+    public void clickDeletButton() {
+        driverTools.clickElement(dropdownEditButton);
+        driverTools.clickElement(deletButton);
+        acceptAlertDialog();
     }
 }
