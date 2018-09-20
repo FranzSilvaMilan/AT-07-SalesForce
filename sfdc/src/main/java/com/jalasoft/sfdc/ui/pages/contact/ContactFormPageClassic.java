@@ -28,6 +28,8 @@ public class ContactFormPageClassic extends ContactFormPage {
     WebElement titleInput;
     @FindBy(xpath = "//*[@id='con14']")
     WebElement otherPhoneInput;
+    @FindBy(xpath = "//*[@class='form-element']//child::input")
+    WebElement birthdateInput;
 
     /**
      * Waits until page object is loaded.
@@ -52,6 +54,7 @@ public class ContactFormPageClassic extends ContactFormPage {
         driverTools.setInputField(mobileInput, contact.getMobile());
         driverTools.setInputField(titleInput, contact.getTitle());
         driverTools.setInputField(otherPhoneInput, contact.getOtherPhone());
+        driverTools.scrollToBottomOfPage();
         driverTools.clickElement(saveButton);
         return new ContactDetailsPageClassic();
     }

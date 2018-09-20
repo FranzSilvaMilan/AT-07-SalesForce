@@ -1,5 +1,6 @@
 package com.jalasoft.sfdc.ui.pages.contact;
 
+import com.jalasoft.sfdc.entities.Contact;
 import com.jalasoft.sfdc.ui.pages.ListBasePage;
 
 /**
@@ -24,4 +25,6 @@ public abstract class ContactListPage extends ListBasePage {
      * @return new page.
      */
     public abstract ContactFormPage gotToNewButton();
+
+    public abstract boolean isContatcNotDisplayed(Contact contact);
 }

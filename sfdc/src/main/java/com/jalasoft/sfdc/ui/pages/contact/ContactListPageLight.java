@@ -1,5 +1,8 @@
 package com.jalasoft.sfdc.ui.pages.contact;
 
+import com.jalasoft.sfdc.entities.Contact;
+import org.openqa.selenium.By;
+
 /**
  * ContactListPageLight class.
  *
@@ -25,5 +28,10 @@ public class ContactListPageLight extends ContactListPage {
     public ContactFormPage gotToNewButton() {
         driverTools.clickElement(newButton);
         return new ContactFormPageLight();
+    }
+
+    @Override
+    public boolean isContatcNotDisplayed(Contact contact) {
+        return driverTools.isElementDisplayed(By.xpath("//a[contains(.,'"+contact.getFirstName()+" "+contact.getLastName()+"')]"));
     }
 }

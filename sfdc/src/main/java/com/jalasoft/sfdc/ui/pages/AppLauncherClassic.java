@@ -19,6 +19,7 @@ import org.openqa.selenium.support.FindBy;
  * @author Daniel Sandoval.
  */
 public class AppLauncherClassic extends AppLauncher {
+    //private static final String BUTTON_EXIT = "//*[@class='dialogClose']";
 
     @FindBy(xpath = "//a[text()='Accounts']")
     private WebElement accountButton;
@@ -59,7 +60,6 @@ public class AppLauncherClassic extends AppLauncher {
     @Override
     public ContactListPage goToContactPage() {
         driverTools.clickElement(contactButton);
-        driverTools.clickElement(closeWindows);
         return new ContactListPageClassic();
     }
 
