@@ -19,6 +19,10 @@ public class Contact {
     private String email = "";
     private String assistant = "";
     private String assistentPhone = "";
+    private String lenguaje = "";
+    private String level = "";
+    private String leadSource = "";
+    private String mailingStreet = "";
 
     /**
      * Gets the contact first name.
@@ -210,5 +214,69 @@ public class Contact {
      */
     public void setAssistentPhone(String assistentPhone) {
         this.assistentPhone = assistentPhone;
+    }
+
+    /**
+     * Gets the contact lenguaje.
+     * @return the current contact lenguaje.
+     */
+    public String getLenguaje() {
+        return lenguaje;
+    }
+
+    /**
+     * Sets the contact lenguaje.
+     * @param lenguaje contact lenguaje to set.
+     */
+    public void setLenguaje(String lenguaje) {
+        this.lenguaje = lenguaje;
+    }
+
+    /**
+     * Gets the contact level.
+     * @return the current contact level.
+     */
+    public String getLevel() {
+        return level;
+    }
+
+    /**
+     * Sets the contact level.
+     * @param level contact level to set.
+     */
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    /**
+     * Gets the contact lead source.
+     * @return the current contact lead source.
+     */
+    public String getLeadSource() {
+        return leadSource;
+    }
+
+    /**
+     * Sets the contact lead source.
+     * @param leadSource contact lead source to set.
+     */
+    public void setLeadSource(String leadSource) {
+        this.leadSource = leadSource;
+    }
+
+    /**
+     * Gets the contact mailing street.
+     * @return the current contact mailing street.
+     */
+    public String getMailingStreet() {
+        return mailingStreet;
+    }
+
+    /**
+     * Sets the contact mailing street.
+     * @param mailingStreet contact mailing street to set.
+     */
+    public void setMailingStreet(String mailingStreet) {
+        this.mailingStreet = mailingStreet;
     }
 }
