@@ -39,9 +39,8 @@ public class PageFactory {
     //****************************************************************
 
     /**
-     * Returns an Instance of HomePage for the respective Skin
-     *
-     * @return
+     * Returns an Instance of HomePage for the respective Skin.
+     * @return HomePageClassic or HomePageLight.
      */
     public static HomePage getHomePage() {
         switch (skin) {
@@ -53,8 +52,8 @@ public class PageFactory {
     }
 
     /**
-     *
-     * @return
+     * Returns an Instance of TopMenu for the respective Skin.
+     * @return TopMenuClassic or TopMenuLight.
      */
     public static TopMenu getTopMenu() {
         switch (skin) {
@@ -66,8 +65,8 @@ public class PageFactory {
     }
 
     /**
-     *
-     * @return
+     * Returns an Instance of ProfilePage for the respective Skin.
+     * @return ProfilePageClassic or ProfilePageLight.
      */
     public static ProfilePage getProfilePage() {
         switch (skin) {
@@ -79,8 +78,8 @@ public class PageFactory {
     }
 
     /**
-     *
-     * @return
+     * Returns an Instance of AppLauncher for the respective Skin.
+     * @return AppLauncherClassic or AppLauncherLight.
      */
     public static AppLauncher getAppLauncher() {
         switch (skin) {
@@ -92,8 +91,8 @@ public class PageFactory {
     }
 
     /**
-     *
-     * @return
+     * Returns an Instance of AccountDetailsPage for the respective Skin.
+     * @return AccountDetailsPageClassic or AccountDetailsPageLight.
      */
     public static AccountDetailsPage getDetailAccountPage() {
         switch (skin) {
@@ -105,8 +104,8 @@ public class PageFactory {
     }
 
     /**
-     *
-     * @return
+     * Returns an Instance of AccountListPage for the respective Skin.
+     * @return AccountListPageClassic or AccountListPageLight.
      */
     public static AccountListPage getAccountListPage() {
         switch (skin) {

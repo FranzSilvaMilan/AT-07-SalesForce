@@ -1,7 +1,9 @@
 package com.jalasoft.sfdc.ui.pages.products;
 
+import com.jalasoft.sfdc.entities.Product;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,32 +15,36 @@ import java.util.List;
  */
 public class ProductDetailsPageLight extends ProductDetailsPage {
 
-    @FindBy(xpath = "(//span[@class='uiOutputText'])[2]")
+    //@FindBy(xpath = "(//span[@class='uiOutputText'])[2]")
+    @FindBy(xpath = "//p[contains(text(),'Product')]/following::h1")
     private WebElement productNameLabel;
 
-    @FindBy(xpath = "(//span[@class='uiOutputText'])[4]")
+    @FindBy(xpath = "//span[contains(text(),'Product Name')]/parent::div/following-sibling::div/span/span")
     private WebElement productNameInput;
 
-    @FindBy(xpath = "(//span[contains(@class,'separator is-read-only')])[3]")
+    @FindBy(xpath = "//span[contains(text(),'Product Code')]//parent::div//following-sibling::div//span//span")
     private WebElement productCodeInput;
 
     @FindBy(xpath = "//span[@class='uiOutputTextArea']")
     private WebElement productDescripionTextArea;
 
-    @FindBy(xpath = "//img[@alt='True']")
+    @FindBy(xpath = "//span[contains(text(),'Active')]//parent::div//following-sibling::div//span//span")
     private WebElement productActiveCheckbox;
 
-    @FindBy(xpath = "(//span[contains(@class,'separator is-read-only')])[4]")
+    @FindBy(xpath = "//span[contains(text(),'Product Family')]//parent::div//following-sibling::div//span")
     private WebElement productFamilyComboBox;
 
     @FindBy(css = ".sldsButtonHeightFix")
-    private WebElement dropdownEditButton;
+    private WebElement dropdownButton;
 
     @FindBy(css = "a[title = 'Edit']")
     private WebElement editButton;
 
-    @FindBy(xpath = "\"//a[@title='Delete']")
+    @FindBy(xpath = "//a[@title='Delete']")
     private WebElement deletButton;
+
+    @FindBy(xpath = "//span[(text()='Delete')]")
+    private WebElement popupDeleteButton;
 
     /**
      * Waits until page object is loaded.
@@ -63,6 +69,7 @@ public class ProductDetailsPageLight extends ProductDetailsPage {
      */
     @Override
     public List<String> validateInputs() {
+        log.info("-----Start validate inputs-----");
         ArrayList<String> listInputs = new ArrayList<>();
         listInputs.add(productNameInput.getText());
         listInputs.add(productCodeInput.getText());
@@ -86,8 +93,7 @@ public class ProductDetailsPageLight extends ProductDetailsPage {
      */
     @Override
     public ProductFormPage clickEditBtn() {
-        driverTools.clickElement(dropdownEditButton);
-        driverTools.waitUntilElementDisplayed(editButton);
+        driverTools.moveAndClickElement(dropdownButton);
         driverTools.clickElement(editButton);
         return new ProductFormPageLIght();
     }
@@ -96,9 +102,15 @@ public class ProductDetailsPageLight extends ProductDetailsPage {
      * Method for delete Product.
      */
     @Override
-    public void clickDeletButton() {
-        driverTools.clickElement(dropdownEditButton);
+    public void clickDeleteButton() {
+        driverTools.moveAndClickElement(dropdownButton);
         driverTools.clickElement(deletButton);
-        acceptAlertDialog();
+        driverTools.clickElement(popupDeleteButton);
     }
+
+    @Override
+    public boolean validateDelete(Product product) {
+        return false;
+    }
+
 }

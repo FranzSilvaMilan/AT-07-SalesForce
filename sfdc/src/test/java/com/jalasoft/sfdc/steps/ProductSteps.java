@@ -7,6 +7,7 @@ import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.products.ProductDetailsPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductFormPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductListPage;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -15,6 +16,7 @@ import cucumber.api.java.en.When;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertSame;
 
 /**
@@ -28,7 +30,7 @@ public class ProductSteps {
     private ProductListPage productListPage;
     private ProductFormPage productFormPage;
     private ProductDetailsPage productDetailsPage;
-    private  Product product1;
+    private Product product1;
 
     //****************************************************************
     //Product Step Definitions
@@ -100,6 +102,15 @@ public class ProductSteps {
      */
     @When("^I delete Product$")
     public void iClickDeleteProduct() {
-        productDetailsPage.clickDeletButton();
+        productDetailsPage.clickDeleteButton();
+    }
+
+    /**
+     * Validation of the product deleted.
+     */
+    @Then("^The removed product should not be shown in the list$")
+    public void theRemovedProductShouldNotBeShownInTheList() {
+        assertFalse(productDetailsPage.validateDelete(product1));
+        assertFalse(productListPage.validateDelete(product1));
     }
 }

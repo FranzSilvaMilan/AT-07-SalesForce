@@ -554,4 +554,13 @@ public class WebDriverTools {
     public WebElement waitWebElementVisible(final WebElement webElement) {
         return wait.until(ExpectedConditions.visibilityOf(webElement));
     }
+
+    public boolean waitWebElementInVisibility(WebElement byElement) {
+        try {
+            wait.until(ExpectedConditions.invisibilityOf(byElement));
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
+    }
 }

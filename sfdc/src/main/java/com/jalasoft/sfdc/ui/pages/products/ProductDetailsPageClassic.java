@@ -1,6 +1,9 @@
 package com.jalasoft.sfdc.ui.pages.products;
 
 import java.util.ArrayList;
+
+import com.jalasoft.sfdc.entities.Product;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -25,17 +28,17 @@ public class ProductDetailsPageClassic extends ProductDetailsPage {
     @FindBy(xpath = "//div[contains(@id,'Description_ileinner')]")
     private WebElement productDescripionTextArea;
 
-    @FindBy(xpath = "//img[@alt='Checked']")
+    @FindBy(xpath = "//div[@id='IsActive_ileinner']//child::img")
     private WebElement productActiveCheckbox;
 
     @FindBy(xpath = "//div[@id='Family_ileinner']")
     private WebElement productFamilyComboBox;
 
-    @FindBy(xpath = "(//input[@title='Edit'])[1]")
+    @FindBy(xpath = "//td[@id='topButtonRow']//input[@title='Edit']")
     private WebElement editButton;
 
-    @FindBy(xpath = "(//input[@value='Delete'])[1]")
-    WebElement deletButton;
+    @FindBy(xpath = "//td[@id='topButtonRow']//input[@title='Delete']")
+    private WebElement deleteButton;
 
     /**
      * Waits until page object is loaded.
@@ -91,8 +94,18 @@ public class ProductDetailsPageClassic extends ProductDetailsPage {
      * Method for delete Product.
      */
     @Override
-    public void clickDeletButton() {
-        driverTools.clickElement(deletButton);
+    public void clickDeleteButton() {
+        driverTools.clickElement(deleteButton);
         acceptAlertDialog();
+    }
+
+    /**
+     * Method that validate a product deleted.
+     * @param product fields products.
+     * @return false.
+     */
+    @Override
+    public boolean validateDelete(Product product) {
+        return driverTools.isElementDisplayed(By.xpath("//img[contains(@title,'"+product.getProductName()+"')]"));
     }
 }

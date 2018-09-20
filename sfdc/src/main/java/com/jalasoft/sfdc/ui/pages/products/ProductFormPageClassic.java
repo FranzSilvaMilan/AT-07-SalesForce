@@ -27,7 +27,7 @@ public class ProductFormPageClassic extends ProductFormPage {
     @FindBy(xpath = "//textarea[@type='text']")
     private WebElement productDescriptionTextArea;
 
-    @FindBy(xpath = "//input[contains(@tabindex,'6')]")
+    @FindBy(xpath = "//td[@id='topButtonRow']//input[contains(@title,'Save')]")
     private WebElement saveButton;
 
     /**
@@ -44,14 +44,15 @@ public class ProductFormPageClassic extends ProductFormPage {
      * @return product's detail created.
      */
     @Override
-
     public ProductDetailsPage clickSaveProduct(Product product) {
         if(product.getProductName() != null)driverTools.setInputField(productNameInput, product.getProductName());
-        driverTools.setInputField(productCodeInput, product.getProductCode());
-        driverTools.setInputField(productDescriptionTextArea, product.getProductDescription());
-        driverTools.selectChkBox(actionOptionCheckBox);
-        Select select = new Select(productFamilyCombobox);
-        select.selectByVisibleText(product.getProductFamily());
+        if(product.getProductCode() != null)driverTools.setInputField(productCodeInput, product.getProductCode());
+        if(product.getProductDescription() != null)driverTools.setInputField(productDescriptionTextArea, product.getProductDescription());
+        if(product.getProductFamily() != null) {
+            driverTools.selectChkBox(actionOptionCheckBox);
+            Select select = new Select(productFamilyCombobox);
+            select.selectByVisibleText(product.getProductFamily());
+        }
         driverTools.clickElement(saveButton);
         return new ProductDetailsPageClassic();
     }

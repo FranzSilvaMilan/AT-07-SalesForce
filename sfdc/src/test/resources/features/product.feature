@@ -9,18 +9,22 @@ Feature: Create a new Product.
   Scenario: Verify that is possible create a new product with required fields
     And I fill in required fields
       | Product Name | Product Code | Product Description | Active | Product Family |
-      | butter 1     | 123          | sdf                 | false  | None           |
+      | laptop       | 123          | product created     | false  | None           |
     Then Should be displayed Detail Product Page
 
-  #Scenario: Verify that is possible edit a Product
+  Scenario: Verify that is possible edit a Product
+    And I fill in required fields
+      | Product Name | Product Code | Product Description | Active | Product Family |
+      | computer     | 1234564      | desktop             | false  | None           |
     When I edit Product
     And I fill fields for edit
       | Product Name | Product Code | Product Description | Active | Product Family |
-      | editado      | 44444        | hola                | false  | --None--       |
+      | new edited   | 98797        | product edited      | false  | None           |
+    Then Should be displayed Detail Product Page
 
-  #Scenario: Verify that is possible delete a Product
+  Scenario: Verify that is possible delete a Product
+    And I fill in required fields
+      | Product Name | Product Code | Product Description | Active | Product Family |
+      | computer2    | 123456478    | pc                  | true   | None           |
     When I delete Product
-    Then Should be displayed message delete successfully
-
-
-
+    Then The removed product should not be shown in the list
