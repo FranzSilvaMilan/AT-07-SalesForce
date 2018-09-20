@@ -1,5 +1,6 @@
 package com.jalasoft.sfdc.ui.pages.account;
 
+import com.jalasoft.sfdc.entities.Account;
 import com.jalasoft.sfdc.ui.pages.ListBasePage;
 /**
  * @author Franz Silva
@@ -20,4 +21,6 @@ public abstract class AccountListPage extends ListBasePage {
      * @return
      */
     public abstract AccountFormPage clickEditButton(String accountName);
+    public abstract AccountFormPage clickAccount(Account account);
+    public abstract boolean containTheAccount(Account account);
 }
