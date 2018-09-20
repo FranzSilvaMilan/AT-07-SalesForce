@@ -12,4 +12,7 @@ public abstract class AccountDetailsPage extends BasePage {
 
     public abstract AccountFormPage clickAccount(Account account);
     public abstract AccountFormPage clickEditButton();
+    public abstract AccountListPage clickDelitButton();
+
+    public abstract boolean containsThisElement(String name);
 }

@@ -1,5 +1,8 @@
 package com.jalasoft.sfdc.ui.pages.account;
 
+import com.jalasoft.sfdc.entities.Account;
+import org.openqa.selenium.By;
+
 /**
  * Autor Franz Silva.
  */
@@ -18,7 +21,7 @@ public class AccountListPageLight extends AccountListPage {
     public AccountFormPage clickNewButton() {
         //driverTools.waitUntilElementDisplayed(newButton);
         driverTools.clickElement(newButton);
-        return new AccountFormPage();
+        return new AccountFormPageLight();
     }
     /**
      * {@inheritDoc}.
@@ -26,6 +29,19 @@ public class AccountListPageLight extends AccountListPage {
     @Override
     public AccountFormPage clickEditButton(String accountName) {
         return null;
+    }
+
+    @Override
+    public AccountFormPage clickAccount(Account account) {
+        String accountXpath = "//a[contains(@class, 'slds-truncate') and contains(@title, '" + account.getName() + "')]";
+        driverTools.clickElement(By.xpath(accountXpath));
+        return new AccountFormPageLight();
+    }
+
+    @Override
+    public boolean containTheAccount(Account account) {
+        String pathAcount = "//a[contains(@class, 'slds-truncate') and contains(@title, '" + account.getName() + "')]";
+        return driverTools.isElementDisplayed(By.xpath(pathAcount));
     }
 
 }

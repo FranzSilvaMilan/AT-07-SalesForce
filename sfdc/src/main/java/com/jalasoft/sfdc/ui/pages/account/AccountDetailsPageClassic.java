@@ -11,6 +11,8 @@ public class AccountDetailsPageClassic extends AccountDetailsPage {
     private WebElement nameAccount;
     @FindBy(xpath ="//*[@title='Edit']")
     private WebElement editButton;
+    @FindBy(xpath = "//td[@id='topButtonRow']/input[@name='delete']")
+    private WebElement deleteButton;
     /**
      * {@inheritDoc}.
      */
@@ -31,12 +33,27 @@ public class AccountDetailsPageClassic extends AccountDetailsPage {
     public AccountFormPage clickAccount(Account account) {
         String locatorNameEdit = "//a[text()='" + account.getName() + "']";
         driverTools.clickElement(By.xpath(locatorNameEdit));
-        return new AccountFormPage();
+        return new AccountFormPageClassic();
     }
 
     @Override
     public AccountFormPage clickEditButton() {
         driverTools.clickElement(editButton);
-        return new AccountFormPage();
+        return new AccountFormPageClassic();
+    }
+
+    @Override
+    public AccountListPage clickDelitButton() {
+        acceptAlertDialog();
+        driverTools.clickElement(deleteButton);
+        return new AccountListPageClassic();
+    }
+
+    @Override
+    public boolean containsThisElement(String name) {
+        String path = String.format("%s%s%s%s%s%s%s%s%s", "//td[contains(@class, 'data2Col')]/div[text()='", name, "']|",
+                "//td[contains(@class, 'dataCol')]/div/*[contains(text(), '", name, "')]|",
+                "//td[contains(@class, 'dataCol')]/div[contains(text(), '", name, "')]");
+        return driverTools.isElementDisplayed(By.xpath(path));
     }
 }

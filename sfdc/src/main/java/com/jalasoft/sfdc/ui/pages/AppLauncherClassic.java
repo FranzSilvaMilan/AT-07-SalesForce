@@ -1,6 +1,7 @@
 package com.jalasoft.sfdc.ui.pages;
 
 import com.jalasoft.sfdc.ui.pages.account.AccountListPage;
+import com.jalasoft.sfdc.ui.pages.account.AccountListPageClassic;
 import com.jalasoft.sfdc.ui.pages.account.AccountListPageLight;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPageClassic;
@@ -49,8 +50,10 @@ public class AppLauncherClassic extends AppLauncher {
     public AccountListPage gotToAccountPage(){
         //driverTools.waitUntilElementDisplayed(accountButton);
         driverTools.clickElement(accountButton);
-        driverTools.clickElement(closeWindows);
-        return new AccountListPageLight();
+        if(driverTools.isElementDisplayed(closeWindows)) {
+            driverTools.clickElement(closeWindows);
+        }
+        return new AccountListPageClassic();
     }
 
     /**

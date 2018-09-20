@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
 /**
  * class account steps
@@ -65,15 +67,7 @@ public class AccountSteps {
         accountDetailPage = accountFormPage.clickSaveButton();
     }
 
-    /**
-     * fill with field requiered
-     *
-     * @param nameRequeried on form of create account
-     */
-    @When("^I fill the Account form name with : \"([^\"]*)\"$")
-    public void iFillTheAccountFormNameWith(String nameRequeried) {
-        accountDetailPage = accountFormPage.setRequeredFiel(nameRequeried);
-    }
+
 
     /**
      * verify that name is displayed
@@ -111,5 +105,25 @@ public class AccountSteps {
     @Then("^I should see the Account updated in the Accounts page \"([^\"]*)\"$")
     public void iShouldSeeTheAccountUpdatedInTheAccountsPage(String nameSaved) {
         assertEquals(accountDetailPage.getNameNewAccount(),nameSaved);
+    }
+
+    @And("^I delete the Account$")
+    public void iDeleteTheAccount() throws Throwable {
+        accountListPage = accountDetailPage.clickDelitButton();
+    }
+
+    @Then("^I should see the Account is removed from the Accounts list page$")
+    public void iShouldSeeTheAccountIsRemovedFromTheAccountsListPage() throws Throwable {
+        assertFalse(accountListPage.containTheAccount(account));
+    }
+
+    private void validateAccount(Account myAccount) {
+        assertTrue(accountDetailPage.containsThisElement(myAccount.getName()), "The Name was not displayed correctly");
+        assertTrue(accountDetailPage.containsThisElement(myAccount.getFax()), "The Description was not displayed correctly");
+        assertTrue(accountDetailPage.containsThisElement(myAccount.getEmployees()), "The Employees was not displayed correctly");
+        assertTrue(accountDetailPage.containsThisElement(myAccount.getPhone()), "The Phone was not displayed correctly");
+        assertTrue(accountDetailPage.containsThisElement(myAccount.getNumber()), "The Indutry was not displayed correctly");
+        assertTrue(accountDetailPage.containsThisElement(myAccount.getSicCode()), "The Type was not displayed correctly");
+        assertTrue(accountDetailPage.containsThisElement(myAccount.getWeb()), "The Web adrres was not displayed correctly");
     }
 }
