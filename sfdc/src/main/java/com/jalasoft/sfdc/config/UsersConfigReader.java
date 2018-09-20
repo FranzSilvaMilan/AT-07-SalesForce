@@ -24,6 +24,11 @@ public final class UsersConfigReader {
     private static final String ALIAS = "alias";
     private static final String USER_NAME = "user name";
     private static final String USER_PASSWORD = "user password";
+    private static final String USER_TOKEN = "user token";
+    private static final String GRANT_TYPE = "grant type";
+    private static final String CLIENT_ID = "client id";
+    private static final String CLIENT_SECRET = "client secret";
+
     private JsonReader usersReader;
 
     private User user = new User();
@@ -76,6 +81,10 @@ public final class UsersConfigReader {
             User userNew = new User();
             userNew.setUserName(usersReader.getKeyValue(keys, USER_NAME));
             userNew.setPassword(usersReader.getKeyValue(keys, USER_PASSWORD));
+            userNew.setUserToken(usersReader.getKeyValue(keys, USER_TOKEN));
+            userNew.setGrantType(usersReader.getKeyValue(keys, GRANT_TYPE));
+            userNew.setClientId(usersReader.getKeyValue(keys, CLIENT_ID));
+            userNew.setClientSecret(usersReader.getKeyValue(keys, CLIENT_SECRET));
             mapUsers.put(keys, userNew);
         }
 

@@ -39,6 +39,11 @@ public class ContactListPageClassic extends ContactListPage {
         return new ContactFormPageClassic();
     }
 
+    /**
+     * The name of user is displayed.
+     * @param contact - class object Contact.
+     * @return if is displayed true or false.
+     */
     @Override
     public boolean isContatcNotDisplayed(Contact contact) {
         return driverTools.isElementDisplayed(By.xpath("//*[@id='mru0030b0000269Gfp']/child::a//following-sibling::span[text()='"+contact.getFirstName()+" "+contact.getLastName()+"']"));

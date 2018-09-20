@@ -51,14 +51,8 @@ public class ContactDetailsPageLight extends ContactDetailsPage {
     WebElement setTitleInput;
     @FindBy(xpath = "//*[text()='Mobile']//parent::label//following-sibling::input")
     WebElement setMobileInput;
-
     @FindBy(xpath = "//button[contains(@title,'Save')]")
     WebElement saveButton;
-    /**
-     * //*[text()='Name']/../following-sibling::div//child::span[@class="uiOutputText"] -- Name
-     * //*[text()='Title']/../following-sibling::div//child::span[@class="uiOutputText"] -- Title
-     * //*[text()='Languages']/../following-sibling::div//child::span[@class="uiOutputText"] -- Languaje
-     */
 
     /**
      * Xpath for delete contact.
@@ -118,14 +112,31 @@ public class ContactDetailsPageLight extends ContactDetailsPage {
         driverTools.clickElement(saveButton);
     }
 
+    /**
+     * The name of user is displayed in GUI.
+     * @param contact - class object Contact.
+     * @return if is displayed true or false.
+     */
     @Override
     public boolean isNameChangeDisplayed(Contact contact){
         return driverTools.isElementDisplayed(By.xpath("//span[text()='Name']/../following-sibling::div//child::span[text()='"+contact.getFirstName()+" "+contact.getLastName()+"']"));
     }
+
+    /**
+     * The title of user is displayed in GUI.
+     * @param contact - class object Contact.
+     * @return if is displayed true or false.
+     */
     @Override
     public boolean isTitleChangeDisplayed(Contact contact){
         return driverTools.isElementDisplayed(By.xpath("(//span[text()='Title'])/../following-sibling::div//child::span[text()='"+contact.getTitle()+"']"));
     }
+
+    /**
+     * The mobile of user is displayed in GUI.
+     * @param contact - class object Contact.
+     * @return if is displayed true or false.
+     */
     @Override
     public boolean isMobileChangeDisplayed(Contact contact){
         return driverTools.isElementDisplayed(By.xpath("(//span[text()='Mobile'])/../following-sibling::div//child::span[text()='"+contact.getMobile()+"']"));

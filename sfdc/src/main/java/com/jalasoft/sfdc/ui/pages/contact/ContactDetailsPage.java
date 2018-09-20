@@ -27,8 +27,26 @@ public abstract class ContactDetailsPage extends BasePage {
      * The method that delete of the contact
      */
     public abstract void clickOptionDelet();
+
+    /**
+     * The name of user is displayed in GUI.
+     * @param contact - class object Contact.
+     * @return if is displayed true or false.
+     */
     public abstract boolean isNameChangeDisplayed(Contact contact);
+
+    /**
+     * The title of user is displayed in GUI.
+     * @param contact - class object Contact.
+     * @return if is displayed true or false.
+     */
     public abstract boolean isTitleChangeDisplayed(Contact contact);
+
+    /**
+     * The mobile of user is displayed in GUI.
+     * @param contact - class object Contact.
+     * @return if is displayed true or false.
+     */
     public abstract boolean isMobileChangeDisplayed(Contact contact);
 
 }
