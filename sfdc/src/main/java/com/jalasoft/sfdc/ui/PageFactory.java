@@ -20,6 +20,9 @@ import com.jalasoft.sfdc.ui.pages.account.AccountDetailsPageLight;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.home.HomePageClassic;
 import com.jalasoft.sfdc.ui.pages.home.HomePageLight;
+import com.jalasoft.sfdc.ui.pages.products.ProductDetailsPage;
+import com.jalasoft.sfdc.ui.pages.products.ProductDetailsPageClassic;
+import com.jalasoft.sfdc.ui.pages.products.ProductDetailsPageLight;
 
 /**
  * PageFactory class.
@@ -36,9 +39,8 @@ public class PageFactory {
     //****************************************************************
 
     /**
-     * Returns an Instance of HomePage for the respective Skin
-     *
-     * @return
+     * Returns an Instance of HomePage for the respective Skin.
+     * @return HomePageClassic or HomePageLight.
      */
     public static HomePage getHomePage() {
         switch (skin) {
@@ -50,8 +52,8 @@ public class PageFactory {
     }
 
     /**
-     *
-     * @return
+     * Returns an Instance of TopMenu for the respective Skin.
+     * @return TopMenuClassic or TopMenuLight.
      */
     public static TopMenu getTopMenu() {
         switch (skin) {
@@ -63,8 +65,8 @@ public class PageFactory {
     }
 
     /**
-     *
-     * @return
+     * Returns an Instance of ProfilePage for the respective Skin.
+     * @return ProfilePageClassic or ProfilePageLight.
      */
     public static ProfilePage getProfilePage() {
         switch (skin) {
@@ -76,8 +78,8 @@ public class PageFactory {
     }
 
     /**
-     *
-     * @return
+     * Returns an Instance of AppLauncher for the respective Skin.
+     * @return AppLauncherClassic or AppLauncherLight.
      */
     public static AppLauncher getAppLauncher() {
         switch (skin) {
@@ -89,8 +91,8 @@ public class PageFactory {
     }
 
     /**
-     *
-     * @return
+     * Returns an Instance of AccountDetailsPage for the respective Skin.
+     * @return AccountDetailsPageClassic or AccountDetailsPageLight.
      */
     public static AccountDetailsPage getDetailAccountPage() {
         switch (skin) {
@@ -102,8 +104,8 @@ public class PageFactory {
     }
 
     /**
-     *
-     * @return
+     * Returns an Instance of AccountListPage for the respective Skin.
+     * @return AccountListPageClassic or AccountListPageLight.
      */
     public static AccountListPage getAccountListPage() {
         switch (skin) {
@@ -114,4 +116,16 @@ public class PageFactory {
         }
     }
 
+    /**
+     * Returns an Instance of ProductDetailsPage for the respective Skin.
+     * @return ProductDetailsPageClassic or ProductDetailsPageLight.
+     */
+    public static ProductDetailsPage getProductDetailsPage() {
+        switch (skin) {
+            case CLASSIC:
+                return new ProductDetailsPageClassic();
+            default:
+                return new ProductDetailsPageLight();
+        }
+    }
 }

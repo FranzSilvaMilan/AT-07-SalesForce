@@ -1,6 +1,7 @@
 package com.jalasoft.sfdc.ui.pages.products;
 
-import org.openqa.selenium.support.ui.ExpectedConditions;
+import com.jalasoft.sfdc.entities.Product;
+import org.openqa.selenium.By;
 
 /**
  * Product List Page Light class.
@@ -14,6 +15,7 @@ public class ProductListPageLight extends ProductListPage {
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
+        driverTools.waitUntilElementDisplayed(newButton);
     }
 
     /**
@@ -24,5 +26,10 @@ public class ProductListPageLight extends ProductListPage {
     public ProductFormPage clickButtonNew() {
         driverTools.clickElement(newButton);
         return new ProductFormPageLIght();
+    }
+
+    @Override
+    public boolean validateDelete(Product product) {
+        return driverTools.isElementDisplayed(By.xpath("//a[contains(@title,'"+product.getProductName()+"')]"));
     }
 }
