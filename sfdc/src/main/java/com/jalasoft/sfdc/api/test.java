@@ -1,13 +1,10 @@
 package com.jalasoft.sfdc.api;
 
-import com.jalasoft.sfdc.AutomationSFDC;
 import com.jalasoft.sfdc.config.ServersConfigReader;
 import com.jalasoft.sfdc.config.UsersConfigReader;
 import io.restassured.response.Response;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
 
 public class test {
     public static void main(String[] args) {

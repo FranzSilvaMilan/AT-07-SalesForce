@@ -39,9 +39,11 @@
   "erik": {
     "user name": "Erik.Vargas@fundacion-jala.org",
     "user password": "albertoerik8492",
-    "user token": "",
-    "grant type": "",
-    "client id": "",
-    "client secret": ""
+    "first name": "Erik",
+    "Last name": "Vargas",
+    "user token": "52AQAuH4xbArs9LXSc9vYAPmg",
+    "grant type": "password",
+    "client id": "3MVG9dZJodJWITSsPRQKvhlTAHLQVFiHnL.Rov.GAFReBCTyM3m8WslhDsIXO5SPl8h7jfQEMRccQgwYbD6q8",
+    "client secret": "928902302547745457"
   }
 }
