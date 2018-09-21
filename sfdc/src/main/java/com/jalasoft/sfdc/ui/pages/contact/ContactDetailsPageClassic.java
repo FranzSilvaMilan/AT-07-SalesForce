@@ -76,24 +76,6 @@ public class ContactDetailsPageClassic extends ContactDetailsPage {
     }
 
     /**
-     * Method that get a field of Contact.
-     * @return text of the field mobile.
-     */
-  /*  @Override
-    public String isMobileChangeDisplayed() {
-        return getMobileChange.getText();
-    }
-*/
-    /**
-     * Method that get a field of Contact.
-     * @return text of the field title.
-     */
-    //@Override
-     /*public String isTitleChangeDisplayed() {
-        return getTitleChange.getText();
-    }*/
-
-    /**
      * The method that delete of the contact
      */
     @Override
@@ -102,16 +84,31 @@ public class ContactDetailsPageClassic extends ContactDetailsPage {
         acceptAlertDialog();
     }
 
+    /**
+     * The name of user is displayed in GUI.
+     * @param contact - class object Contact.
+     * @return if is displayed true or false.
+     */
     @Override
     public boolean isNameChangeDisplayed(Contact contact) {
         return driverTools.isElementDisplayed(By.xpath("//div[text()='"+contact.getFirstName()+" "+contact.getLastName()+"']"));
     }
 
+    /**
+     * The title of user is displayed in GUI.
+     * @param contact - class object Contact.
+     * @return if is displayed true or false.
+     */
     @Override
     public boolean isTitleChangeDisplayed(Contact contact) {
         return driverTools.isElementDisplayed(By.xpath("//div[text()='"+contact.getTitle()+"']"));
     }
 
+    /**
+     * The mobile of user is displayed in GUI.
+     * @param contact - class object Contact.
+     * @return if is displayed true or false.
+     */
     @Override
     public boolean isMobileChangeDisplayed(Contact contact) {
         return driverTools.isElementDisplayed(By.xpath("//div[text()='"+contact.getMobile()+"']"));

@@ -103,6 +103,9 @@ public class ContactSteps {
         contactDetailsPage.clickOptionDelet();
     }
 
+    /**
+     * Remove the contact created.
+     */
     @Then("^Verified that the contact has been removed$")
     public void verifiedThatTheContactHasBeenRemoved() {
         assertEquals(contactListPage.isContatcNotDisplayed(contact), false);

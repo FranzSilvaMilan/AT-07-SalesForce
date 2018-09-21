@@ -20,10 +20,12 @@
   "danny": {
     "user name": "daniels@estudent.com",
     "user password": "blackmoon10",
-    "user token": "",
-    "grant type": "",
-    "client id": "",
-    "client secret": ""
+    "first name": "Daniel",
+    "Last name": "Sandoval",
+    "user token": "8tx5X6ehYPxwKwGXLgB71MIPD",
+    "grant type": "password",
+    "client id": "3MVG9dZJodJWITSvBqJYyVAXtTFmipnrH6l4kHrwYr4J0qxjmA7JTx5SKK83ZAjdUuXiRE18c2kjRRVXcJkd9",
+    "client secret": "6462463291053592650"
   },
   "franz": {
     "user name": "franzsilva@jala.com",

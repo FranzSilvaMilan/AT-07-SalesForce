@@ -30,6 +30,11 @@ public class ContactListPageLight extends ContactListPage {
         return new ContactFormPageLight();
     }
 
+    /**
+     * The name of user is displayed.
+     * @param contact - class object Contact.
+     * @return if is displayed true or false.
+     */
     @Override
     public boolean isContatcNotDisplayed(Contact contact) {
         return driverTools.isElementDisplayed(By.xpath("//a[contains(.,'"+contact.getFirstName()+" "+contact.getLastName()+"')]"));

@@ -11,6 +11,10 @@ public class User {
     private String password = "";
     private String firstName = "";
     private String lastName = "";
+    private String userToken = "";
+    private String grantType = "";
+    private String clientId = "";
+    private String clientSecret = "";
 
     /**
      * Sets the user name.
@@ -83,5 +87,37 @@ public class User {
      */
     public String getFullName() {
         return firstName.concat(" ").concat(lastName);
+    }
+
+    public String getUserToken() {
+        return userToken;
+    }
+
+    public void setUserToken(String userToken) {
+        this.userToken = userToken;
+    }
+
+    public String getGrantType() {
+        return grantType;
+    }
+
+    public void setGrantType(String grantType) {
+        this.grantType = grantType;
+    }
+
+    public String getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+    }
+
+    public String getClientSecret() {
+        return clientSecret;
+    }
+
+    public void setClientSecret(String clientSecret) {
+        this.clientSecret = clientSecret;
     }
 }

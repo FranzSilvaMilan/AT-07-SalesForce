@@ -17,10 +17,10 @@ public final class ServersConfigReader {
     private final String SERVICE_BASE_URI = "service base uri";
     private final String TOKEN_BASE_URI = "token base uri";
 
+
     private String server;
     private String serverAlias;
     private String url;
-
     private String serviceBaseUri;
     private String tokenBaseUri;
 
