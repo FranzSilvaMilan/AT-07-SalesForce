@@ -18,7 +18,7 @@ public class test {
         UsersConfigReader.getInstance().initialize(usersConfigFileName);
         ServersConfigReader.getInstance().initialize(serversConfigFileName);
 
-        Response responseAccount = APIManager.getInstance().get("/sobjects/Contact/0030b0000269HBiAAM?fields=Name");
+        Response responseAccount = APIManager.getInstance().get("/sobjects/Account/0010b00002E5XFPAA3?fields=Name");
         System.out.println(responseAccount.asString());
 
 //        Map<String, Object> jsonData = new HashMap<>();

@@ -1,5 +1,6 @@
 package com.jalasoft.sfdc.steps;
 
+import com.jalasoft.sfdc.api.apiClass.APIAccount;
 import com.jalasoft.sfdc.entities.Account;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.AppLauncher;
@@ -8,7 +9,7 @@ import com.jalasoft.sfdc.ui.pages.account.AccountEnum;
 import com.jalasoft.sfdc.ui.pages.account.AccountFormPage;
 import com.jalasoft.sfdc.ui.pages.account.AccountListPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import cucumber.api.PendingException;
+import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -32,6 +33,7 @@ public class AccountSteps {
     private AccountDetailsPage accountDetailPage;
     private Account account;
     private Account accountEdit;
+    APIAccount apiAccount;
 
     //****************************************************************
     //Account Step Definitions
@@ -80,20 +82,31 @@ public class AccountSteps {
         assertEquals(nameNewAccount, nameAccount);
     }
 
-
+    /**
+     * create account
+     * @param accountList
+     */
     @And("^I have new Account with following information:$")
     public void iHaveAccountWithFollowingInformation(List<Account> accountList) {
         account = accountList.get(0);
         iClickOnNew();
         accountDetailPage = accountFormPage.saveAccount(account);
+
     }
 
+    /**
+     * go to form account page
+     */
     @When("^I select the Account$")
     public void iSelectTheAccount() {
         //accountFormPage=accountDetailPage.clickAccount(account);
         accountFormPage=accountDetailPage.clickEditButton();
     }
 
+    /**
+     * edit account with following information
+     * @param accountListEdit values for edit
+     */
     @And("^I edit that Account with the following information:$")
     public void iEditThatAccountWithTheFollowingInformation(List<Account> accountListEdit) {
         //accountListEdit.forEach(step -> accountFormPage.);
@@ -102,21 +115,36 @@ public class AccountSteps {
 
     }
 
+    /**
+     * validate account that is showed on details page
+     * @param nameSaved
+     */
     @Then("^I should see the Account updated in the Accounts page \"([^\"]*)\"$")
     public void iShouldSeeTheAccountUpdatedInTheAccountsPage(String nameSaved) {
         assertEquals(accountDetailPage.getNameNewAccount(),nameSaved);
+        //validateAccount(account);
     }
 
+    /**
+     *delete account for UI
+     */
     @And("^I delete the Account$")
-    public void iDeleteTheAccount() throws Throwable {
+    public void iDeleteTheAccount() {
         accountListPage = accountDetailPage.clickDelitButton();
     }
 
+    /**
+     * verificate that account is deleted
+     */
     @Then("^I should see the Account is removed from the Accounts list page$")
-    public void iShouldSeeTheAccountIsRemovedFromTheAccountsListPage() throws Throwable {
+    public void iShouldSeeTheAccountIsRemovedFromTheAccountsListPage() {
         assertFalse(accountListPage.containTheAccount(account));
     }
 
+    /**
+     * validate all field on sales force UI
+     * @param myAccount
+     */
     private void validateAccount(Account myAccount) {
         assertTrue(accountDetailPage.containsThisElement(myAccount.getName()), "The Name was not displayed correctly");
         assertTrue(accountDetailPage.containsThisElement(myAccount.getFax()), "The Description was not displayed correctly");
@@ -125,5 +153,33 @@ public class AccountSteps {
         assertTrue(accountDetailPage.containsThisElement(myAccount.getNumber()), "The Indutry was not displayed correctly");
         assertTrue(accountDetailPage.containsThisElement(myAccount.getSicCode()), "The Type was not displayed correctly");
         assertTrue(accountDetailPage.containsThisElement(myAccount.getWeb()), "The Web adrres was not displayed correctly");
+    }
+
+    /**
+     * create account with API
+     * @param accountList
+     */
+    @And("^I create by API new Account with following information:$")
+    public void iCreateByAPINewAccountWithFollowingInformation(List<Account> accountList) {
+        apiAccount = new APIAccount(accountList.get(0));
+        account = accountList.get(0);
+        apiAccount.createSObjectRecord();
+    }
+
+    /**
+     * veifify account with API
+     */
+    @Then("^name should be displayed in detail Page Account$")
+    public void nameShouldBeDisplayedInDetailPageAccount() {
+        Account accountSpected = apiAccount.getAccountValuesByAPI();
+        assertEquals(accountSpected.getName(),account.getName());
+    }
+
+    //****************************************************************
+    //Hooks for @create Account api scenarios
+    //****************************************************************
+    @After(value = "@deleteAccountAfter", order = 999)
+    public void afterLoginScenario() {
+        apiAccount.deleteSObjectRecord();
     }
 }
