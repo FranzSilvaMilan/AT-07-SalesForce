@@ -1,6 +1,7 @@
 package com.jalasoft.sfdc.entities;
 
 public class Account{
+    private String id;
     private String name;
     private String number;
     private String web;
@@ -63,5 +64,13 @@ public class Account{
 
     public void setEmployees(String employees) {
         this.employees = employees;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
     }
 }
