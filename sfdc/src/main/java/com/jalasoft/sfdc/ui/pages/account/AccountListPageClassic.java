@@ -34,10 +34,10 @@ public class AccountListPageClassic extends AccountListPage {
     }
 
     @Override
-    public AccountFormPage clickAccount(Account account) {
+    public AccountDetailsPage clickAccountOnList(Account account) {
         String locatorNameEdit = "//a[text()='" + account.getName() + "']";
         driverTools.clickElement(By.xpath(locatorNameEdit));
-        return new AccountFormPageClassic();
+        return new AccountDetailsPageClassic();
     }
 
     @Override

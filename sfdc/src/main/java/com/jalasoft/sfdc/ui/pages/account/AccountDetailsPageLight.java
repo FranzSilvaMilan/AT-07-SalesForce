@@ -42,13 +42,6 @@ public class AccountDetailsPageLight extends AccountDetailsPage {
     }
 
     @Override
-    public AccountFormPage clickAccount(Account account) {
-        String accountXpath = "//a[contains(@class, 'slds-truncate') and contains(@title, '" + account.getName() + "')]";
-        driverTools.clickElement(By.xpath(accountXpath));
-        return new AccountFormPageLight();
-    }
-
-    @Override
     public AccountFormPage clickEditButton() {
         driverTools.clickElement(sectionDetails);
         driverTools.moveAndClickElement(optionsAccount);
