@@ -91,7 +91,9 @@ public class AccountSteps {
     public void iHaveAccountWithFollowingInformation(List<Account> accountList) {
         account = accountList.get(0);
         iClickOnNew();
+        apiAccount = new APIAccount(account);
         accountDetailPage = accountFormPage.saveAccount(account);
+        accountDetailPage.setIdAccount(account);
 
     }
 
@@ -204,7 +206,7 @@ public class AccountSteps {
     //Hooks for @create Account api scenarios
     //****************************************************************
     @After(value = "@deleteAccountAfter", order = 999)
-    public void afterLoginScenario() {
+    public void afterAccountScenario() {
         apiAccount.deleteSObjectRecord();
     }
 }
