@@ -64,4 +64,11 @@ public class AccountDetailsPageLight extends AccountDetailsPage {
         return driverTools.isElementDisplayed(By.xpath(path));
     }
 
+    @Override
+    public void setIdAccount(Account account) {
+        String url = driver.getCurrentUrl();
+        String[] urlSplit = url.split("/");
+        account.setId(urlSplit[urlSplit.length-2]);
+    }
+
 }

@@ -13,6 +13,7 @@ public class AccountFormPageLight extends AccountFormPage {
 
     @Override
     public void waitUntilPageObjectIsLoaded() {
+        driverTools.waitUntilElementDisplayed(accountNameTextField);
     }
 
     @FindBy(css = ".witsSuggestedNameField .input")

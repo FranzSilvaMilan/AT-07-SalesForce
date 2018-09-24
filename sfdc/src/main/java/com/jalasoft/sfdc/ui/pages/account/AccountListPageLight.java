@@ -12,7 +12,7 @@ public class AccountListPageLight extends AccountListPage {
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-
+        driverTools.waitUntilElementDisplayed(newButton);
     }
     /**
      * {@inheritDoc}.

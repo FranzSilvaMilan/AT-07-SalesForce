@@ -9,16 +9,18 @@ import org.openqa.selenium.support.FindBy;
 public class AccountDetailsPageClassic extends AccountDetailsPage {
     @FindBy(xpath = "//*[@class='topName']")
     private WebElement nameAccount;
-    @FindBy(xpath ="//*[@title='Edit']")
+    @FindBy(xpath = "//*[@title='Edit']")
     private WebElement editButton;
     @FindBy(xpath = "//td[@id='topButtonRow']/input[@name='delete']")
     private WebElement deleteButton;
+
     /**
      * {@inheritDoc}.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-    }//driverTools.waitUntilElementDisplayed(nameAccount);    }
+        driverTools.waitUntilElementDisplayed(nameAccount);
+    }
 
     /**
      * {@inheritDoc}.
@@ -48,5 +50,12 @@ public class AccountDetailsPageClassic extends AccountDetailsPage {
                 "//td[contains(@class, 'dataCol')]/div/*[contains(text(), '", name, "')]|",
                 "//td[contains(@class, 'dataCol')]/div[contains(text(), '", name, "')]");
         return driverTools.isElementDisplayed(By.xpath(path));
+    }
+
+    @Override
+    public void setIdAccount(Account account) {
+        String url = driver.getCurrentUrl();
+        String[] urlSplit = url.split("/");
+        account.setId(urlSplit[urlSplit.length - 1]);
     }
 }
