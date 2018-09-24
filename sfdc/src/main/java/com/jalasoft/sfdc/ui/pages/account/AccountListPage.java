@@ -21,6 +21,6 @@ public abstract class AccountListPage extends ListBasePage {
      * @return
      */
     public abstract AccountFormPage clickEditButton(String accountName);
-    public abstract AccountFormPage clickAccount(Account account);
+    public abstract AccountDetailsPage clickAccountOnList(Account account);
     public abstract boolean containTheAccount(Account account);
 }

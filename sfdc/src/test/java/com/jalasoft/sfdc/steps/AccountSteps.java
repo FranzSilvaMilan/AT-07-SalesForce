@@ -9,6 +9,7 @@ import com.jalasoft.sfdc.ui.pages.account.AccountEnum;
 import com.jalasoft.sfdc.ui.pages.account.AccountFormPage;
 import com.jalasoft.sfdc.ui.pages.account.AccountListPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
+import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -70,7 +71,6 @@ public class AccountSteps {
     }
 
 
-
     /**
      * verify that name is displayed
      *
@@ -84,6 +84,7 @@ public class AccountSteps {
 
     /**
      * create account
+     *
      * @param accountList
      */
     @And("^I have new Account with following information:$")
@@ -99,34 +100,37 @@ public class AccountSteps {
      */
     @When("^I select the Account$")
     public void iSelectTheAccount() {
-        //accountFormPage=accountDetailPage.clickAccount(account);
-        accountFormPage=accountDetailPage.clickEditButton();
+        //
+        accountFormPage = accountDetailPage.clickEditButton();
     }
 
     /**
      * edit account with following information
+     *
      * @param accountListEdit values for edit
      */
-    @And("^I edit that Account with the following information:$")
+    @And("^I edit the Account with the following information:$")
     public void iEditThatAccountWithTheFollowingInformation(List<Account> accountListEdit) {
         //accountListEdit.forEach(step -> accountFormPage.);
         accountEdit = accountListEdit.get(0);
-        accountDetailPage=accountFormPage.saveAccount(accountEdit);
+        System.out.println(accountEdit.getName() + " "+ accountEdit.getNumber());
+        accountDetailPage = accountFormPage.saveAccount(accountEdit);
 
     }
 
     /**
      * validate account that is showed on details page
+     *
      * @param nameSaved
      */
     @Then("^I should see the Account updated in the Accounts page \"([^\"]*)\"$")
     public void iShouldSeeTheAccountUpdatedInTheAccountsPage(String nameSaved) {
-        assertEquals(accountDetailPage.getNameNewAccount(),nameSaved);
+        assertEquals(accountDetailPage.getNameNewAccount(), nameSaved);
         //validateAccount(account);
     }
 
     /**
-     *delete account for UI
+     * delete account for UI
      */
     @And("^I delete the Account$")
     public void iDeleteTheAccount() {
@@ -143,6 +147,7 @@ public class AccountSteps {
 
     /**
      * validate all field on sales force UI
+     *
      * @param myAccount
      */
     private void validateAccount(Account myAccount) {
@@ -157,9 +162,10 @@ public class AccountSteps {
 
     /**
      * create account with API
+     *
      * @param accountList
      */
-    @And("^I create by API new Account with following information:$")
+    @And("^I have Account with following information:$")
     public void iCreateByAPINewAccountWithFollowingInformation(List<Account> accountList) {
         apiAccount = new APIAccount(accountList.get(0));
         account = accountList.get(0);
@@ -172,7 +178,26 @@ public class AccountSteps {
     @Then("^name should be displayed in detail Page Account$")
     public void nameShouldBeDisplayedInDetailPageAccount() {
         Account accountSpected = apiAccount.getAccountValuesByAPI();
-        assertEquals(accountSpected.getName(),account.getName());
+        assertEquals(accountSpected.getName(), account.getName());
+    }
+
+    /**
+     * the account list 
+     */
+    @When("^I select the Account on list account page$")
+    public void iSelectTheAccountOnListAccountPage() {
+        accountDetailPage = accountListPage.clickAccountOnList(account);
+        accountFormPage = accountDetailPage.clickEditButton();
+    }
+
+    /**
+     * verify that account is update
+     */
+    @Then("^I should the Account updated$")
+    public void iShouldTheAccountUpdated() {
+        Account accountSpected = apiAccount.getAccountValuesByAPI();
+        assertEquals(accountSpected.getName(), accountEdit.getName());
+        assertEquals(accountSpected.getWeb(), accountEdit.getWeb());
     }
 
     //****************************************************************

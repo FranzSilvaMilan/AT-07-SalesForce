@@ -274,31 +274,13 @@ public class AccountFormPageLight extends AccountFormPage {
     }
     @Override
     public AccountDetailsPage saveAccount(Account account) {
-        /**List<StrategySetInputs> strategies =
-         Arrays.asList(
-         () -> {setAccountNameTextField(String.valueOf(account.getName()));},
-         () -> {setAccountNameTextField(String.valueOf(account.getNumber()));},
-         () -> {setAccountNameTextField(String.valueOf(account.getWeb()));},
-         () -> {setAccountNameTextField(String.valueOf(account.getFax()));},
-         () -> {setAccountNameTextField(String.valueOf(account.getPhone()));},
-         () -> {setAccountNameTextField(String.valueOf(account.getSicCode()));},
-         () -> {setAccountNameTextField(String.valueOf(account.getEmployees()));}
-         );
-         */System.out.println("name");
         if (account.getName() != null) driverTools.setInputField(accountNameTextField, account.getName());
-        System.out.println("number");
         if (account.getNumber() != null) driverTools.setInputField(accountNumberTextField, account.getNumber());
-        System.out.println("web");
         if (account.getWeb() != null) driverTools.setInputField(accountWebsite, account.getWeb());
-        System.out.println("fax");
         if (account.getFax() != null) driverTools.setInputField(accountFax, account.getFax());
-        System.out.println("phone");
         if (account.getPhone() != null) driverTools.setInputField(accountPhone, account.getPhone());
-        System.out.println("siccode");
         if (account.getSicCode() != null) driverTools.setInputField(accountSICCode, account.getSicCode());
-        System.out.println("employes");
         if (account.getEmployees() != null) driverTools.setInputField(accountEmployee, account.getEmployees());
-        System.out.println("click en save");
         driverTools.clickElement(saveButton);
         driverTools.sleepMilliSeconds(3000);
         return new AccountDetailsPageLight();
