@@ -15,7 +15,6 @@ import java.util.List;
  */
 public class ProductDetailsPageLight extends ProductDetailsPage {
 
-    //@FindBy(xpath = "(//span[@class='uiOutputText'])[2]")
     @FindBy(xpath = "//p[contains(text(),'Product')]/following::h1")
     private WebElement productNameLabel;
 
@@ -69,7 +68,6 @@ public class ProductDetailsPageLight extends ProductDetailsPage {
      */
     @Override
     public List<String> validateInputs() {
-        log.info("-----Start validate inputs-----");
         ArrayList<String> listInputs = new ArrayList<>();
         listInputs.add(productNameInput.getText());
         listInputs.add(productCodeInput.getText());
@@ -98,6 +96,10 @@ public class ProductDetailsPageLight extends ProductDetailsPage {
         return new ProductFormPageLIght();
     }
 
+    @Override
+    public boolean validateDelete(Product product) {
+        return false;
+    }
     /**
      * Method for delete Product.
      */
@@ -107,10 +109,4 @@ public class ProductDetailsPageLight extends ProductDetailsPage {
         driverTools.clickElement(deletButton);
         driverTools.clickElement(popupDeleteButton);
     }
-
-    @Override
-    public boolean validateDelete(Product product) {
-        return false;
-    }
-
 }
