@@ -23,7 +23,7 @@ public class Contact {
     private String level = "";
     private String leadSource = "";
     private String mailingStreet = "";
-
+    private String Id = "";
     /**
      * Gets the contact first name.
      * @return the current contact first name.
@@ -278,5 +278,21 @@ public class Contact {
      */
     public void setMailingStreet(String mailingStreet) {
         this.mailingStreet = mailingStreet;
+    }
+
+    /**
+     * Gets the contact id.
+     * @return the current contact id.
+     */
+    public String getId() {
+        return Id;
+    }
+
+    /**
+     * Sets the contact id.
+     * @param id contact id to set.
+     */
+    public void setId(String id) {
+        Id = id;
     }
 }

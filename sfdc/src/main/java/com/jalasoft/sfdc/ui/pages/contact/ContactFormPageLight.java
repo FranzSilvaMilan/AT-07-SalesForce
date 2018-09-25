@@ -40,6 +40,7 @@ public class ContactFormPageLight extends ContactFormPage {
     WebElement saveButton;
     //By by;//*[contains(text(),'Secondary')]//parent::div//child::a
 
+
     /**
      * Method that set and save the date of a new Contact.
      *

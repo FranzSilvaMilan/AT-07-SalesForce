@@ -16,7 +16,7 @@ public class ContactListPageLight extends ContactListPage {
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-
+        driverTools.waitUntilElementDisplayed(newButton);
     }
 
     /**
@@ -38,5 +38,18 @@ public class ContactListPageLight extends ContactListPage {
     @Override
     public boolean isContatcNotDisplayed(Contact contact) {
         return driverTools.isElementDisplayed(By.xpath("//a[contains(.,'"+contact.getFirstName()+" "+contact.getLastName()+"')]"));
+    }
+
+    /**
+     * Selection a contact crete of contact List.
+     * @param contact - class object Contact.
+     * @return contact details page light.
+     */
+    @Override
+    public ContactDetailsPage clickContactOnList(Contact contact) {
+        String accountXpath = "//a[contains(@class, 'slds-truncate') and contains(@title, '" + contact.getFirstName()+" "+contact.getLastName() + "')]";
+        driverTools.refreshPage();
+        driverTools.clickElement(By.xpath(accountXpath));
+        return new ContactDetailsPageLight();
     }
 }

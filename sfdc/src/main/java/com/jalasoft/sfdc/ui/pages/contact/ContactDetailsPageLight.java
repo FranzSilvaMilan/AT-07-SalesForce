@@ -159,6 +159,6 @@ public class ContactDetailsPageLight extends ContactDetailsPage {
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-
+        //driverTools.waitUntilElementDisplayed(saveButton);
     }
 }

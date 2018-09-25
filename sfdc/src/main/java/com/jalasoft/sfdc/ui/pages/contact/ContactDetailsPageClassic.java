@@ -57,7 +57,7 @@ public class ContactDetailsPageClassic extends ContactDetailsPage {
     @Override
     public void clickOptionEditButton(Contact contact) {
         driverTools.clickElement(editButton);
-        driverTools.clickElement(setFirstNameInput);
+        //driverTools.clickElement(setFirstNameInput);
         driverTools.setInputField(setFirstNameInput, contact.getFirstName());
         driverTools.clickElement(setLastNameInput);
         driverTools.setInputField(setLastNameInput, contact.getLastName());
@@ -119,6 +119,6 @@ public class ContactDetailsPageClassic extends ContactDetailsPage {
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-
+        driverTools.waitUntilElementDisplayed(editButton);
     }
 }
