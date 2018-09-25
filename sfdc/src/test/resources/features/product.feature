@@ -4,8 +4,7 @@ Feature: Create a new Product.
     Given I navigate to Login page
     And I login as "erik" User
 
-  #createProduct
-  @deleteProductAfter
+  @createProduct
   Scenario: Verify that is possible create a new product with required fields
     When I go to Product list Page
     And I click a New Product
@@ -14,8 +13,7 @@ Feature: Create a new Product.
       | laptop       | 123          | product created     | false  | None           |
     Then Should be displayed Detail Product Page
 
-  #editProduct
-  @deleteProductAfter
+  @editProduct @deleteProductAfter
   Scenario: Verify that is possible edit a Product
     When I go to Product list Page
     And I click a New Product
@@ -28,8 +26,7 @@ Feature: Create a new Product.
       | new edited   | 98797        | product edited      | false  | None           |
     Then Should be displayed Detail Product Page
 
-  #deleteProduct
-  @deleteProductAfter
+  @deleteProduct @deleteProductAfter
   Scenario: Verify that is possible delete a Product
     When I go to Product list Page
     And I click a New Product
