@@ -13,6 +13,8 @@ public class Product {
     private boolean active;
     private String productFamily = "";
 
+    private String id;
+
     /**
      * Gets the product name.
      * @return the current product name.
@@ -77,11 +79,35 @@ public class Product {
         this.productDescription = productDescription;
     }
 
+    /**
+     * Gets the product family.
+     * @return the current product family.
+     */
     public String getProductFamily() {
         return productFamily;
     }
 
+    /**
+     * Sets the product family.
+     * @param productFamily product family to set.
+     */
     public void setProductFamily(String productFamily) {
         this.productFamily = productFamily;
+    }
+
+    /**
+     * Gets the product id.
+     * @return the current product id.
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * Sets the product id.
+     * @param id product to set.
+     */
+    public void setId(String id) {
+        this.id = id;
     }
 }

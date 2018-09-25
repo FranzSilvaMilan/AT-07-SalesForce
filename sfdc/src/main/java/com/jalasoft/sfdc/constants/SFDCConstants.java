@@ -18,4 +18,12 @@ public final class SFDCConstants {
     public final static String ACCOUNT_PHONE = "Phone";
     public final static String ACCOUNT_EMPLOYEES = "NumberOfEmployees";
 
+    //Product
+    public final static String PRODUCT = "Product2";
+    public final static String PRODUCT_NAME = "Name";
+    public final static String PRODUCT_CODE = "ProductCode";
+    public final static String PRODUCT_DESCRIPTION = "Description";
+    public final static String PRODUCT_FAMILY = "Family";
+    public final static String PRODUCT_ACTIVE = "IsActive";
+
 }

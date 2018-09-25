@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 
 /**
  * Product List Page Light class.
- *
  * @author Erik Vargas
  */
 public class ProductListPageLight extends ProductListPage {
@@ -28,8 +27,25 @@ public class ProductListPageLight extends ProductListPage {
         return new ProductFormPageLIght();
     }
 
+    /**
+     * Method for validate that Product was deleted.
+     * @param product field product list.
+     * @return element to validate.
+     */
     @Override
     public boolean validateDelete(Product product) {
         return driverTools.isElementDisplayed(By.xpath("//a[contains(@title,'"+product.getProductName()+"')]"));
+    }
+
+    /**
+     * Method for edit Product.
+     * @param product field list.
+     * @return product detail page.
+     */
+    @Override
+    public ProductDetailsPage clickProductOnList(Product product) {
+        String productXpath = "//a[contains(.,'"+product.getProductName()+"')]";
+        driverTools.moveAndClickElement(By.xpath(productXpath));
+        return new ProductDetailsPageLight();
     }
 }
