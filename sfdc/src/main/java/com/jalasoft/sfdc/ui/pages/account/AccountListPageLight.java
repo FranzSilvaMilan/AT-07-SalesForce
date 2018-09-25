@@ -12,7 +12,7 @@ public class AccountListPageLight extends AccountListPage {
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-
+        driverTools.waitUntilElementDisplayed(newButton);
     }
     /**
      * {@inheritDoc}.
@@ -32,10 +32,10 @@ public class AccountListPageLight extends AccountListPage {
     }
 
     @Override
-    public AccountFormPage clickAccount(Account account) {
+    public AccountDetailsPage clickAccountOnList(Account account) {
         String accountXpath = "//a[contains(@class, 'slds-truncate') and contains(@title, '" + account.getName() + "')]";
         driverTools.clickElement(By.xpath(accountXpath));
-        return new AccountFormPageLight();
+        return new AccountDetailsPageLight();
     }
 
     @Override

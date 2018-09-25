@@ -42,13 +42,6 @@ public class AccountDetailsPageLight extends AccountDetailsPage {
     }
 
     @Override
-    public AccountFormPage clickAccount(Account account) {
-        String accountXpath = "//a[contains(@class, 'slds-truncate') and contains(@title, '" + account.getName() + "')]";
-        driverTools.clickElement(By.xpath(accountXpath));
-        return new AccountFormPageLight();
-    }
-
-    @Override
     public AccountFormPage clickEditButton() {
         driverTools.clickElement(sectionDetails);
         driverTools.moveAndClickElement(optionsAccount);
@@ -69,6 +62,13 @@ public class AccountDetailsPageLight extends AccountDetailsPage {
         String path = String.format("%s%s%s%s%s", "//span[contains(@class,'slds-form-element__static')]//span//a[text()='"
                 , name, "'] | //span[contains(@class,'slds-form-element__static')]//span[text()='", name, "']");
         return driverTools.isElementDisplayed(By.xpath(path));
+    }
+
+    @Override
+    public void setIdAccount(Account account) {
+        String url = driver.getCurrentUrl();
+        String[] urlSplit = url.split("/");
+        account.setId(urlSplit[urlSplit.length-2]);
     }
 
 }

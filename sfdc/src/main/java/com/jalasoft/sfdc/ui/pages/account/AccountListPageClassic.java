@@ -12,7 +12,7 @@ public class AccountListPageClassic extends AccountListPage {
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-
+        driverTools.waitUntilElementDisplayed(newButton);
     }
 
     /**
@@ -20,7 +20,7 @@ public class AccountListPageClassic extends AccountListPage {
      */
     @Override
     public AccountFormPage clickNewButton() {
-        //driverTools.waitUntilElementDisplayed(newButton);
+        //
         driverTools.clickElement(newButton);
         return new AccountFormPageClassic();
     }
@@ -34,10 +34,10 @@ public class AccountListPageClassic extends AccountListPage {
     }
 
     @Override
-    public AccountFormPage clickAccount(Account account) {
+    public AccountDetailsPage clickAccountOnList(Account account) {
         String locatorNameEdit = "//a[text()='" + account.getName() + "']";
         driverTools.clickElement(By.xpath(locatorNameEdit));
-        return new AccountFormPageClassic();
+        return new AccountDetailsPageClassic();
     }
 
     @Override
