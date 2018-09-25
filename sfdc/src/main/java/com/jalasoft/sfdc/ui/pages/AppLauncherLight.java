@@ -3,6 +3,7 @@ package com.jalasoft.sfdc.ui.pages;
 import com.jalasoft.sfdc.ui.pages.account.AccountListPage;
 import com.jalasoft.sfdc.ui.pages.account.AccountListPageLight;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPage;
+import com.jalasoft.sfdc.ui.pages.opportunities.OpportunitieListPage;
 import com.jalasoft.sfdc.ui.pages.priceBook.PriceBookListPage;
 import com.jalasoft.sfdc.ui.pages.priceBook.PriceBookListPageLight;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPageLight;
@@ -69,5 +70,10 @@ public class AppLauncherLight extends AppLauncher {
     public PriceBookListPage goToPriceBookPage() {
         driverTools.clickElement(priceBookButton);
         return new PriceBookListPageLight();
+    }
+
+    @Override
+    public OpportunitieListPage goToOpportunitiesPage() {
+        return null;
     }
 }

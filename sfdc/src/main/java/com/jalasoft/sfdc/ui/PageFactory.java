@@ -20,6 +20,9 @@ import com.jalasoft.sfdc.ui.pages.account.AccountDetailsPageLight;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.home.HomePageClassic;
 import com.jalasoft.sfdc.ui.pages.home.HomePageLight;
+import com.jalasoft.sfdc.ui.pages.opportunities.OpportunitieListPage;
+import com.jalasoft.sfdc.ui.pages.opportunities.OpportunitieListPageClassic;
+import com.jalasoft.sfdc.ui.pages.opportunities.OpportunitieListPageLight;
 import com.jalasoft.sfdc.ui.pages.products.ProductDetailsPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductDetailsPageClassic;
 import com.jalasoft.sfdc.ui.pages.products.ProductDetailsPageLight;
@@ -126,6 +129,19 @@ public class PageFactory {
                 return new ProductDetailsPageClassic();
             default:
                 return new ProductDetailsPageLight();
+        }
+    }
+
+    /**
+     * Returns an Instance of OpportunitieListPage for the respective Skin.
+     * @return OpportunitieListPageClassic or OpportunitieListPageLight.
+     */
+    public static OpportunitieListPage getOpportunitieListPage() {
+        switch (skin) {
+            case CLASSIC:
+                return new OpportunitieListPageClassic();
+            default:
+                return new OpportunitieListPageLight();
         }
     }
 }
