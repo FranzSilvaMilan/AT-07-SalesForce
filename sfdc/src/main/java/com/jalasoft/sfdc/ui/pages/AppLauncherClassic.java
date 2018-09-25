@@ -63,6 +63,9 @@ public class AppLauncherClassic extends AppLauncher {
     @Override
     public ContactListPage goToContactPage() {
         driverTools.clickElement(contactButton);
+        if(driverTools.isElementDisplayed(closeWindows)) {
+            driverTools.clickElement(closeWindows);
+        }
         return new ContactListPageClassic();
     }
 

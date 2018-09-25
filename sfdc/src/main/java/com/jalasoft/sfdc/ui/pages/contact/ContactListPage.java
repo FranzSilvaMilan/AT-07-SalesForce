@@ -27,4 +27,6 @@ public abstract class ContactListPage extends ListBasePage {
     public abstract ContactFormPage gotToNewButton();
 
     public abstract boolean isContatcNotDisplayed(Contact contact);
+
+    public abstract ContactDetailsPage clickContactOnList(Contact contact);
 }

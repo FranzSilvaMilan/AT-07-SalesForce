@@ -48,4 +48,17 @@ public class ContactListPageClassic extends ContactListPage {
     public boolean isContatcNotDisplayed(Contact contact) {
         return driverTools.isElementDisplayed(By.xpath("//*[@id='mru0030b0000269Gfp']/child::a//following-sibling::span[text()='"+contact.getFirstName()+" "+contact.getLastName()+"']"));
     }
+
+    /**
+     * Selection a contact crete of contact List.
+     * @param contact - class object Contact.
+     * @return contact details page light.
+     */
+    @Override
+    public ContactDetailsPage clickContactOnList(Contact contact) {
+        String accountXpath = "//*[@class=' dataCell  ']//child::a[contains(text(),'" + contact.getLastName()+", "+contact.getFirstName() + "')]";
+        driverTools.refreshPage();
+        driverTools.clickElement(By.xpath(accountXpath));
+        return new ContactDetailsPageClassic();
+    }
 }
