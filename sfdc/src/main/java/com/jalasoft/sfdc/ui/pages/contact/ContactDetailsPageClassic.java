@@ -27,9 +27,7 @@ public class ContactDetailsPageClassic extends ContactDetailsPage {
     WebElement setFirstNameInput;
     @FindBy(xpath = "//input[contains(@id,'name_lastcon2')]")
     WebElement setLastNameInput;
-    /**
-     * Xpath for get fields and save changes.
-     */
+
     @FindBy(xpath = "//*[@id='topButtonRow']//child::input[@name='save']")
     WebElement saveButton;
     @FindBy(xpath = "//div[@id='con5_ileinner']")
@@ -42,7 +40,6 @@ public class ContactDetailsPageClassic extends ContactDetailsPage {
 
     /**
      * Method that get the last name created.
-     *
      * @return - last name.
      */
     @Override
@@ -50,14 +47,17 @@ public class ContactDetailsPageClassic extends ContactDetailsPage {
         return contactLabelName.getText().trim();
     }
 
+    @Override
+    public void clickEditButton() {//ToDo
+        driverTools.clickElement(editButton);
+    }
+
     /**
      * The method allows us to edit the created contact.
      * @param contact - is the object that contains the contact's data.
      */
     @Override
-    public void clickOptionEditButton(Contact contact) {
-        driverTools.clickElement(editButton);
-        //driverTools.clickElement(setFirstNameInput);
+    public void setNewChangesToContact(Contact contact) {
         driverTools.setInputField(setFirstNameInput, contact.getFirstName());
         driverTools.clickElement(setLastNameInput);
         driverTools.setInputField(setLastNameInput, contact.getLastName());
@@ -65,13 +65,6 @@ public class ContactDetailsPageClassic extends ContactDetailsPage {
         driverTools.setInputField(setTitleInput, contact.getTitle());
         driverTools.clickElement(setMobileInput);
         driverTools.setInputField(setMobileInput, contact.getMobile());
-    }
-
-    /**
-     * Save of changes mades.
-     */
-    @Override
-    public void isSaveOfChangeMade() {
         driverTools.clickElement(saveButton);
     }
 
@@ -79,7 +72,7 @@ public class ContactDetailsPageClassic extends ContactDetailsPage {
      * The method that delete of the contact
      */
     @Override
-    public void clickOptionDelet() {
+    public void clickDeletedButton() {
         driverTools.clickElement(deleteButton);
         acceptAlertDialog();
     }

@@ -17,7 +17,7 @@ import java.util.List;
 public class ContactDetailsPageLight extends ContactDetailsPage {
     private List<String> contenedor = new ArrayList<>();
 
-    @FindBy(xpath = "(//*[@class='testonly-outputNameWithHierarchyIcon sfaOutputNameWithHierarchyIcon']//child::span)[1]")
+    @FindBy(xpath = "//*[@class='slds-media__body']//child::h1//child::span[@class='slds-truncate uiOutputText']")
     WebElement contactlabelName;
     @FindBy(xpath = "//span[@class='title'][contains(.,'Details')]")
     WebElement detailsClickOption;
@@ -71,8 +71,17 @@ public class ContactDetailsPageLight extends ContactDetailsPage {
      */
     @Override
     public String isContactNameDisplayed() {
+//        if(driverTools.isElementDisplayed(editButton)){
+//            driverTools.refreshPage();
+//            driverTools.clickElement(detailsClickOption);
+//        }
+        return contactlabelName.getText();
+    }
+
+    @Override
+    public void clickEditButton() {//ToDo
         driverTools.clickElement(detailsClickOption);
-        return contactlabelName.getText().trim();
+        driverTools.clickElement(editButton);
     }
 
     public List<String> camposValidados() {
@@ -92,9 +101,7 @@ public class ContactDetailsPageLight extends ContactDetailsPage {
      * @param contact - is the object that contains the contact's data.
      */
     @Override
-    public void clickOptionEditButton(Contact contact) {
-        driverTools.clickElement(detailsClickOption);
-        driverTools.clickElement(editButton);
+    public void setNewChangesToContact(Contact contact) {
         driverTools.setInputField(setFirstNameInput, contact.getFirstName());
         driverTools.clickElement(setLastNameInput);
         driverTools.setInputField(setLastNameInput, contact.getLastName());
@@ -102,15 +109,24 @@ public class ContactDetailsPageLight extends ContactDetailsPage {
         driverTools.setInputField(setTitleInput, contact.getTitle());
         driverTools.clickElement(setMobileInput);
         driverTools.setInputField(setMobileInput, contact.getMobile());
+        driverTools.clickElement(saveButton);
+        driverTools.waitWebElementInVisibility(saveButton);
+        contact.setId(getUrlCurrent(driver.getCurrentUrl()));
+    }
+
+    private String getUrlCurrent(String currentUrl){
+        String[] currentUrlList = currentUrl.split("/");
+        String idUrl = currentUrlList[currentUrlList.length - 2];
+        return idUrl;
     }
 
     /**
      * Save of changes mades.
      */
-    @Override
-    public void isSaveOfChangeMade() {
-        driverTools.clickElement(saveButton);
-    }
+//    @Override
+//    public void isSaveOfChangeMade() {
+//        driverTools.clickElement(saveButton);
+//    }
 
     /**
      * The name of user is displayed in GUI.
@@ -147,7 +163,7 @@ public class ContactDetailsPageLight extends ContactDetailsPage {
      * The method that delete of the contact
      */
     @Override
-    public void clickOptionDelet() {
+    public void clickDeletedButton() {
         driverTools.clickElement(detailsClickOption);
         driverTools.moveAndClickElement(showMoreActionCombobox);
         driverTools.clickElement(deletOption);
@@ -159,6 +175,6 @@ public class ContactDetailsPageLight extends ContactDetailsPage {
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        //driverTools.waitUntilElementDisplayed(saveButton);
+        driverTools.waitUntilElementDisplayed(detailsClickOption);
     }
 }

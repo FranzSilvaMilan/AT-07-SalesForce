@@ -31,6 +31,7 @@ public final class SFDCConstants {
     public final static String CONTACT_LEAD_SOURCE = "LeadSource";
     public final static String CONTACT_lANGUAJE = "Languages__c";
     public final static String CONTACT_LEVEL = "Level__c";
+    public final static String CONTACT_ID = "Id";
 
     //Product
     public final static String PRODUCT = "Product2";
