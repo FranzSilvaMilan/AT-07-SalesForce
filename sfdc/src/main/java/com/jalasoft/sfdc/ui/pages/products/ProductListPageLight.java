@@ -45,6 +45,7 @@ public class ProductListPageLight extends ProductListPage {
     @Override
     public ProductDetailsPage clickProductOnList(Product product) {
         String productXpath = "//a[contains(.,'"+product.getProductName()+"')]";
+        driverTools.refreshPage();
         driverTools.moveAndClickElement(By.xpath(productXpath));
         return new ProductDetailsPageLight();
     }
