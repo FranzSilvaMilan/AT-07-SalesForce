@@ -1,9 +1,7 @@
 package com.jalasoft.sfdc.api.apiClass;
 
 import com.jalasoft.sfdc.api.APIManager;
-import com.jalasoft.sfdc.entities.Account;
 import com.jalasoft.sfdc.entities.Product;
-import io.restassured.response.Response;
 
 import java.util.HashMap;
 import java.util.Map;

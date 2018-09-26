@@ -45,6 +45,7 @@ public class ProductListPageClassic extends ProductListPage {
     public ProductDetailsPage clickProductOnList(Product product) {
         clickClosePopup();
         String productXpath = "//a[contains(.,'"+product.getProductName()+"')]";
+        driverTools.refreshPage();
         driverTools.clickElement(By.xpath(productXpath));
         return new ProductDetailsPageClassic();
     }

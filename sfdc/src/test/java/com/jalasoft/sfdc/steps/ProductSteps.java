@@ -8,7 +8,6 @@ import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.products.ProductDetailsPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductFormPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductListPage;
-import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -36,7 +35,6 @@ public class ProductSteps {
     private ProductDetailsPage productDetailsPage;
     // Entities
     private Product product1;
-    private Product product;
 
     APIProduct apiProduct;
 
@@ -57,7 +55,7 @@ public class ProductSteps {
     /**
      * Create new Product
      */
-    @And("^I click a New Product$")
+    @And("^I click a New Product button$")
     public void iClickANewProduct() {
         productFormPage = productListPage.clickButtonNew();
     }
@@ -66,7 +64,7 @@ public class ProductSteps {
      * Fill required fields.
      * @param product - Name of the Product.
      */
-    @And("^I fill in required fields$")
+    @When("^I create the Product with the following information$")
     public void iFillInRequiredFields(List<Product> product) {
         product1 = product.get(0);
         productDetailsPage = productFormPage.clickSaveProduct(product1);
@@ -75,7 +73,7 @@ public class ProductSteps {
     /**
      * Validation of the product created.
      */
-    @Then("^Should be displayed Detail Product Page$")
+    @Then("^the Product information should be displayed in Product Details page$")
     public void shouldBeDisplayedDetailProductPageWith() {
         assertEquals(productDetailsPage.isProductNameDisplayed(), product1.getProductName());
         assertEquals(productDetailsPage.validateInputs().get(0), product1.getProductName());
@@ -86,29 +84,9 @@ public class ProductSteps {
     }
 
     /**
-     * Edit Product.
-     */
-    @When("^I edit Product$")
-    public void iClickAEditProduct() {
-        homePage = PageFactory.getHomePage();
-        productDetailsPage=PageFactory.getProductDetailsPage();
-        productFormPage = productDetailsPage.clickEditBtn();
-    }
-
-    /**
-     * Fill fields for edit.
-     * @param product Name of the Product.
-     */
-    @And("^I fill fields for edit$")
-    public void iFillFields(List<Product> product) {
-        product1 = product.get(0);
-        productDetailsPage = productFormPage.clickSaveEditProduct(product1);
-    }
-
-    /**
      * Delete Product.
      */
-    @When("^I delete Product$")
+    @And("^I click on Delete Product button$")
     public void iClickDeleteProduct() {
         productDetailsPage.clickDeleteButton();
     }
@@ -140,7 +118,7 @@ public class ProductSteps {
     /**
      * verify that product created with API.
      */
-    @Then("^Name should be displayed in detail Page Product$")
+    @And("^the Product should be created$")
     public void nameShouldBeDisplayedInDetailPageProduct() {
         assertEquals(apiProduct.getProductValuesByAPI().getProductName(),product1.getProductName());
         assertEquals(apiProduct.getProductValuesByAPI().getProductCode(),product1.getProductCode());
@@ -150,14 +128,29 @@ public class ProductSteps {
     }
 
     /**
+     * select product of the Product list page.
+     */
+    @And("^I select the Product in Product list page$")
+    public void iSelectTheProductInProductListPage() {
+        productDetailsPage = productListPage.clickProductOnList(product1);
+    }
+
+    /**
+     * click on edit button.
+     */
+    @And("^I click on Edit Product button$")
+    public void iClickOnEditProductButton() {
+        homePage = PageFactory.getHomePage();
+        productDetailsPage=PageFactory.getProductDetailsPage();
+        productFormPage = productDetailsPage.clickEditBtn();
+    }
+    /**
      * Edit product since product list page.
      */
-    @When("^I edited Product with following information:$")
+    @And("^I edited Product with following information:$")
     public void iEditedProductWithFollowingInformation(List<Product> productList) {
-        product = productList.get(0);
-        productDetailsPage = productListPage.clickProductOnList(product1);
-        productFormPage = productDetailsPage.clickEditBtn();
-        productDetailsPage = productFormPage.clickSaveEditProduct(product);
+        product1 = productList.get(0);
+        productDetailsPage = productFormPage.clickSaveEditProduct(product1);
     }
 
     //****************************************************************
