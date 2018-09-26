@@ -38,7 +38,8 @@ public class ContactFormPageLight extends ContactFormPage {
     WebElement levelCmbBox;
     @FindBy(xpath = "//button[@title='Save']")
     WebElement saveButton;
-    //By by;//*[contains(text(),'Secondary')]//parent::div//child::a
+    @FindBy(xpath = "//span[@class='title'][contains(.,'Details')]")
+    WebElement detailsClickOption;
 
 
     /**
@@ -65,6 +66,15 @@ public class ContactFormPageLight extends ContactFormPage {
         driverTools.clickElement(By.xpath("//a[contains(.,'"+contact.getLevel()+"')]"));
         driverTools.setInputField(malingStreetTxtArea, contact.getMailingStreet());
         driverTools.clickElement(saveButton);
+        driverTools.waitWebElementInVisibility(saveButton);
+        contact.setId(getUrlCurrent(driver.getCurrentUrl()));
+        driverTools.clickElement(detailsClickOption);
         return new ContactDetailsPageLight();
+    }
+
+    private String getUrlCurrent(String currentUrl){
+        String[] currentUrlList = currentUrl.split("/");
+        String idUrl = currentUrlList[currentUrlList.length - 2];
+        return idUrl;
     }
 }

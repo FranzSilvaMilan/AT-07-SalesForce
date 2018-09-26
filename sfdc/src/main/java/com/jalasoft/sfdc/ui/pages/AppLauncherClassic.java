@@ -5,6 +5,8 @@ import com.jalasoft.sfdc.ui.pages.account.AccountListPageClassic;
 import com.jalasoft.sfdc.ui.pages.account.AccountListPageLight;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPageClassic;
+import com.jalasoft.sfdc.ui.pages.opportunities.OpportunitieListPage;
+import com.jalasoft.sfdc.ui.pages.opportunities.OpportunitieListPageClassic;
 import com.jalasoft.sfdc.ui.pages.priceBook.PriceBookListPage;
 import com.jalasoft.sfdc.ui.pages.priceBook.PriceBookListPageClassic;
 import com.jalasoft.sfdc.ui.pages.products.ProductListPage;
@@ -34,6 +36,11 @@ public class AppLauncherClassic extends AppLauncher {
     @FindBy(xpath = "//*[contains(text(),'Price Books')]")
     WebElement priceBookButton;
 
+    @FindBy(xpath = "//a[contains(.,'Opportunities')]")
+    WebElement opportunitiesButton;
+
+
+
     @FindBy(xpath = "//*[@id='tryLexDialogX']")
     private WebElement closeWindows;
 
@@ -42,16 +49,16 @@ public class AppLauncherClassic extends AppLauncher {
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-    
+
     }
 
     /**
      * Method for go to Account home page Classic.
      */
-    public AccountListPage gotToAccountPage(){
+    public AccountListPage gotToAccountPage() {
         //driverTools.waitUntilElementDisplayed(accountButton);
         driverTools.clickElement(accountButton);
-        if(driverTools.isElementDisplayed(closeWindows)) {
+        if (driverTools.isElementDisplayed(closeWindows)) {
             driverTools.clickElement(closeWindows);
         }
         return new AccountListPageClassic();
@@ -63,7 +70,7 @@ public class AppLauncherClassic extends AppLauncher {
     @Override
     public ContactListPage goToContactPage() {
         driverTools.clickElement(contactButton);
-        if(driverTools.isElementDisplayed(closeWindows)) {
+        if (driverTools.isElementDisplayed(closeWindows)) {
             driverTools.clickElement(closeWindows);
         }
         return new ContactListPageClassic();
@@ -83,4 +90,14 @@ public class AppLauncherClassic extends AppLauncher {
         driverTools.clickElement(priceBookButton);
         return new PriceBookListPageClassic();
     }
+
+    @Override
+    public OpportunitieListPage goToOpportunitiesPage() {
+        driverTools.clickElement(opportunitiesButton);
+        if (driverTools.isElementDisplayed(closeWindows)) {
+            driverTools.clickElement(closeWindows);
+        }
+        return new OpportunitieListPageClassic();
+    }
+
 }

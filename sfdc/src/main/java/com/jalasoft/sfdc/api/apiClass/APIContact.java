@@ -37,6 +37,7 @@ public class APIContact extends APIBase {
         map.put("LeadSource", contact.getLeadSource());
         map.put("Languages__c",contact.getLenguaje());
         map.put("Level__c", contact.getLevel());
+        map.put("Id", contact.getId());
 
         return map;
     }
@@ -64,6 +65,7 @@ public class APIContact extends APIBase {
         contactApi.setLeadSource(response.jsonPath().get(CONTACT_LEAD_SOURCE).toString());
         contactApi.setLenguaje(response.jsonPath().get(CONTACT_lANGUAJE).toString());
         contactApi.setLevel(response.jsonPath().get(CONTACT_LEVEL).toString());
+        contactApi.setId(response.jsonPath().get(CONTACT_ID).toString());
         return contactApi;
     }
 }

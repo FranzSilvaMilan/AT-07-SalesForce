@@ -15,7 +15,6 @@ import cucumber.api.java.en.When;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 public class ContactSteps {
@@ -33,10 +32,14 @@ public class ContactSteps {
 
     private APIContact apiContact;
 
+    //---------------------------------------------------------------------------------------
+    //                                      Create a new Contact
+    //---------------------------------------------------------------------------------------
+
     /**
      * Click the app launcher and contacts button.
      */
-    @When("^I go to Contact home page$")
+    @When("^I go to Contact list page$")
     public void iGoToContactHomePage() {
         homePage = pageFactory.getHomePage();
         appLauncher = homePage.topMenu.gotToAppLauncher();
@@ -46,95 +49,89 @@ public class ContactSteps {
     /**
      * Create a new contact.
      */
-    @And("^I click on New Contact$")
-    public void iClickOnNewContact() {
+    @And("^I click on New Contact button$")
+    public void iClickOnNewContactButton() {
         contactFormPage = contactListPage.gotToNewButton();
     }
 
     /**
      * Fill the spaces required to create a new Contact.
      */
-    @When("^I fill the Account form name with$")
-    public void iFillTheAccountFormNameWith(final List<Contact> contactList) {
+    @When("^I create the Contact with the following information$")
+    public void iCreateTheContactWithTheFollowingInformation(final List<Contact> contactList) {
         this.contact = contactList.get(0);
         contactDetailsPage = contactFormPage.gotToSaveButton(contact);
     }
 
     /**
      * Verify if is create a new Contact.
+     * the Contact information should be displayed in Contact Details page
      */
-    @Then("^The name should be displayed in detail Page Contact$")
-    public void theNameShouldBeDisplayedInDetailPageContact() {
+    @Then("^the Contact information should be displayed in Contact Details page$")
+    public void theContactInformationShouldBeDisplayedInContactDetailsPage() {
         if (contact.getFirstName().isEmpty()) {
             assertEquals(contactDetailsPage.isContactNameDisplayed(), contact.getLastName(), "The contact you get is");
         } else {
             assertEquals(contactDetailsPage.isContactNameDisplayed(), contact.getFirstName() + " " + contact.getLastName(), "The contact you get is");
         }
+        assertTrue(contactDetailsPage.isTitleChangeDisplayed(contact), "The title is displayed");
+        assertTrue(contactDetailsPage.isMobileChangeDisplayed(contact), "The number mobile is displayed");
     }
 
-    /**
-     * Click on edit button and set new fields.
-     *
-     * @param contactChanges - Properties to change a contact
-     */
-    @When("^I Edit Contact with$")
-    public void iEditContactWith(final List<Contact> contactChanges) {
-        this.contact = contactChanges.get(0);
-        contactDetailsPage.clickOptionEditButton(contact);
-    }
-
-    /**
-     * You can save the changes made by clicking on the save button.
-     */
-    @When("^I save the changes made$")
-    public void iSaveTheChangesMade() {
-        contactDetailsPage.isSaveOfChangeMade();
-    }
-
-    /**
-     * You can check the changes made.
-     */
-    @Then("^Shows me the changes made$")
-    public void showsMeTheChangesMade() {
-        assertTrue(contactDetailsPage.isNameChangeDisplayed(contact));
-        assertTrue(contactDetailsPage.isTitleChangeDisplayed(contact));
-        assertTrue(contactDetailsPage.isMobileChangeDisplayed(contact));
-    }
-
-    /**
-     * Click on the delete button.
-     */
-    @When("^I click on option Delete Contact$")
-    public void iClickOnOptionDeletContact() {
-        contactDetailsPage.clickOptionDelet();
-    }
-
-    /**
-     * Remove the contact created.
-     */
-    @Then("^Verified that the contact has been removed$")
-    public void verifiedThatTheContactHasBeenRemoved() {
-        assertEquals(contactListPage.isContatcNotDisplayed(contact), false);
-    }
-
-    //----------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------
+    //                                      Edit Contact
+    //----------------------------------------------------------------------------------------
 
     /**
      * Create contact with API.
      * @param listContact
      */
-    @And("^I create by API new Contact with following information:$")
-    public void iCreateByAPINewAccountWithFollowingInformation(List<Contact> listContact) {
+    @And("^I have a Contact with the following information:$")
+    public void iHaveAContactWithFollowingInformation(List<Contact> listContact) {
         apiContact = new APIContact(listContact.get(0));
         contact = listContact.get(0);
         apiContact.createSObjectRecord();
     }
 
+    @And("^I select the Contact in Contact list page$")
+    public void iSelectTheContactInContactListPage() {
+        contactDetailsPage = contactListPage.clickContactOnList(contact);
+    }
+
+    @And("^I click on Edit Contact button$")
+    public void iClickOnEditContactButton(){
+        contactDetailsPage.clickEditButton();
+    }
+
+    @And("^I edit the Contact with the following information$")
+    public void iEditTheContactWithTheFollowingInformation(final List<Contact> contactChanges) {
+        this.contact = contactChanges.get(0);
+        contactDetailsPage.setNewChangesToContact(contact);
+    }
+
+    //-----------------------------------------------------------------------------------------
+    //                                      Deleted Contact
+    //-----------------------------------------------------------------------------------------
+
+    @And("^I click on Delete Contact button$")
+    public void iClickOnDeleteContactButton() {
+        contactDetailsPage.clickDeletedButton();
+    }
+
+    @Then("^the Contact should be removed in Contact list page$")
+    public void theContactShouldBeRemovedInContactListPage() {
+        assertEquals(contactListPage.isContatcNotDisplayed(contact), false, "The contacts is removed ");
+    }
+
+    //----------------------------------------------------------------------------------------------------
+    //                                              Validate for API
+    //----------------------------------------------------------------------------------------------------
     /**
      * Verify contact with API
+     * the Contact should be created
      */
-    @Then("^name should be displayed in detail Page Contact$")
-    public void nameShouldBeDisplayedInDetailPageAccount() {
+    @And("^the Contact should be created$")
+    public void theContactShouldBeCreated() {
         Contact contactSpected = apiContact.getContactValuesByAPI();
         assertEquals(contactSpected.getFirstName(),contact.getFirstName());
         assertEquals(contactSpected.getLastName(),contact.getLastName());
@@ -142,23 +139,36 @@ public class ContactSteps {
         assertEquals(contactSpected.getMobile(),contact.getMobile());
     }
 
-    /**
-     * Verify that form AS a contact can be edit.
-     * @param contactEdit - attributes of a contact for edit.
-     */
-    @When("^I edit the Contact with the following information:$")
-    public void iEditTheContactWithTheFollowingInformation(final List<Contact> contactEdit) {
-        this.contactAPI = contactEdit.get(0);
-        contactDetailsPage = contactListPage.clickContactOnList(contact);
-        contactDetailsPage.clickOptionEditButton(contactAPI);
-        contactDetailsPage.isSaveOfChangeMade();
+    @And("^the Contact should be edited$")
+    public void theContactShouldBeEdited(){
+        Contact contactSpected = apiContact.getContactValuesByAPI();
+        System.out.println("ID "+contact.getId());
+        System.out.println("id api "+contactSpected.getId());
+        System.out.println(contact.getLastName()+"  --  "+contactSpected.getFirstName());
+        assertEquals(contactSpected.getFirstName(),contact.getFirstName());
+        assertEquals(contactSpected.getLastName(),contact.getLastName());
+        assertEquals(contactSpected.getTitle(),contact.getTitle());
+        assertEquals(contactSpected.getMobile(),contact.getMobile());
+    }
+
+    @And("^the Contatc should be removed$")
+    public void theContatcShouldBeRemoved() throws Throwable {
+        Contact contactSpected = apiContact.getContactValuesByAPI();
+        System.out.println("ID "+contact.getId());
+        System.out.println("id api "+contactSpected.getId());
+
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
     }
 
     //****************************************************************
-    //Hooks for @create Account api scenarios
+    //          Hooks for @create Account api scenarios
     //****************************************************************
     @After(value = "@deleteContactAfter", order = 999)
-    public void afterLoginScenario() {
+    public void afterContactScenario() {
         apiContact.deleteSObjectRecord();
     }
+
+
+
 }

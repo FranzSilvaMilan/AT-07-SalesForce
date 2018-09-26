@@ -11,22 +11,18 @@ import com.jalasoft.sfdc.ui.BasePage;
  */
 public abstract class ContactDetailsPage extends BasePage {
 
-
-
     /**
      * Abstract method that verify if is created to new Contact.
-     *
      * @return - the last name created.
      */
     public abstract String isContactNameDisplayed();
-
-    public abstract void clickOptionEditButton(Contact contact);
-    public abstract void isSaveOfChangeMade();
+    public abstract void clickEditButton();
+    public abstract void setNewChangesToContact(Contact contact);
 
     /**
      * The method that delete of the contact
      */
-    public abstract void clickOptionDelet();
+    public abstract void clickDeletedButton();
 
     /**
      * The name of user is displayed in GUI.
