@@ -29,6 +29,7 @@ public class ProductListPageClassic extends ProductListPage {
     @Override
     public ProductFormPage clickButtonNew() {
         clickClosePopup();
+        driverTools.clickElement(newButton);
         return new ProductFormPageClassic();
     }
     @Override
@@ -57,6 +58,5 @@ public class ProductListPageClassic extends ProductListPage {
         if(driverTools.isElementDisplayed(closePopupButton)){
             driverTools.clickElement(closePopupButton);
         }
-        driverTools.clickElement(newButton);
     }
 }

@@ -12,7 +12,7 @@ Feature: Create a new Product.
         | Product Name | Product Code | Product Description | Active | Product Family |
         | laptop       | 123          | product created     | false  | None           |
     Then the Product information should be displayed in Product Details page
-#      And the Product should be created
+      And the Product should be created
 
   @deleteProductAfter
   Scenario: Verify that is create a Product with api
