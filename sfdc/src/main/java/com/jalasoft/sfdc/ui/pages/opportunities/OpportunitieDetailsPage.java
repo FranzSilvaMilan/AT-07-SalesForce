@@ -7,6 +7,5 @@ import com.jalasoft.sfdc.ui.pages.quote.QuotesFormPage;
 public abstract class OpportunitieDetailsPage extends BasePage {
 
     public abstract boolean isChangeDisplayed(Opportunitie opportunitie);
-
     public abstract QuotesFormPage isNewQuoteSelect();
 }

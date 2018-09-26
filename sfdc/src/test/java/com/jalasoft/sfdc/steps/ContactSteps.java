@@ -86,8 +86,8 @@ public class ContactSteps {
      * Create contact with API.
      * @param listContact
      */
-    @And("^I create by API new Contact with following information:$")
-    public void iCreateByAPINewAccountWithFollowingInformation(List<Contact> listContact) {
+    @And("^I have a Contact with the following information:$")
+    public void iHaveAContactWithFollowingInformation(List<Contact> listContact) {
         apiContact = new APIContact(listContact.get(0));
         contact = listContact.get(0);
         apiContact.createSObjectRecord();

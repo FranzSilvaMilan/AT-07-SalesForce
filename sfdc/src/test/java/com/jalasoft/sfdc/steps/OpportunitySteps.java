@@ -34,20 +34,20 @@ public class OpportunitySteps {
 
     private Quote quote;
 
-    @When("^I go to Opportunitie List Page$")
-    public void iGoToOpportunitieListPage(){
+    @When("^I go to Opportunities list Page$")
+    public void iGoToOpportunitiesListPage(){
         homePage = PageFactory.getHomePage();
         appLauncher = homePage.topMenu.gotToAppLauncher();
         opportunitieListPage = appLauncher.goToOpportunitiesPage();
     }
 
-    @And("^I click on New Opportunitie$")
+    @And("^I click on New Opportunity button$")
     public void iClickOnNewOpportunitie() {
         opportunitieFormPage=opportunitieListPage.gotToNewButton();
     }
 
-    @When("^I created opportunity with the following information$")
-    public void iCreatedOpportunityWithTheFollowingInformation(List<Opportunitie> opportunities) {
+    @When("^I created an Opportunity with the following information$")
+    public void iCreatedAnOpportunityWithTheFollowingInformation(List<Opportunitie> opportunities) {
         this.opportunitie = opportunities.get(0);
         opportunitieDetailsPage = opportunitieFormPage.gotToSaveButton(opportunitie);
     }
@@ -59,17 +59,19 @@ public class OpportunitySteps {
     }
 
 
-    @When("^I create a new Quote with \"([^\"]*)\" Name$")
-    public void iCreateANewQuoteWithName(String test) {
+    @When("^I create a new Quote with following information$")
+    public void iCreateANewQuoteWithName(List<Quote> quotes) {
+        this.quote = quotes.get(0);
         quotesFormPage=opportunitieDetailsPage.isNewQuoteSelect();
-        quotesDetailsPage = quotesFormPage.gotToSaveButton(test);
+        quotesDetailsPage = quotesFormPage.gotToSaveButton(quote);
         quotesAddProductPage = quotesDetailsPage.addProduct();
         quoteItemPage = quotesAddProductPage.isSelectOptionButton();
     }
 
-    @And("^The following line item$")
-    public void theFollowingLineItem(List<Quote> quotes) {
-        this.quote = quotes.get(0);
+    @And("^I add the following line items$")
+    public void iAddTheFollowingLineItems(List<Quote> quotes) {
+        this.quote.setPrice(quotes.get(0).getPrice());
+        this.quote.setQuantity(quotes.get(0).getQuantity());
         quotesDetailsPage = quoteItemPage.isClickSaveItemButton(quote);
     }
 }

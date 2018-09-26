@@ -18,8 +18,8 @@ public class QuotesFormPageClassic extends QuotesFormPage {
     }
 
     @Override
-    public QuotesDetailsPage gotToSaveButton(String quotes) {
-        driverTools.setInputField(setQuoteNameInput, quotes);
+    public QuotesDetailsPage gotToSaveButton(Quote quotes) {
+        driverTools.setInputField(setQuoteNameInput, quotes.getQuoteName());
         driverTools.clickElement(saveQuoteButton);
         return new QuotesDetailsPageClassic();
     }

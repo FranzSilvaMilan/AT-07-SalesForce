@@ -9,14 +9,14 @@ import org.openqa.selenium.support.FindBy;
 
 public class OpportunitieDetailsPageClassic extends OpportunitieDetailsPage {
     @FindBy(xpath = "//div[contains(@id,'opp3_ileinner')]")
-    WebElement getOpportuntiesteName;
+    private WebElement getOpportuntiesteName;
     @FindBy(xpath = "//div[contains(@id,'opp9_ileinner')]")
-    WebElement getOpportunitiesCloseDate;
+    private WebElement getOpportunitiesCloseDate;
     @FindBy(xpath = "//div[contains(@id,'opp11_ileinner')]")
-    WebElement getOpportunitiesStage;
+    private WebElement getOpportunitiesStage;
 
     @FindBy(xpath = "//input[@title='New Quote']")
-    WebElement newQuoteButton;
+    private WebElement newQuoteButton;
 
     /**
      * Waits until page object is loaded.
@@ -26,11 +26,20 @@ public class OpportunitieDetailsPageClassic extends OpportunitieDetailsPage {
 
     }
 
+    /**
+     * Method for validate element displayed.
+     * @param opportunitie - is the object that contains the opportunitie's data.
+     * @return truo or false when displayed element.
+     */
     @Override
     public boolean isChangeDisplayed(Opportunitie opportunitie) {
         return driverTools.isElementDisplayed(By.xpath("//div[contains(text(),'" + opportunitie.getAccountName() + "')]"));
     }
 
+    /**
+     * Method for create new quote.
+     * @return Quotes Form Page Classic.
+     */
     @Override
     public QuotesFormPage isNewQuoteSelect() {
         driverTools.clickElement(newQuoteButton);

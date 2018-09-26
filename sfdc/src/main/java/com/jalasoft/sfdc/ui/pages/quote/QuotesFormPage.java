@@ -5,5 +5,5 @@ import com.jalasoft.sfdc.ui.BasePage;
 
 public abstract class QuotesFormPage extends BasePage {
 
-    public abstract QuotesDetailsPage gotToSaveButton(String quote);
+    public abstract QuotesDetailsPage gotToSaveButton(Quote quote);
 }
