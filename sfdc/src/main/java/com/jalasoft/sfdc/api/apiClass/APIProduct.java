@@ -60,7 +60,6 @@ public class APIProduct extends APIBase{
         productApi.setProductCode(response.jsonPath().get(PRODUCT_CODE).toString());
         productApi.setProductDescription(response.jsonPath().get(PRODUCT_DESCRIPTION).toString());
         productApi.setProductFamily(response.jsonPath().get(PRODUCT_FAMILY).toString());
-        productApi.setActive(response.jsonPath().get(PRODUCT_ACTIVE));
         return productApi;
     }
 }

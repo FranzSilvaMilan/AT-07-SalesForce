@@ -64,6 +64,8 @@ public class ProductDetailsPageClassic extends ProductDetailsPage {
     @FindBy(xpath = "//input[@title='Save']")
     private WebElement savePriceBookButton;
 
+    private static final String PRODUCT_NAME_LBL = "//img[contains(@title,'%s')]";
+
 
     /**
      * Waits until page object is loaded.
@@ -131,9 +133,15 @@ public class ProductDetailsPageClassic extends ProductDetailsPage {
      */
     @Override
     public boolean validateDelete(Product product) {
-        return driverTools.isElementDisplayed(By.xpath("//img[contains(@title,'"+product.getProductName()+"')]"));
+        //return driverTools.isElementDisplayed(By.xpath("//img[contains(@title,'"+product.getProductName()+"')]"));
+        return driverTools.isElementDisplayed(By.xpath(String.format(PRODUCT_NAME_LBL, product.getProductName())));
     }
 
+    /**
+     * Method for add a price standard to Product.
+     * @param priceStandard field.
+     * @return product details page.
+     */
     @Override
     public ProductDetailsPage clickAddPriceStandard(String priceStandard) {
         driverTools.clickElement(addStandardPriceButton);
@@ -142,6 +150,11 @@ public class ProductDetailsPageClassic extends ProductDetailsPage {
         return new ProductDetailsPageClassic();
     }
 
+    /**
+     * Method for add a price book to Product.
+     * @param priceBook field.
+     * @return product details page.
+     */
     @Override
     public ProductDetailsPage clickAddPriceBook(String priceBook) {
         driverTools.clickElement(addPriceBookButton);
@@ -150,5 +163,12 @@ public class ProductDetailsPageClassic extends ProductDetailsPage {
         driverTools.setInputField(listPriceInput,priceBook);
         driverTools.clickElement(savePriceBookButton);
         return new ProductDetailsPageClassic();
+    }
+
+    @Override
+    public void getIdProduct(Product product) {
+        String url = driver.getCurrentUrl();
+        String[] urlSplit = url.split("/");
+        product.setId(urlSplit[urlSplit.length - 1]);
     }
 }

@@ -3,7 +3,6 @@ package com.jalasoft.sfdc.ui.pages.products;
 import com.jalasoft.sfdc.entities.Product;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +49,7 @@ public class ProductDetailsPageLight extends ProductDetailsPage {
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-
+        driverTools.waitUntilElementDisplayed(productNameLabel);
     }
 
     /**
@@ -119,5 +118,12 @@ public class ProductDetailsPageLight extends ProductDetailsPage {
     @Override
     public ProductDetailsPage clickAddPriceBook(String priceBook) {
         return null;
+    }
+
+    @Override
+    public void getIdProduct(Product product) {
+        String url = driver.getCurrentUrl();
+        String[] urlSplit = url.split("/");
+        product.setId(urlSplit[urlSplit.length - 2]);
     }
 }
