@@ -2,7 +2,7 @@ Feature: Create a new Quote.
 
   Background:
     Given I navigate to Login page
-    And I login as "erik" User
+    And I login as "franz" User
 
   Scenario: Verify that is possible created a new Opporunity with Quote
     Given I have Account with following information:
@@ -19,12 +19,12 @@ Feature: Create a new Quote.
     When I go to Opportunities list Page
       And I click on New Opportunity button
       And I created an Opportunity with the following information
-        | name   | accountName | closeDate  | stage       |
-        | abrzao | silvaMap    | 09/27/2018 | Prospecting |
+        | name   | closeDate  | stage       |
+        | abrzao | 09/27/2018 | Prospecting |
     Then The Opportunity should be displayed in details page
     When I create a new Quote with following information
-      | quoteName  |
-      | test quote |
+        | quoteName  |
+        | test quote |
       And I add the following line items
         | price | quantity |
         | 20555 | 50       |

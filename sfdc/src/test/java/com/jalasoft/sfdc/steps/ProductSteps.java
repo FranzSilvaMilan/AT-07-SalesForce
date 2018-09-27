@@ -1,6 +1,7 @@
 package com.jalasoft.sfdc.steps;
 
 import com.jalasoft.sfdc.api.apiClass.APIProduct;
+import com.jalasoft.sfdc.entities.AllEntities;
 import com.jalasoft.sfdc.entities.Product;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.AppLauncher;
@@ -36,9 +37,12 @@ public class ProductSteps {
     private ProductDetailsPage productDetailsPage;
     // Entities
     private Product product1;
+    private AllEntities allEntities;
 
     APIProduct apiProduct;
-
+    public ProductSteps(AllEntities allEntities){
+        this.allEntities = allEntities;
+    }
     //****************************************************************
     //Product Step Definitions
     //****************************************************************
@@ -68,6 +72,7 @@ public class ProductSteps {
     @When("^I create the Product with the following information$")
     public void iFillInRequiredFields(List<Product> product) {
         product1 = product.get(0);
+        allEntities.setProduct(product1);
         productDetailsPage = productFormPage.clickSaveProduct(product1);
     }
 
@@ -112,6 +117,7 @@ public class ProductSteps {
     @Given("^I create by API new Product with following information:$")
     public void iCreateByAPINewProductWithFollowingInformation(List<Product> productList) {
         product1 = productList.get(0);
+        allEntities.setProduct(product1);
         apiProduct = new APIProduct(product1);
         apiProduct.createSObjectRecord();
     }
