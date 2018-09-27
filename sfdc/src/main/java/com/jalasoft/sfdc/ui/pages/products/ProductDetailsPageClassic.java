@@ -40,6 +40,31 @@ public class ProductDetailsPageClassic extends ProductDetailsPage {
     @FindBy(xpath = "//td[@id='topButtonRow']//input[@title='Delete']")
     private WebElement deleteButton;
 
+    @FindBy(xpath = "//input[contains(@title,'Add')]")
+    private WebElement addStandardPriceButton;
+
+    @FindBy(xpath = "//input[@title='Unit Price']")
+    private WebElement priseStandardInput;
+
+    @FindBy(xpath = "//input[@title='Save']")
+    private WebElement saveStandardPriceButton;
+
+    @FindBy(xpath = "//input[@title='Add to Price Book']")
+    private WebElement addPriceBookButton;
+
+    @FindBy(xpath = "//input[contains(@title,'Select Standard')]")
+    private WebElement standartCheckBox;
+
+    @FindBy(xpath = "(//input[@title='Select'])[1]")
+    private WebElement selectPriceBookButton;
+
+    @FindBy(xpath = "//input[@title='List Price 1']")
+    private WebElement listPriceInput;
+
+    @FindBy(xpath = "//input[@title='Save']")
+    private WebElement savePriceBookButton;
+
+
     /**
      * Waits until page object is loaded.
      */
@@ -107,5 +132,23 @@ public class ProductDetailsPageClassic extends ProductDetailsPage {
     @Override
     public boolean validateDelete(Product product) {
         return driverTools.isElementDisplayed(By.xpath("//img[contains(@title,'"+product.getProductName()+"')]"));
+    }
+
+    @Override
+    public ProductDetailsPage clickAddPriceStandard(String priceStandard) {
+        driverTools.clickElement(addStandardPriceButton);
+        driverTools.setInputField(priseStandardInput,priceStandard);
+        driverTools.clickElement(saveStandardPriceButton);
+        return new ProductDetailsPageClassic();
+    }
+
+    @Override
+    public ProductDetailsPage clickAddPriceBook(String priceBook) {
+        driverTools.clickElement(addPriceBookButton);
+        driverTools.selectChkBox(standartCheckBox);
+        driverTools.clickElement(selectPriceBookButton);
+        driverTools.setInputField(listPriceInput,priceBook);
+        driverTools.clickElement(savePriceBookButton);
+        return new ProductDetailsPageClassic();
     }
 }

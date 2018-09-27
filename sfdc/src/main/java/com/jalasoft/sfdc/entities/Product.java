@@ -15,6 +15,9 @@ public class Product {
 
     private String id;
 
+    private String standardPrice;
+    private String priceBook;
+
     /**
      * Gets the product name.
      * @return the current product name.
@@ -109,5 +112,21 @@ public class Product {
      */
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getStandardPrice() {
+        return standardPrice;
+    }
+
+    public void setStandardPrice(String standardPrice) {
+        this.standardPrice = standardPrice;
+    }
+
+    public String getPriceBook() {
+        return priceBook;
+    }
+
+    public void setPriceBook(String priceBook) {
+        this.priceBook = priceBook;
     }
 }

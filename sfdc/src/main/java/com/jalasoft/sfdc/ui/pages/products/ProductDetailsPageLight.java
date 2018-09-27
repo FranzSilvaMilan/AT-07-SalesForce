@@ -100,6 +100,7 @@ public class ProductDetailsPageLight extends ProductDetailsPage {
     public boolean validateDelete(Product product) {
         return false;
     }
+
     /**
      * Method for delete Product.
      */
@@ -108,5 +109,15 @@ public class ProductDetailsPageLight extends ProductDetailsPage {
         driverTools.moveAndClickElement(dropdownButton);
         driverTools.clickElement(deletButton);
         driverTools.clickElement(popupDeleteButton);
+    }
+
+    @Override
+    public ProductDetailsPage clickAddPriceStandard(String priceStandard) {
+        return null;
+    }
+
+    @Override
+    public ProductDetailsPage clickAddPriceBook(String priceBook) {
+        return null;
     }
 }

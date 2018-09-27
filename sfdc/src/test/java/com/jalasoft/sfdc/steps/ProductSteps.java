@@ -8,6 +8,7 @@ import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.products.ProductDetailsPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductFormPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductListPage;
+import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -153,6 +154,24 @@ public class ProductSteps {
         productDetailsPage = productFormPage.clickSaveEditProduct(product1);
     }
 
+    /**
+     *
+     * @param priceStandard
+     */
+    @And("^I add Standard Price to Product with \"([^\"]*)\"$")
+    public void iAddStandardPriceToProductWith(String priceStandard) {
+        productDetailsPage = productDetailsPage.clickAddPriceStandard(priceStandard);
+    }
+
+    /**
+     *
+     * @param priceBook
+     */
+    @And("^I add the Product to Price Book Standard with List Price \"([^\"]*)\"$")
+    public void iAddTheProductToPriceBookStandardWithListPrice(String priceBook) {
+        productDetailsPage = productDetailsPage.clickAddPriceBook(priceBook);
+    }
+
     //****************************************************************
     //Hooks for @delete Product api scenarios
     //****************************************************************
@@ -160,4 +179,5 @@ public class ProductSteps {
     public void afterLoginScenario() {
         apiProduct.deleteSObjectRecord();
     }
+
 }
