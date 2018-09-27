@@ -6,7 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
 
 public class AccountFormPageLight extends AccountFormPage {
@@ -273,17 +275,26 @@ public class AccountFormPageLight extends AccountFormPage {
         driverTools.clickElement(saveButton);
         return PageFactory.getDetailAccountPage();
     }
+
     @Override
-    public AccountDetailsPage saveAccount(Account account) {
-        if (account.getName() != null) driverTools.setInputField(accountNameTextField, account.getName());
-        if (account.getNumber() != null) driverTools.setInputField(accountNumberTextField, account.getNumber());
-        if (account.getWeb() != null) driverTools.setInputField(accountWebsite, account.getWeb());
-        if (account.getFax() != null) driverTools.setInputField(accountFax, account.getFax());
-        if (account.getPhone() != null) driverTools.setInputField(accountPhone, account.getPhone());
-        if (account.getSicCode() != null) driverTools.setInputField(accountSICCode, account.getSicCode());
-        if (account.getEmployees() != null) driverTools.setInputField(accountEmployee, account.getEmployees());
-        driverTools.clickElement(saveButton);
-        driverTools.sleepMilliSeconds(3000);
-        return new AccountDetailsPageLight();
+    public List<StrategySetInputs> saveAccount(Account account) {
+        List<StrategySetInputs> strategySetInputs = new ArrayList<>();
+            strategySetInputs.add(()-> driverTools.setInputField(accountNameTextField, account.getName()));
+        strategySetInputs.add(()-> driverTools.setInputField(accountNumberTextField, account.getNumber()));
+        strategySetInputs.add(()-> driverTools.setInputField(accountWebsite, account.getWeb()));
+        strategySetInputs.add(()-> driverTools.setInputField(accountFax, account.getFax()));
+        strategySetInputs.add(()-> driverTools.setInputField(accountPhone, account.getPhone()));
+        strategySetInputs.add(()-> driverTools.setInputField(accountSICCode, account.getSicCode()));
+        strategySetInputs.add(()-> driverTools.setInputField(accountEmployee, account.getEmployees()));
+
+//        if (account.getName() != null) driverTools.setInputField(accountNameTextField, account.getName());
+//        if (account.getNumber() != null) driverTools.setInputField(accountNumberTextField, account.getNumber());
+//        if (account.getWeb() != null) driverTools.setInputField(accountWebsite, account.getWeb());
+//        if (account.getFax() != null) driverTools.setInputField(accountFax, account.getFax());
+//        if (account.getPhone() != null) driverTools.setInputField(accountPhone, account.getPhone());
+//        if (account.getSicCode() != null) driverTools.setInputField(accountSICCode, account.getSicCode());
+//        if (account.getEmployees() != null) driverTools.setInputField(accountEmployee, account.getEmployees());
+        return strategySetInputs;
     }
+
 }

@@ -1,5 +1,6 @@
 package com.jalasoft.sfdc.steps;
 
+import com.jalasoft.sfdc.entities.AllEntities;
 import com.jalasoft.sfdc.entities.Opportunitie;
 import com.jalasoft.sfdc.entities.Quote;
 import com.jalasoft.sfdc.ui.PageFactory;
@@ -31,11 +32,13 @@ public class OpportunitySteps {
     private QuotesDetailsPage quotesDetailsPage;
     private QuotesAddProductPage quotesAddProductPage;
     private QuoteItemPage quoteItemPage;
-
     private Quote quote;
-
+    private AllEntities allEntities;
+    public OpportunitySteps(AllEntities allEntities){
+        this.allEntities = allEntities;
+    }
     @When("^I go to Opportunities list Page$")
-    public void iGoToOpportunitiesListPage(){
+    public void iGoToOpportunitiesListPage() {
         homePage = PageFactory.getHomePage();
         appLauncher = homePage.topMenu.gotToAppLauncher();
         opportunitieListPage = appLauncher.goToOpportunitiesPage();
@@ -43,7 +46,7 @@ public class OpportunitySteps {
 
     @And("^I click on New Opportunity button$")
     public void iClickOnNewOpportunitie() {
-        opportunitieFormPage=opportunitieListPage.gotToNewButton();
+        opportunitieFormPage = opportunitieListPage.gotToNewButton();
     }
 
     @When("^I created an Opportunity with the following information$")
@@ -62,7 +65,7 @@ public class OpportunitySteps {
     @When("^I create a new Quote with following information$")
     public void iCreateANewQuoteWithName(List<Quote> quotes) {
         this.quote = quotes.get(0);
-        quotesFormPage=opportunitieDetailsPage.isNewQuoteSelect();
+        quotesFormPage = opportunitieDetailsPage.isNewQuoteSelect();
         quotesDetailsPage = quotesFormPage.gotToSaveButton(quote);
         quotesAddProductPage = quotesDetailsPage.addProduct();
         quoteItemPage = quotesAddProductPage.isSelectOptionButton();

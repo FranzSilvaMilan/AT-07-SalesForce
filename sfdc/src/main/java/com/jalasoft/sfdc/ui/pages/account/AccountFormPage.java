@@ -21,7 +21,7 @@ public abstract class AccountFormPage extends BasePage {
     @FindBy(xpath = "//*[@title='Save']")
     WebElement saveButton;
     public abstract Map<AccountEnum, StrategySetInputs> getStrategyStepMap(final Map<AccountEnum, String> values);
-    public abstract AccountDetailsPage saveAccount(Account account);
+    public abstract List<StrategySetInputs> saveAccount(Account account);
     public abstract AccountDetailsPage clickSaveButton();
 
 }

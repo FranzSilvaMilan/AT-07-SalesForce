@@ -14,22 +14,16 @@ public class AccountListPageLight extends AccountListPage {
     public void waitUntilPageObjectIsLoaded() {
         driverTools.waitUntilElementDisplayed(newButton);
     }
+
     /**
      * {@inheritDoc}.
      */
     @Override
     public AccountFormPage clickNewButton() {
-        //driverTools.waitUntilElementDisplayed(newButton);
         driverTools.clickElement(newButton);
         return new AccountFormPageLight();
     }
-    /**
-     * {@inheritDoc}.
-     */
-    @Override
-    public AccountFormPage clickEditButton(String accountName) {
-        return null;
-    }
+
 
     @Override
     public AccountDetailsPage clickAccountOnList(Account account) {
@@ -43,5 +37,4 @@ public class AccountListPageLight extends AccountListPage {
         String pathAcount = "//a[contains(@class, 'slds-truncate') and contains(@title, '" + account.getName() + "')]";
         return driverTools.isElementDisplayed(By.xpath(pathAcount));
     }
-
 }

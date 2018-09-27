@@ -1,5 +1,7 @@
 package com.jalasoft.sfdc.entities;
 
+import java.util.Date;
+
 public class Account{
     private String id;
     private String name;
@@ -72,5 +74,10 @@ public class Account{
 
     public String getId() {
         return id;
+    }
+
+    public void updateAccountName() {
+        Long timeStamp = new Date().getTime();
+        this.name += timeStamp;
     }
 }
