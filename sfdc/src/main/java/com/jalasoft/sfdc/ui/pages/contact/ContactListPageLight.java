@@ -20,9 +20,8 @@ public class ContactListPageLight extends ContactListPage {
     }
 
     /**
-     * Method that clicks on the option of the New button.
-     *
-     * @return - new page Light.
+     * The method that clicks on the option of the New button.
+     * @return - new Form page Light.
      */
     @Override
     public ContactFormPage gotToNewButton() {
@@ -31,9 +30,9 @@ public class ContactListPageLight extends ContactListPage {
     }
 
     /**
-     * The name of user is displayed.
+     * The name of user is displayed in the Contacts list.
      * @param contact - class object Contact.
-     * @return if is displayed true or false.
+     * @return true or false if displayed..
      */
     @Override
     public boolean isContatcNotDisplayed(Contact contact) {
@@ -43,7 +42,7 @@ public class ContactListPageLight extends ContactListPage {
     /**
      * Selection a contact crete of contact List.
      * @param contact - class object Contact.
-     * @return contact details page light.
+     * @return new Details page Light.
      */
     @Override
     public ContactDetailsPage clickContactOnList(Contact contact) {

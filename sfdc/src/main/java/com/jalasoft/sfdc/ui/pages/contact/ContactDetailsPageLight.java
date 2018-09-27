@@ -18,55 +18,50 @@ public class ContactDetailsPageLight extends ContactDetailsPage {
     private List<String> contenedor = new ArrayList<>();
 
     @FindBy(xpath = "//*[@class='slds-media__body']//child::h1//child::span[@class='slds-truncate uiOutputText']")
-    WebElement contactlabelName;
+    private WebElement contactlabelName;
     @FindBy(xpath = "//span[@class='title'][contains(.,'Details')]")
-    WebElement detailsClickOption;
+    private WebElement detailsClickOption;
     @FindBy(xpath = "//*[text()='Phone']//parent::div//following-sibling::div//child::span")
-    WebElement phoneValidedText;
+    private WebElement phoneValidedText;
     @FindBy(xpath = "//*[text()='Name']//parent::div//following-sibling::div//child::span")
-    WebElement nameValidedText;
+    private WebElement nameValidedText;
     @FindBy(xpath = "//*[text()='Home Phone']//parent::div//following-sibling::div//child::span")
-    WebElement homePhoneValidedText;
+    private WebElement homePhoneValidedText;
     @FindBy(xpath = "//*[text()='Mobile']//parent::div//following-sibling::div//child::span")
-    WebElement mobileValidedText;
+    private WebElement mobileValidedText;
     @FindBy(xpath = "//*[text()='Other Phone']//parent::div//following-sibling::div//child::span")
-    WebElement otherPhoneValidedText;
+    private WebElement otherPhoneValidedText;
     @FindBy(xpath = "//*[text()='Title']//parent::div//following-sibling::div//child::span")
-    WebElement titleValidedText;
+    private WebElement titleValidedText;
     @FindBy(xpath = "//*[text()='Lead Source']//parent::div//following-sibling::div//child::span")
-    WebElement leadSourceValidedText;
+    private WebElement leadSourceValidedText;
     @FindBy(xpath = "//*[text()='Mailing Address']//parent::div//following-sibling::div//child::span")
-    WebElement mailingAddressValidedText;
+    private WebElement mailingAddressValidedText;
     @FindBy(xpath = "//button[contains(@title,'Edit Title')]")
-    WebElement editButton;
+    private WebElement editButton;
 
-    /**
-     * Xpath for set a new attributs of the contact.
-     */
+    //Xpath for set a new attributs of the contact.
     @FindBy(xpath = "//*[text()='First Name']//parent::label//following-sibling::input")
-    WebElement setFirstNameInput;
+    private WebElement setFirstNameInput;
     @FindBy(xpath = "//*[text()='Last Name']//parent::label//following-sibling::input")
-    WebElement setLastNameInput;
+    private WebElement setLastNameInput;
     @FindBy(xpath = "//*[text()='Title']//parent::label//following-sibling::input")
-    WebElement setTitleInput;
+    private WebElement setTitleInput;
     @FindBy(xpath = "//*[text()='Mobile']//parent::label//following-sibling::input")
-    WebElement setMobileInput;
+    private WebElement setMobileInput;
     @FindBy(xpath = "//button[contains(@title,'Save')]")
-    WebElement saveButton;
+    private WebElement saveButton;
 
-    /**
-     * Xpath for delete contact.
-     */
+    // Xpath for delete contact.
     @FindBy(xpath = "//*[@class='slds-col slds-no-flex slds-grid slds-align-middle actionsContainer']//following-sibling::ul//following-sibling::li[@class='slds-button slds-button--icon-border-filled oneActionsDropDown']//child::div//child::div//child::div//child::div//child::a[@title='Show 5 more actions']")
-    WebElement showMoreActionCombobox;
+    private WebElement showMoreActionCombobox;
     @FindBy(xpath = "//a[contains(@title,'Delete')]")
-    WebElement deletOption;
+    private WebElement deletOption;
     @FindBy(xpath = "//button[contains(.,'Delete')]")
-    WebElement confirmarDelete;
+    private WebElement confirmarDelete;
 
     /**
      * Method that get the last name created.
-     *
      * @return - last name.
      */
     @Override
@@ -78,8 +73,11 @@ public class ContactDetailsPageLight extends ContactDetailsPage {
         return contactlabelName.getText();
     }
 
+    /**
+     * Method that you click on the Edit button.
+     */
     @Override
-    public void clickEditButton() {//ToDo
+    public void clickEditButton() {
         driverTools.clickElement(detailsClickOption);
         driverTools.clickElement(editButton);
     }
@@ -98,7 +96,7 @@ public class ContactDetailsPageLight extends ContactDetailsPage {
 
     /**
      * The method allows us to edit the created contact.
-     * @param contact - is the object that contains the contact's data.
+     * @param contact - class object Contact.
      */
     @Override
     public void setNewChangesToContact(Contact contact) {
@@ -121,17 +119,9 @@ public class ContactDetailsPageLight extends ContactDetailsPage {
     }
 
     /**
-     * Save of changes mades.
-     */
-//    @Override
-//    public void isSaveOfChangeMade() {
-//        driverTools.clickElement(saveButton);
-//    }
-
-    /**
      * The name of user is displayed in GUI.
      * @param contact - class object Contact.
-     * @return if is displayed true or false.
+     * @return true or false if displayed.
      */
     @Override
     public boolean isNameChangeDisplayed(Contact contact){
@@ -141,7 +131,7 @@ public class ContactDetailsPageLight extends ContactDetailsPage {
     /**
      * The title of user is displayed in GUI.
      * @param contact - class object Contact.
-     * @return if is displayed true or false.
+     * @return true or false if displayed.
      */
     @Override
     public boolean isTitleChangeDisplayed(Contact contact){
@@ -151,13 +141,12 @@ public class ContactDetailsPageLight extends ContactDetailsPage {
     /**
      * The mobile of user is displayed in GUI.
      * @param contact - class object Contact.
-     * @return if is displayed true or false.
+     * @return true or false if displayed.
      */
     @Override
     public boolean isMobileChangeDisplayed(Contact contact){
         return driverTools.isElementDisplayed(By.xpath("(//span[text()='Mobile'])/../following-sibling::div//child::span[text()='"+contact.getMobile()+"']"));
     }
-
 
     /**
      * The method that delete of the contact
@@ -168,6 +157,13 @@ public class ContactDetailsPageLight extends ContactDetailsPage {
         driverTools.moveAndClickElement(showMoreActionCombobox);
         driverTools.clickElement(deletOption);
         driverTools.clickElement(confirmarDelete);
+    }
+
+    @Override
+    public void getIdUrlCurrent(Contact contact){
+        String url = driver.getCurrentUrl();
+        String[] urlList = url.split("/");
+        contact.setId(urlList[urlList.length - 2]);
     }
 
     /**

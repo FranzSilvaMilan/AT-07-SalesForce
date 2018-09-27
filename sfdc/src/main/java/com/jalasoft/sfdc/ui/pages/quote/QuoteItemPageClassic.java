@@ -5,10 +5,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class QuoteItemPageClassic extends QuoteItemPage {
-    @FindBy(xpath = "//input[contains(@name,'Quantity01u0b00002IXVjO')]")
-    WebElement quantityInput;
-    @FindBy(xpath = "(//input[@title='Save'])[1]")//ToDo
-    WebElement saveQuoteButton;
+    @FindBy(xpath = "//input[contains(@name,'Quantity')]")
+    private WebElement quantityInput;
+    @FindBy(xpath = "//input[contains(@id='UnitPrice'")
+    private WebElement unitPrice;
+    @FindBy(xpath = "(//input[@title='Save'])[1]")
+    private WebElement saveQuoteButton;
     /**
      * Waits until page object is loaded.
      */
@@ -19,7 +21,8 @@ public class QuoteItemPageClassic extends QuoteItemPage {
 
     @Override
      public QuotesDetailsPage isClickSaveItemButton(Quote quote){
-        driverTools.setInputField(quantityInput,quote.getQuantity());//ToDo
+        //driverTools.setInputField(unitPrice,quote.getPrice());
+        driverTools.setInputField(quantityInput,quote.getQuantity());
         driverTools.clickElement(saveQuoteButton);
         return new QuotesDetailsPageClassic();
      }

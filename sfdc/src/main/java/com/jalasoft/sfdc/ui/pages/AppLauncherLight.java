@@ -27,11 +27,11 @@ public class AppLauncherLight extends AppLauncher {
     @FindBy(xpath = "//span[text()='Products' and @class]")
     private WebElement productButton;
 
-    @FindBy(xpath = "//div/ul/li[26]/a")
-    WebElement priceBookButton;
+    @FindBy(xpath = "//span[text()='Price Books' and @class]")
+    private WebElement priceBookButton;
 
     @FindBy(xpath = "//span[text()='Contacts' and @class]")
-    WebElement contactButton;
+    private WebElement contactButton;
 
     /**
      * Waits until page object is loaded.
@@ -50,6 +50,9 @@ public class AppLauncherLight extends AppLauncher {
         return new AccountListPageLight();
     }
 
+    /**
+     * Method for go to Contact home page Light.
+     */
     @Override
     public ContactListPage goToContactPage() {
         driverTools.clickElement(contactButton);
@@ -66,12 +69,18 @@ public class AppLauncherLight extends AppLauncher {
         return new ProductListPageLight();
     }
 
+    /**
+     * Method for go to Price Book home page Light.
+     */
     @Override
     public PriceBookListPage goToPriceBookPage() {
         driverTools.clickElement(priceBookButton);
         return new PriceBookListPageLight();
     }
 
+    /**
+     * Method for go to Opportunities home page Light.
+     */
     @Override
     public OpportunitieListPage goToOpportunitiesPage() {
         return null;

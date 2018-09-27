@@ -6,9 +6,10 @@ import org.openqa.selenium.support.FindBy;
 
 public class QuotesFormPageClassic extends QuotesFormPage {
     @FindBy(xpath = "//input[@name='Name']")
-    WebElement setQuoteNameInput;
+    private WebElement setQuoteNameInput;
     @FindBy(xpath = "//input[@tabindex='23']")
-    WebElement saveQuoteButton;
+    private WebElement saveQuoteButton;
+
     /**
      * Waits until page object is loaded.
      */
@@ -17,9 +18,14 @@ public class QuotesFormPageClassic extends QuotesFormPage {
 
     }
 
+    /**
+     * The abstract method that set and save new Quotes.
+     * @param quote - class object Quotes.
+     * @return new Details page Classic.
+     */
     @Override
-    public QuotesDetailsPage gotToSaveButton(Quote quotes) {
-        driverTools.setInputField(setQuoteNameInput, quotes.getQuoteName());
+    public QuotesDetailsPage gotToSaveButton(Quote quote) {
+        driverTools.setInputField(setQuoteNameInput, quote.getQuoteName());
         driverTools.clickElement(saveQuoteButton);
         return new QuotesDetailsPageClassic();
     }

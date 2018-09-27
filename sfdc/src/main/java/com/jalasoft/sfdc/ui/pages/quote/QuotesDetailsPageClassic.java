@@ -5,7 +5,8 @@ import org.openqa.selenium.support.FindBy;
 
 public class QuotesDetailsPageClassic extends QuotesDetailsPage {
     @FindBy(xpath = "//input[@title='Add Line Item']")
-    WebElement addLineItemButton;
+    private WebElement addLineItemButton;
+
     /**
      * Waits until page object is loaded.
      */

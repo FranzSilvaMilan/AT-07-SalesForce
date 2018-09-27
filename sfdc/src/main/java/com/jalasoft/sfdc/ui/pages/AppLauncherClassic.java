@@ -22,7 +22,6 @@ import org.openqa.selenium.support.FindBy;
  * @author Daniel Sandoval.
  */
 public class AppLauncherClassic extends AppLauncher {
-    //private static final String BUTTON_EXIT = "//*[@class='dialogClose']";
 
     @FindBy(xpath = "//a[text()='Accounts']")
     private WebElement accountButton;
@@ -34,12 +33,10 @@ public class AppLauncherClassic extends AppLauncher {
     private WebElement productButton;
 
     @FindBy(xpath = "//*[contains(text(),'Price Books')]")
-    WebElement priceBookButton;
+    private WebElement priceBookButton;
 
     @FindBy(xpath = "//a[contains(.,'Opportunities')]")
-    WebElement opportunitiesButton;
-
-
+    private WebElement opportunitiesButton;
 
     @FindBy(xpath = "//*[@id='tryLexDialogX']")
     private WebElement closeWindows;
@@ -56,7 +53,6 @@ public class AppLauncherClassic extends AppLauncher {
      * Method for go to Account home page Classic.
      */
     public AccountListPage gotToAccountPage() {
-        //driverTools.waitUntilElementDisplayed(accountButton);
         driverTools.clickElement(accountButton);
         if (driverTools.isElementDisplayed(closeWindows)) {
             driverTools.clickElement(closeWindows);
@@ -85,12 +81,18 @@ public class AppLauncherClassic extends AppLauncher {
         return new ProductListPageClassic();
     }
 
+    /**
+     * Method for go to Price Book home page Classic.
+     */
     @Override
     public PriceBookListPage goToPriceBookPage() {
         driverTools.clickElement(priceBookButton);
         return new PriceBookListPageClassic();
     }
 
+    /**
+     * Method for go to Opportunities home page Classic.
+     */
     @Override
     public OpportunitieListPage goToOpportunitiesPage() {
         driverTools.clickElement(opportunitiesButton);
@@ -99,5 +101,4 @@ public class AppLauncherClassic extends AppLauncher {
         }
         return new OpportunitieListPageClassic();
     }
-
 }

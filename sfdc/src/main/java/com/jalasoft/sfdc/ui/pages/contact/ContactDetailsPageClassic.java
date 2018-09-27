@@ -13,33 +13,31 @@ import org.openqa.selenium.support.FindBy;
  */
 public class ContactDetailsPageClassic extends ContactDetailsPage {
     @FindBy(xpath = "//h2[contains(@class,'topName')]")
-    WebElement contactLabelName;
+    private WebElement contactLabelName;
     @FindBy(xpath = "//td[@id='topButtonRow']//child::input[@type='button' and @title='Edit']")
-    WebElement editButton;
-    /**
-     * Xpath for set of the fields
-     */
+    private WebElement editButton;
+
+    // Xpath for set of the fields
     @FindBy(xpath = "//input[@name='con5']")
-    WebElement setTitleInput;
+    private WebElement setTitleInput;
     @FindBy(xpath = "//input[@name='con12']")
-    WebElement setMobileInput;
+    private WebElement setMobileInput;
     @FindBy(xpath = "//input[contains(@name,'name_firstcon2')]")
-    WebElement setFirstNameInput;
+    private WebElement setFirstNameInput;
     @FindBy(xpath = "//input[contains(@id,'name_lastcon2')]")
-    WebElement setLastNameInput;
+    private WebElement setLastNameInput;
 
     @FindBy(xpath = "//*[@id='topButtonRow']//child::input[@name='save']")
-    WebElement saveButton;
+    private WebElement saveButton;
     @FindBy(xpath = "//div[@id='con5_ileinner']")
-    WebElement getTitleChange;
+    private WebElement getTitleChange;
     @FindBy(xpath = "//div[@id='con12_ileinner']")
-    WebElement getMobileChange;
-
+    private WebElement getMobileChange;
     @FindBy(xpath = "//*[@id='topButtonRow']//child::input[contains(@value,'Delete')]")
-    WebElement deleteButton;
+    private WebElement deleteButton;
 
     /**
-     * Method that get the last name created.
+     * The method that retrieves the surname.
      * @return - last name.
      */
     @Override
@@ -47,14 +45,17 @@ public class ContactDetailsPageClassic extends ContactDetailsPage {
         return contactLabelName.getText().trim();
     }
 
+    /**
+     * Method that you click on the Edit button.
+     */
     @Override
-    public void clickEditButton() {//ToDo
+    public void clickEditButton() {
         driverTools.clickElement(editButton);
     }
 
     /**
      * The method allows us to edit the created contact.
-     * @param contact - is the object that contains the contact's data.
+     * @param contact - object that contains the contact's data.
      */
     @Override
     public void setNewChangesToContact(Contact contact) {
@@ -80,7 +81,7 @@ public class ContactDetailsPageClassic extends ContactDetailsPage {
     /**
      * The name of user is displayed in GUI.
      * @param contact - class object Contact.
-     * @return if is displayed true or false.
+     * @return true or false if displayed.
      */
     @Override
     public boolean isNameChangeDisplayed(Contact contact) {
@@ -90,7 +91,7 @@ public class ContactDetailsPageClassic extends ContactDetailsPage {
     /**
      * The title of user is displayed in GUI.
      * @param contact - class object Contact.
-     * @return if is displayed true or false.
+     * @return true or false if displayed.
      */
     @Override
     public boolean isTitleChangeDisplayed(Contact contact) {
@@ -100,7 +101,7 @@ public class ContactDetailsPageClassic extends ContactDetailsPage {
     /**
      * The mobile of user is displayed in GUI.
      * @param contact - class object Contact.
-     * @return if is displayed true or false.
+     * @return true or false if displayed.
      */
     @Override
     public boolean isMobileChangeDisplayed(Contact contact) {
@@ -114,4 +115,12 @@ public class ContactDetailsPageClassic extends ContactDetailsPage {
     public void waitUntilPageObjectIsLoaded() {
         driverTools.waitUntilElementDisplayed(editButton);
     }
+
+    @Override
+    public void getIdUrlCurrent(Contact contact){
+        String url = driver.getCurrentUrl();
+        String[] urlList = url.split("/");
+        contact.setId(urlList[urlList.length - 1]);
+    }
+
 }

@@ -13,23 +13,23 @@ import org.openqa.selenium.support.FindBy;
 public class ContactFormPageClassic extends ContactFormPage {
 
     @FindBy(xpath = "//*[@id='name_lastcon2']")
-    WebElement lastNameTextInput;
-    @FindBy(xpath = "//*[@id='topButtonRow']/input[1]")
-    WebElement saveButton;
+    private WebElement lastNameTextInput;
+    @FindBy(xpath = "//*[@id='topButtonRow']/child::input[@title='Save']")
+    private WebElement saveButton;
     @FindBy(xpath = "//*[@id='name_firstcon2']")
-    WebElement firstnameInput;
+    private WebElement firstnameInput;
     @FindBy(xpath = "//*[@id='con10']")
-    WebElement phoneInput;
+    private WebElement phoneInput;
     @FindBy(xpath = "//*[@id='con13']")
-    WebElement homePhoneInput;
+    private WebElement homePhoneInput;
     @FindBy(xpath = "//*[@id='con12']")
-    WebElement mobileInput;
+    private WebElement mobileInput;
     @FindBy(xpath = "//*[@id='con5']")
-    WebElement titleInput;
+    private WebElement titleInput;
     @FindBy(xpath = "//*[@id='con14']")
-    WebElement otherPhoneInput;
+    private WebElement otherPhoneInput;
     @FindBy(xpath = "//*[@class='form-element']//child::input")
-    WebElement birthdateInput;
+    private WebElement birthdateInput;
 
     /**
      * Waits until page object is loaded.
@@ -40,10 +40,9 @@ public class ContactFormPageClassic extends ContactFormPage {
     }
 
     /**
-     * Method that set and save the date of a new Contact.
-     *
+     * The method that set and save the date of a new Contact.
      * @param contact - is the object that contains the contact's data.
-     * @return - new page Classic.
+     * @return - new Classic page Classic.
      */
     @Override
     public ContactDetailsPage gotToSaveButton(Contact contact) {

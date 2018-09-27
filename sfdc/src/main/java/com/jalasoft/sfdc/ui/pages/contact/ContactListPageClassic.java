@@ -21,14 +21,12 @@ public class ContactListPageClassic extends ContactListPage {
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-
         driverTools.waitUntilElementDisplayed(newButton);
     }
 
     /**
-     * Method that clicks on the option of the New button.
-     *
-     * @return - new page Classic.
+     * The method that clicks on the option of the New button.
+     * @return - new Form page classic.
      */
     @Override
     public ContactFormPage gotToNewButton() {
@@ -40,9 +38,9 @@ public class ContactListPageClassic extends ContactListPage {
     }
 
     /**
-     * The name of user is displayed.
+     * The name of user is displayed in the Contacts list.
      * @param contact - class object Contact.
-     * @return if is displayed true or false.
+     * @return true or false if displayed.
      */
     @Override
     public boolean isContatcNotDisplayed(Contact contact) {
@@ -52,7 +50,7 @@ public class ContactListPageClassic extends ContactListPage {
     /**
      * Selection a contact crete of contact List.
      * @param contact - class object Contact.
-     * @return contact details page light.
+     * @return new Details page classic.
      */
     @Override
     public ContactDetailsPage clickContactOnList(Contact contact) {
