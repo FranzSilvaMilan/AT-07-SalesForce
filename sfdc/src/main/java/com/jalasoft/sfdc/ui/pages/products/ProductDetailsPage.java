@@ -18,7 +18,8 @@ public abstract class ProductDetailsPage extends BasePage {
     public abstract ProductFormPage clickEditBtn();
     public abstract void clickDeleteButton();
     public abstract boolean validateDelete(Product product);
-
     public abstract ProductDetailsPage clickAddPriceStandard(String priceStandard);
     public abstract ProductDetailsPage clickAddPriceBook(String priceBook);
+
+    public abstract void getIdProduct(Product product);
 }

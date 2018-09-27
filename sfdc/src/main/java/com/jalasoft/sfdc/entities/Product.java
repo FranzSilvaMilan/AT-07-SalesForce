@@ -1,5 +1,7 @@
 package com.jalasoft.sfdc.entities;
 
+import java.util.Date;
+
 /**
  * Product class contains the product information.
  *
@@ -7,14 +9,13 @@ package com.jalasoft.sfdc.entities;
  * @since 9/12/2018
  */
 public class Product {
-    private String productName = "";
-    private String productCode = "";
-    private String productDescription = "";
+    private String productName;
+    private String productCode;
+    private String productDescription;
     private boolean active;
-    private String productFamily = "";
+    private String productFamily;
 
     private String id;
-
     private String standardPrice;
     private String priceBook;
 
@@ -114,19 +115,40 @@ public class Product {
         this.id = id;
     }
 
+    /**
+     * Gets the product standard price.
+     * @return the current product standard price.
+     */
     public String getStandardPrice() {
         return standardPrice;
     }
 
+    /**
+     * Sets the product standard Price.
+     * @param standardPrice product to set.
+     */
     public void setStandardPrice(String standardPrice) {
         this.standardPrice = standardPrice;
     }
 
+    /**
+     * Gets the product price book.
+     * @return the current product price book.
+     */
     public String getPriceBook() {
         return priceBook;
     }
 
+    /**
+     * Sets the product priceBook.
+     * @param priceBook product to set.
+     */
     public void setPriceBook(String priceBook) {
         this.priceBook = priceBook;
+    }
+
+    public void updateProductName() {
+        Long timeStamp = new Date().getTime();
+        this.productName += timeStamp;
     }
 }

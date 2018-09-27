@@ -9,19 +9,16 @@ import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.products.ProductDetailsPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductFormPage;
 import com.jalasoft.sfdc.ui.pages.products.ProductListPage;
-import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertSame;
 
 /**
  * Products steps class.
@@ -70,14 +67,17 @@ public class ProductSteps {
      * @param product - Name of the Product.
      */
     @When("^I create the Product with the following information$")
-    public void iFillInRequiredFields(List<Product> product) {
+    public void iFillInRequiredFields(final List<Product> product) {
         product1 = product.get(0);
+        product1.updateProductName();
+        apiProduct = new APIProduct(product1);
         allEntities.setProduct(product1);
         productDetailsPage = productFormPage.clickSaveProduct(product1);
+        productDetailsPage.getIdProduct(product1);
     }
 
     /**
-     * Validation of the product created.
+     * Validation of the product created ui.
      */
     @Then("^the Product information should be displayed in Product Details page$")
     public void shouldBeDisplayedDetailProductPageWith() {
@@ -115,8 +115,9 @@ public class ProductSteps {
      * @param productList fields.
      */
     @Given("^I create by API new Product with following information:$")
-    public void iCreateByAPINewProductWithFollowingInformation(List<Product> productList) {
+    public void iCreateByAPINewProductWithFollowingInformation(final List<Product> productList) {
         product1 = productList.get(0);
+        product1.updateProductName();
         allEntities.setProduct(product1);
         apiProduct = new APIProduct(product1);
         apiProduct.createSObjectRecord();
@@ -127,11 +128,11 @@ public class ProductSteps {
      */
     @And("^the Product should be created$")
     public void nameShouldBeDisplayedInDetailPageProduct() {
-        assertEquals(apiProduct.getProductValuesByAPI().getProductName(),product1.getProductName());
-        assertEquals(apiProduct.getProductValuesByAPI().getProductCode(),product1.getProductCode());
-        assertEquals(apiProduct.getProductValuesByAPI().getProductDescription(),product1.getProductDescription());
-        assertEquals(apiProduct.getProductValuesByAPI().getProductFamily(),product1.getProductFamily());
-        assertEquals(apiProduct.getProductValuesByAPI().getActive(),product1.getActive());
+        Product productExpected =apiProduct.getProductValuesByAPI();
+        assertEquals(productExpected.getProductName(),product1.getProductName());
+        assertEquals(productExpected.getProductCode(),product1.getProductCode());
+        assertEquals(productExpected.getProductDescription(),product1.getProductDescription());
+        assertEquals(productExpected.getProductFamily(),product1.getProductFamily());
     }
 
     /**
@@ -155,14 +156,14 @@ public class ProductSteps {
      * Edit product since product list page.
      */
     @And("^I edited Product with following information:$")
-    public void iEditedProductWithFollowingInformation(List<Product> productList) {
+    public void iEditedProductWithFollowingInformation(final List<Product> productList) {
         product1 = productList.get(0);
         productDetailsPage = productFormPage.clickSaveEditProduct(product1);
     }
 
     /**
-     *
-     * @param priceStandard
+     * add price standard to Product.
+     * @param priceStandard field.
      */
     @And("^I add Standard Price to Product with \"([^\"]*)\"$")
     public void iAddStandardPriceToProductWith(String priceStandard) {
@@ -170,8 +171,8 @@ public class ProductSteps {
     }
 
     /**
-     *
-     * @param priceBook
+     * add price book to Product.
+     * @param priceBook field.
      */
     @And("^I add the Product to Price Book Standard with List Price \"([^\"]*)\"$")
     public void iAddTheProductToPriceBookStandardWithListPrice(String priceBook) {
@@ -181,9 +182,8 @@ public class ProductSteps {
     //****************************************************************
     //Hooks for @delete Product api scenarios
     //****************************************************************
-    @After(value = "@deleteProductAfter", order = 999)
-    public void afterLoginScenario() {
+    @After(value = "@deleteProduct", order = 999)
+    public void afterProductScenario() {
         apiProduct.deleteSObjectRecord();
     }
-
 }

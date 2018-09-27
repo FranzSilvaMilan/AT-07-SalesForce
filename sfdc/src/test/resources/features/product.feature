@@ -4,7 +4,7 @@ Feature: Create a new Product.
     Given I navigate to Login page
       And I login as "erik" User
 
-  @deleteProductAfter
+  @deleteProduct
   Scenario: Verify that is possible create a new product
     When I go to Product list Page
       And I click a New Product button
@@ -14,7 +14,7 @@ Feature: Create a new Product.
     Then the Product information should be displayed in Product Details page
       And the Product should be created
 
-  @deleteProductAfter
+  @deleteProduct
   Scenario: Verify that is create a Product with api
     Given I create by API new Product with following information:
       | Product Name | Product Code | Product Description     | Active | Product Family |
@@ -28,7 +28,7 @@ Feature: Create a new Product.
     Then the Product information should be displayed in Product Details page
       And the Product should be created
 
-  @deleteProductAfter
+  @deleteProduct
   Scenario: Verify that is possible delete a Product
     Given I create by API new Product with following information:
       | Product Name | Product Code | Product Description | Active | Product Family |
