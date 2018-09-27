@@ -1,10 +1,13 @@
 package com.jalasoft.sfdc.entities;
 
+import java.util.List;
+
 public class Opportunitie {
     private String name = "";
     private String closeDate = "";
     private String stage = "";
     private String accountName = "";
+    private List<Quote> quoteList;
 
     /**
      * Gets the opportunities name.
@@ -69,4 +72,5 @@ public class Opportunitie {
     public void setAccountName(String accountName) {
         this.accountName = accountName;
     }
+
 }

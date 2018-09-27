@@ -1,10 +1,16 @@
 package com.jalasoft.sfdc.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Quote {
     private String quoteName = "";
     private String price = "";
     private String quantity = "";
-
+    private List<Product> productList;
+    public Quote(){
+        productList = new ArrayList<>();
+    }
     /**
      * Gets the quote Name.
      * @return the current quote quote Name.
@@ -51,5 +57,9 @@ public class Quote {
      */
     public void setQuantity(String quantity) {
         this.quantity = quantity;
+    }
+
+    public void addQuoteLineItem(Product product) {
+        productList.add(product);
     }
 }

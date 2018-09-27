@@ -52,11 +52,12 @@ public class OpportunitySteps {
     @When("^I created an Opportunity with the following information$")
     public void iCreatedAnOpportunityWithTheFollowingInformation(List<Opportunitie> opportunities) {
         this.opportunitie = opportunities.get(0);
+        opportunitie.setAccountName(allEntities.getAccount().getName());
         opportunitieDetailsPage = opportunitieFormPage.gotToSaveButton(opportunitie);
     }
 
 
-    @Then("^The opportunity should be displayed in details page$")
+    @Then("^The Opportunity should be displayed in details page$")
     public void theOpportunityShouldBeDisplayedInDetailsPage() {
         assertTrue(opportunitieDetailsPage.isChangeDisplayed(opportunitie));
     }
