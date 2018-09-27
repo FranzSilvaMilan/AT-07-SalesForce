@@ -2,19 +2,21 @@ package com.jalasoft.sfdc.steps;
 
 import com.jalasoft.sfdc.api.apiClass.APIAccount;
 import com.jalasoft.sfdc.entities.Account;
+import com.jalasoft.sfdc.entities.AllEntities;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.AppLauncher;
 import com.jalasoft.sfdc.ui.pages.account.AccountDetailsPage;
 import com.jalasoft.sfdc.ui.pages.account.AccountEnum;
 import com.jalasoft.sfdc.ui.pages.account.AccountFormPage;
 import com.jalasoft.sfdc.ui.pages.account.AccountListPage;
+import com.jalasoft.sfdc.ui.pages.account.StrategySetInputs;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.apache.log4j.Logger;
 
 import java.util.List;
 import java.util.Map;
@@ -27,6 +29,7 @@ import static org.testng.Assert.assertTrue;
  * class account steps
  */
 public class AccountSteps {
+    private Logger log = Logger.getLogger(getClass());
     private HomePage homePage;
     private AppLauncher appLauncher;
     private AccountFormPage accountFormPage;
@@ -34,8 +37,11 @@ public class AccountSteps {
     private AccountDetailsPage accountDetailPage;
     private Account account;
     private Account accountEdit;
-    APIAccount apiAccount;
-
+    private APIAccount apiAccount;
+    private AllEntities allEntities;
+    public AccountSteps(AllEntities allSteps){
+       allEntities = allSteps;
+    }
     //****************************************************************
     //Account Step Definitions
     //****************************************************************
@@ -66,7 +72,8 @@ public class AccountSteps {
      */
     @When("^I fill the Account form with:$")
     public void iFillTheAccountFormWith(final Map<AccountEnum, String> values) {
-        values.keySet().forEach(step -> accountFormPage.getStrategyStepMap(values).get(step).fillField());
+        Map<AccountEnum,StrategySetInputs> strategyMap =accountFormPage.getStrategyStepMap(values);
+        values.keySet().forEach(step -> strategyMap.get(step).fillField());
         accountDetailPage = accountFormPage.clickSaveButton();
     }
 
@@ -90,9 +97,20 @@ public class AccountSteps {
     @And("^I have new Account with following information:$")
     public void iHaveAccountWithFollowingInformation(List<Account> accountList) {
         account = accountList.get(0);
+        account.updateAccountName();
         iClickOnNew();
         apiAccount = new APIAccount(account);
-        accountDetailPage = accountFormPage.saveAccount(account);
+        //accountFormPage.saveAccount(account).forEach(input -> input.fillField());
+        accountFormPage.saveAccount(account).stream().filter(input -> {
+            try {
+                input.fillField();
+                return  true;
+            } catch (Exception e) {
+                return false;
+            }
+        }).forEach(StrategySetInputs::fillField);
+
+        accountDetailPage = accountFormPage.clickSaveButton();
         accountDetailPage.setIdAccount(account);
 
     }
@@ -113,22 +131,29 @@ public class AccountSteps {
      */
     @And("^I edit the Account with the following information:$")
     public void iEditThatAccountWithTheFollowingInformation(List<Account> accountListEdit) {
-        //accountListEdit.forEach(step -> accountFormPage.);
         accountEdit = accountListEdit.get(0);
-        System.out.println(accountEdit.getName() + " "+ accountEdit.getNumber());
-        accountDetailPage = accountFormPage.saveAccount(accountEdit);
+        accountEdit.updateAccountName();
+       //accountDetailPage = accountFormPage.saveAccount(accountEdit);
+        accountFormPage.saveAccount(accountEdit).stream().filter(input -> {
+            try {
+                input.fillField();
+                return  true;
+            } catch (Exception e) {
+                return false;
+            }
+        }).forEach(StrategySetInputs::fillField);
+       accountFormPage.clickSaveButton();
+
 
     }
 
     /**
      * validate account that is showed on details page
-     *
-     * @param nameSaved
      */
-    @Then("^I should see the Account updated in the Accounts page \"([^\"]*)\"$")
-    public void iShouldSeeTheAccountUpdatedInTheAccountsPage(String nameSaved) {
-        assertEquals(accountDetailPage.getNameNewAccount(), nameSaved);
-        //validateAccount(account);
+    @Then("^I should see the Account updated in the Accounts page$")
+    public void iShouldSeeTheAccountUpdatedInTheAccountsPage() {
+        assertEquals(accountDetailPage.getNameNewAccount(), accountEdit.getName());
+        validateAccount(accountEdit);
     }
 
     /**
@@ -154,12 +179,12 @@ public class AccountSteps {
      */
     private void validateAccount(Account myAccount) {
         assertTrue(accountDetailPage.containsThisElement(myAccount.getName()), "The Name was not displayed correctly");
-        assertTrue(accountDetailPage.containsThisElement(myAccount.getFax()), "The Description was not displayed correctly");
+        assertTrue(accountDetailPage.containsThisElement(myAccount.getFax()), "The Accunt was not displayed correctly");
         assertTrue(accountDetailPage.containsThisElement(myAccount.getEmployees()), "The Employees was not displayed correctly");
-        assertTrue(accountDetailPage.containsThisElement(myAccount.getPhone()), "The Phone was not displayed correctly");
-        assertTrue(accountDetailPage.containsThisElement(myAccount.getNumber()), "The Indutry was not displayed correctly");
-        assertTrue(accountDetailPage.containsThisElement(myAccount.getSicCode()), "The Type was not displayed correctly");
-        assertTrue(accountDetailPage.containsThisElement(myAccount.getWeb()), "The Web adrres was not displayed correctly");
+        //assertTrue(accountDetailPage.containsThisElement(myAccount.getPhone()), "The Phone was not displayed correctly");
+        assertTrue(accountDetailPage.containsThisElement(myAccount.getNumber()), "The number was not displayed correctly");
+        //assertTrue(accountDetailPage.containsThisElement(myAccount.getSicCode()), "The Sic was not displayed correctly");
+        assertTrue(accountDetailPage.containsThisElement(myAccount.getWeb()), "The Web was not displayed correctly");
     }
 
     /**
@@ -169,9 +194,12 @@ public class AccountSteps {
      */
     @And("^I have Account with following information:$")
     public void iCreateByAPINewAccountWithFollowingInformation(List<Account> accountList) {
-        apiAccount = new APIAccount(accountList.get(0));
         account = accountList.get(0);
+        account.updateAccountName();
+        apiAccount = new APIAccount(account);
         apiAccount.createSObjectRecord();
+        allEntities.setAccount(account);
+
     }
 
     /**
@@ -184,12 +212,12 @@ public class AccountSteps {
     }
 
     /**
-     * the account list 
+     * the account list
      */
     @When("^I select the Account on list account page$")
     public void iSelectTheAccountOnListAccountPage() {
         accountDetailPage = accountListPage.clickAccountOnList(account);
-        accountFormPage = accountDetailPage.clickEditButton();
+
     }
 
     /**
@@ -202,6 +230,11 @@ public class AccountSteps {
         assertEquals(accountSpected.getWeb(), accountEdit.getWeb());
     }
 
+    @And("^I click on Edit Button$")
+    public void iClickOnEditButton() {
+        accountFormPage = accountDetailPage.clickEditButton();
+    }
+
     //****************************************************************
     //Hooks for @create Account api scenarios
     //****************************************************************
@@ -209,4 +242,6 @@ public class AccountSteps {
     public void afterAccountScenario() {
         apiAccount.deleteSObjectRecord();
     }
+
+
 }

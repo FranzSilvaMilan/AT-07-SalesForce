@@ -25,13 +25,7 @@ public class AccountListPageClassic extends AccountListPage {
         return new AccountFormPageClassic();
     }
 
-    /**
-     * {@inheritDoc}.
-     */
-    @Override
-    public AccountFormPage clickEditButton(String accountName) {
-        return null;
-    }
+
 
     @Override
     public AccountDetailsPage clickAccountOnList(Account account) {
@@ -44,6 +38,6 @@ public class AccountListPageClassic extends AccountListPage {
     public boolean containTheAccount(Account account) {
         String xpathAccount = "//a[text()='" + account.getName() + "']";
 
-        return !driverTools.isElementDisplayed(By.xpath(xpathAccount));
+        return driverTools.isElementDisplayed(By.xpath(xpathAccount));
     }
 }

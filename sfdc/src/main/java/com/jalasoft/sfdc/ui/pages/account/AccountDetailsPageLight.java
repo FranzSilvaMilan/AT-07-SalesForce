@@ -37,7 +37,7 @@ public class AccountDetailsPageLight extends AccountDetailsPage {
      */
     @Override
     public String getNameNewAccount() {
-
+        driverTools.sleepMilliSeconds(3000);
         return nameAccount.getText().trim();
     }
 

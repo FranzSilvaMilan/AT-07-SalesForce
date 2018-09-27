@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
 
 public class AccountFormPageClassic extends AccountFormPage {
@@ -269,7 +270,7 @@ public class AccountFormPageClassic extends AccountFormPage {
     }
 
     @Override
-    public AccountDetailsPage saveAccount(Account account) {
+    public List<StrategySetInputs> saveAccount(Account account) {
         if (account.getName() != null) driverTools.setInputField(accountNameTextField, account.getName());
         if (account.getNumber() != null) driverTools.setInputField(accountNumberTextField, account.getNumber());
         if (account.getWeb() != null) driverTools.setInputField(accountWebsite, account.getWeb());
@@ -277,7 +278,7 @@ public class AccountFormPageClassic extends AccountFormPage {
         if (account.getPhone() != null) driverTools.setInputField(accountPhone, account.getPhone());
         if (account.getSicCode() != null) driverTools.setInputField(accountSICCode, account.getSicCode());
         if (account.getEmployees() != null) driverTools.setInputField(accountEmployee, account.getEmployees());
-        driverTools.clickElement(saveButton);
-        return PageFactory.getDetailAccountPage();
+        //driverTools.clickElement(saveButton);
+        return null;
     }
 }
