@@ -60,7 +60,10 @@ public class ContactSteps {
     @When("^I create the Contact with the following information$")
     public void iCreateTheContactWithTheFollowingInformation(final List<Contact> contactList) {
         this.contact = contactList.get(0);
+        contact.updateContactFirstName();
+        apiContact = new APIContact(contact);
         contactDetailsPage = contactFormPage.gotToSaveButton(contact);
+        contactDetailsPage.getIdUrlCurrent(contact);
     }
 
     /**
@@ -88,8 +91,9 @@ public class ContactSteps {
      */
     @And("^I have a Contact with the following information:$")
     public void iHaveAContactWithFollowingInformation(List<Contact> listContact) {
-        apiContact = new APIContact(listContact.get(0));
         contact = listContact.get(0);
+        contact.updateContactFirstName();
+        apiContact = new APIContact(contact);
         apiContact.createSObjectRecord();
     }
 
@@ -106,6 +110,7 @@ public class ContactSteps {
     @And("^I edit the Contact with the following information$")
     public void iEditTheContactWithTheFollowingInformation(final List<Contact> contactChanges) {
         this.contact = contactChanges.get(0);
+        contact.updateContactFirstName();
         contactDetailsPage.setNewChangesToContact(contact);
     }
 
@@ -139,18 +144,25 @@ public class ContactSteps {
         assertEquals(contactSpected.getMobile(),contact.getMobile());
     }
 
+
+    /**
+     * Verify contact with API
+     * the Contact should be edit
+     */
     @And("^the Contact should be edited$")
     public void theContactShouldBeEdited(){
         Contact contactSpected = apiContact.getContactValuesByAPI();
-        System.out.println("ID "+contact.getId());
-        System.out.println("id api "+contactSpected.getId());
-        System.out.println(contact.getLastName()+"  --  "+contactSpected.getFirstName());
         assertEquals(contactSpected.getFirstName(),contact.getFirstName());
         assertEquals(contactSpected.getLastName(),contact.getLastName());
         assertEquals(contactSpected.getTitle(),contact.getTitle());
         assertEquals(contactSpected.getMobile(),contact.getMobile());
     }
 
+
+    /**
+     * Verify contact with API
+     * the Contact should be removed
+     */
     @And("^the Contatc should be removed$")
     public void theContatcShouldBeRemoved() throws Throwable {
         Contact contactSpected = apiContact.getContactValuesByAPI();
@@ -168,7 +180,4 @@ public class ContactSteps {
     public void afterContactScenario() {
         apiContact.deleteSObjectRecord();
     }
-
-
-
 }

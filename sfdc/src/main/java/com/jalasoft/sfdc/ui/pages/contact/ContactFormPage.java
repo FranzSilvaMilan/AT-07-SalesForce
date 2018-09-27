@@ -20,10 +20,9 @@ public abstract class ContactFormPage extends BasePage {
     }
 
     /**
-     * Abstract method that set and save new Contact.
-     *
+     * The abstract method that set and save new Contact.
      * @param contact - is the object that contains the contact's data.
-     * @return new page.
+     * @return new page Classic or Light.
      */
     public abstract ContactDetailsPage gotToSaveButton(Contact contact);
 }

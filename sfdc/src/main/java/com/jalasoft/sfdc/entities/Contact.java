@@ -1,5 +1,10 @@
 package com.jalasoft.sfdc.entities;
 
+import com.jalasoft.sfdc.config.ServersConfigReader;
+import com.jalasoft.sfdc.constants.SFDCEnums;
+
+import java.util.Date;
+
 /**
  * User class contains the user information.
  *
@@ -24,6 +29,8 @@ public class Contact {
     private String leadSource = "";
     private String mailingStreet = "";
     private String Id = "";
+
+    private String contactName;
     /**
      * Gets the contact first name.
      * @return the current contact first name.
@@ -294,5 +301,23 @@ public class Contact {
      */
     public void setId(String id) {
         Id = id;
+    }
+
+    public String getContactName() {
+        SFDCEnums.Skin skin = ServersConfigReader.getInstance().getSkin();
+        contactName = skin == SFDCEnums.Skin.LIGHT ? firstName.concat(" ").concat(lastName)
+                :lastName.concat(", ").concat(firstName);
+        return contactName;
+    }
+
+
+
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
+    }
+
+    public void updateContactFirstName() {
+        Long timeStamp = new Date().getTime();
+        this.firstName+=timeStamp;
     }
 }

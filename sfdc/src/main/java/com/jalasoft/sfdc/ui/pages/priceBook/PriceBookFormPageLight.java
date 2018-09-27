@@ -6,16 +6,16 @@ import org.openqa.selenium.support.FindBy;
 public class PriceBookFormPageLight extends PriceBookFormPage {
 
     @FindBy(xpath = "//*[@aria-required='true']")
-    WebElement titlePriceBookInput;
+    private WebElement titlePriceBookInput;
 
     @FindBy(xpath = "(//*[@class=' input'])[2]")
-    WebElement desriptionInput;
+    private WebElement desriptionInput;
 
-    @FindBy(xpath = "(//*[@class=\"slds-form-element__control\"]//child::input[@type=\"checkbox\"]")
-    WebElement optionActiveCheckBox;
+    @FindBy(xpath = "(//*[@class='slds-form-element__control']//child::input[@type='checkbox']")
+    private WebElement optionActiveCheckBox;
 
     @FindBy(xpath = "//div/button[3]/span")
-    WebElement saveButton;
+    private WebElement saveButton;
 
     /**
      * Waits until page object is loaded.
@@ -39,5 +39,4 @@ public class PriceBookFormPageLight extends PriceBookFormPage {
         driverTools.clickElement(saveButton);
         return new PriceBookDetailsPageLight();
     }
-
 }

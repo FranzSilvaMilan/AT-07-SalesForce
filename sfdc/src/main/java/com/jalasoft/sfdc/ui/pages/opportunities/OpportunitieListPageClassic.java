@@ -17,6 +17,10 @@ public class OpportunitieListPageClassic extends OpportunitieListPage {
 
     }
 
+    /**
+     * Method that click in New Button.
+     * @return new Form page Classic.
+     */
     @Override
     public OpportunitieFormPage gotToNewButton() {
         driverTools.clickElement(newButton);

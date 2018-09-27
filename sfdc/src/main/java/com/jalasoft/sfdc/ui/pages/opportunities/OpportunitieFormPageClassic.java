@@ -40,9 +40,6 @@ public class OpportunitieFormPageClassic extends OpportunitieFormPage {
         select.selectByVisibleText(opportunitie.getStage());
         driverTools.setInputField(opportunitiesClosedateInput, opportunitie.getCloseDate());
         driverTools.clickElement(acction);
-        //driverTools.clickElement(opportunitiesStageInput);
-        //driverTools.setInputField(opportunitiesStageInput, opportunitie.getStage());
-        //driverTools.setInputField(opportunitiesNameInput, opportunitie.getAccountName());
         driverTools.clickElement(saveButton);
         return new OpportunitieDetailsPageClassic();
     }

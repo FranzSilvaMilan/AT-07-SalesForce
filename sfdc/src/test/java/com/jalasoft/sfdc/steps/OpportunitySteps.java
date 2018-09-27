@@ -2,6 +2,7 @@ package com.jalasoft.sfdc.steps;
 
 import com.jalasoft.sfdc.entities.AllEntities;
 import com.jalasoft.sfdc.entities.Opportunitie;
+import com.jalasoft.sfdc.entities.Product;
 import com.jalasoft.sfdc.entities.Quote;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.AppLauncher;
@@ -32,8 +33,10 @@ public class OpportunitySteps {
     private QuotesDetailsPage quotesDetailsPage;
     private QuotesAddProductPage quotesAddProductPage;
     private QuoteItemPage quoteItemPage;
+
     private Quote quote;
     private AllEntities allEntities;
+
     public OpportunitySteps(AllEntities allEntities){
         this.allEntities = allEntities;
     }
@@ -69,7 +72,7 @@ public class OpportunitySteps {
         quotesFormPage = opportunitieDetailsPage.isNewQuoteSelect();
         quotesDetailsPage = quotesFormPage.gotToSaveButton(quote);
         quotesAddProductPage = quotesDetailsPage.addProduct();
-        quoteItemPage = quotesAddProductPage.isSelectOptionButton();
+        quoteItemPage = quotesAddProductPage.isSelectOptionButton(allEntities.getProduct().getProductName());
     }
 
     @And("^I add the following line items$")
