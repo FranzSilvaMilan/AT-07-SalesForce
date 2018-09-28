@@ -40,4 +40,26 @@ public final class SFDCConstants {
     public final static String PRODUCT_DESCRIPTION = "Description";
     public final static String PRODUCT_FAMILY = "Family";
     public final static String PRODUCT_ACTIVE = "IsActive";
+
+    //Quotes
+    public final static String QUOTE = "Quote";
+    public final static String QUOTE_NAME = "Name";
+    public final static String QUOTE_OPORTUNITY_ID = "OpportunityId";
+    public final static String QUOTE_PRICEBOOK_ID = "Pricebook2Id";
+    public final static String QUOTE_SUBTOTATL = "Subtotal";
+    public final static String QUOTE_TOTAL_PRICE = "TotalPrice";
+    public final static String QUOTE_ACCOUNT_NAME = "BillingName";
+
+
+    //Price Books
+    public final static String PRICEBOOKS = "Price Book";
+    public final static String PRICE_BOOK_NAME = "Price Book Name";
+    public final static String PRICE_BOOK_ACTIVE = "Price Book Active";
+
+    //Opportunities
+    public final static String OPPORTUNITY = "Opportunity";
+    public final static String OPPY_NAME = "Name";
+    public final static String OPPY_CLOSE_DATE = "CloseDate";
+    public final static String OPPY_STAGE = "StageName";
+    public final static String OPPY_ACCOUNT_ID = "AccountId";
 }

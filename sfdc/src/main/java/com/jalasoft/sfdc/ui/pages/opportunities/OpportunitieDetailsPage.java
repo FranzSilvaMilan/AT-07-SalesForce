@@ -8,4 +8,5 @@ public abstract class OpportunitieDetailsPage extends BasePage {
 
     public abstract boolean isChangeDisplayed(Opportunitie opportunitie);
     public abstract QuotesFormPage isNewQuoteSelect();
+    public abstract void getIdOpportunity(Opportunitie opportunitie);
 }

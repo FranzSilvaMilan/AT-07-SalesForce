@@ -3,11 +3,40 @@ package com.jalasoft.sfdc.entities;
 import java.util.List;
 
 public class Opportunitie {
-    private String name = "";
-    private String closeDate = "";
-    private String stage = "";
-    private String accountName = "";
+    private String name;
+    private String closeDate;
+    private String stage;
+    private String accountId;
     private List<Quote> quoteList;
+    private String id;
+
+    public String getAccountName() {
+        return accountName;
+    }
+
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
+    }
+
+    private String accountName;
+
+    public List<Quote> getQuoteList() {
+        return quoteList;
+    }
+
+    public void setQuoteList(List<Quote> quoteList) {
+        this.quoteList = quoteList;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+
 
     /**
      * Gets the opportunities name.
@@ -61,16 +90,16 @@ public class Opportunitie {
      * Gets the opportunities account Name.
      * @return the current opportunities account Name.
      */
-    public String getAccountName() {
-        return accountName;
+    public String getAccountId() {
+        return accountId;
     }
 
     /**
      * Sets the opportunities account name.
-     * @param accountName opportunities account name to set.
+     * @param accountId opportunities account name to set.
      */
-    public void setAccountName(String accountName) {
-        this.accountName = accountName;
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
     }
 
 }

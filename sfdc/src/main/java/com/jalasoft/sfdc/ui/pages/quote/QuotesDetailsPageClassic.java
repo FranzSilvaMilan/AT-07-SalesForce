@@ -1,5 +1,6 @@
 package com.jalasoft.sfdc.ui.pages.quote;
 
+import com.jalasoft.sfdc.entities.Quote;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -19,5 +20,12 @@ public class QuotesDetailsPageClassic extends QuotesDetailsPage {
     public QuotesAddProductPage addProduct(){
         driverTools.clickElement(addLineItemButton);
         return new QuotesAddProductPageClassic();
+    }
+
+    @Override
+    public void getIdQuote(Quote quote) {
+        String url = driver.getCurrentUrl();
+        String[] urlSplit = url.split("/");
+        quote.setId(urlSplit[urlSplit.length - 1]);
     }
 }

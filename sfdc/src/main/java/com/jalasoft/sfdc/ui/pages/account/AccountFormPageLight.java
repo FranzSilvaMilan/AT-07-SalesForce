@@ -286,14 +286,6 @@ public class AccountFormPageLight extends AccountFormPage {
         strategySetInputs.add(()-> driverTools.setInputField(accountPhone, account.getPhone()));
         strategySetInputs.add(()-> driverTools.setInputField(accountSICCode, account.getSicCode()));
         strategySetInputs.add(()-> driverTools.setInputField(accountEmployee, account.getEmployees()));
-
-//        if (account.getName() != null) driverTools.setInputField(accountNameTextField, account.getName());
-//        if (account.getNumber() != null) driverTools.setInputField(accountNumberTextField, account.getNumber());
-//        if (account.getWeb() != null) driverTools.setInputField(accountWebsite, account.getWeb());
-//        if (account.getFax() != null) driverTools.setInputField(accountFax, account.getFax());
-//        if (account.getPhone() != null) driverTools.setInputField(accountPhone, account.getPhone());
-//        if (account.getSicCode() != null) driverTools.setInputField(accountSICCode, account.getSicCode());
-//        if (account.getEmployees() != null) driverTools.setInputField(accountEmployee, account.getEmployees());
         return strategySetInputs;
     }
 

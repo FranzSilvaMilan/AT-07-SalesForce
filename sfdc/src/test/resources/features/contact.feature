@@ -1,4 +1,4 @@
-@Login
+@Contact
 Feature: Create new contact
 
   Background:
