@@ -66,7 +66,7 @@ public class ProductSteps {
      * Fill required fields.
      * @param product - Name of the Product.
      */
-    @When("^I create the Product with the following information$")
+    @When("^I have a Product with the following information$")
     public void iFillInRequiredFields(final List<Product> product) {
         product1 = product.get(0);
         product1.updateProductName();
@@ -114,8 +114,8 @@ public class ProductSteps {
      * Create product with API.
      * @param productList fields.
      */
-    @Given("^I create by API new Product with following information:$")
-    public void iCreateByAPINewProductWithFollowingInformation(final List<Product> productList) {
+    @Given("^I have a Product with the following information:$")
+    public void iHaveAProductWithTheFollowingInformation(final List<Product> productList) {
         product1 = productList.get(0);
         product1.updateProductName();
         allEntities.setProduct(product1);
@@ -176,6 +176,7 @@ public class ProductSteps {
      */
     @And("^I add the Product to Price Book Standard with List Price \"([^\"]*)\"$")
     public void iAddTheProductToPriceBookStandardWithListPrice(String priceBook) {
+        product1.setPriceBook(priceBook);
         productDetailsPage = productDetailsPage.clickAddPriceBook(priceBook);
     }
 

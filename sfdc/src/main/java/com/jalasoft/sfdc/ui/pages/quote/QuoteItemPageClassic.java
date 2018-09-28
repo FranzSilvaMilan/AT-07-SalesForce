@@ -11,6 +11,7 @@ public class QuoteItemPageClassic extends QuoteItemPage {
     private WebElement unitPrice;
     @FindBy(xpath = "(//input[@title='Save'])[1]")
     private WebElement saveQuoteButton;
+
     /**
      * Waits until page object is loaded.
      */
@@ -19,9 +20,13 @@ public class QuoteItemPageClassic extends QuoteItemPage {
 
     }
 
+    /**
+     * Add budget line elements quantity to test appointment.
+     * @param quote - class object Quotes.
+     * @return Details Page Classic.
+     */
     @Override
      public QuotesDetailsPage isClickSaveItemButton(Quote quote){
-        //driverTools.setInputField(unitPrice,quote.getPrice());
         driverTools.setInputField(quantityInput,quote.getQuantity());
         driverTools.clickElement(saveQuoteButton);
         return new QuotesDetailsPageClassic();

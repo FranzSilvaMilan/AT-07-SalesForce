@@ -10,4 +10,6 @@ public abstract class QuotesDetailsPage extends BasePage {
      */
     public abstract QuotesAddProductPage addProduct();
 
+    public abstract boolean validateQuotesAndProduct(String price,String quantity);
+
 }
