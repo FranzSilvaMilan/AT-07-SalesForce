@@ -1,10 +1,12 @@
 package com.jalasoft.sfdc.steps;
 
-import com.jalasoft.sfdc.api.apiClass.APIProduct;
+
+import com.jalasoft.sfdc.api.apiClass.APIOppy;
+import com.jalasoft.sfdc.api.apiClass.APIQuote;
 import com.jalasoft.sfdc.entities.AllEntities;
 import com.jalasoft.sfdc.entities.Opportunitie;
-import com.jalasoft.sfdc.entities.Product;
 import com.jalasoft.sfdc.entities.Quote;
+import com.jalasoft.sfdc.entities.QuoteLineItem;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.AppLauncher;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
@@ -14,18 +16,21 @@ import com.jalasoft.sfdc.ui.pages.opportunities.OpportunitieListPage;
 import com.jalasoft.sfdc.ui.pages.quote.*;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.StringJoiner;
 
 public class OpportunitySteps {
     private HomePage homePage;
     private AppLauncher appLauncher;
-
     private Opportunitie opportunitie;
     private OpportunitieDetailsPage opportunitieDetailsPage;
     private OpportunitieFormPage opportunitieFormPage;
@@ -34,14 +39,17 @@ public class OpportunitySteps {
     private QuotesDetailsPage quotesDetailsPage;
     private QuotesAddProductPage quotesAddProductPage;
     private QuoteItemPage quoteItemPage;
-
+    private APIOppy apiOppy;
+    private APIQuote apiQuote;
+    private QuoteLineItem quoteLineItem;
     private Quote quote;
     private APIProduct productAPI;
     private AllEntities allEntities;
 
-    public OpportunitySteps(AllEntities allEntities){
+    public OpportunitySteps(AllEntities allEntities) {
         this.allEntities = allEntities;
     }
+
 
     /**
      * We will go to the start page of the Classic or Light for add Opportunities.
@@ -68,8 +76,11 @@ public class OpportunitySteps {
     @When("^I created an Opportunity with the following information$")
     public void iCreatedAnOpportunityWithTheFollowingInformation(List<Opportunitie> opportunities) {
         this.opportunitie = opportunities.get(0);
+        apiOppy = new APIOppy(opportunitie);
+        opportunitie.setAccountId(allEntities.getAccount().getId());
         opportunitie.setAccountName(allEntities.getAccount().getName());
         opportunitieDetailsPage = opportunitieFormPage.gotToSaveButton(opportunitie);
+        opportunitieDetailsPage.getIdOpportunity(opportunitie);
     }
 
     /**
@@ -98,10 +109,31 @@ public class OpportunitySteps {
      * @param quotes - class object Quotes.
      */
     @And("^I add the following line items$")
-    public void iAddTheFollowingLineItems(List<Quote> quotes) {
-        this.quote.setPrice(quotes.get(0).getPrice());
-        this.quote.setQuantity(quotes.get(0).getQuantity());
-        quotesDetailsPage = quoteItemPage.isClickSaveItemButton(quote);
+    public void iAddTheFollowingLineItems(List<QuoteLineItem> quotes) {
+        quoteLineItem = quotes.get(0);
+        quote.setQuoteLineItem(quotes);
+        quotesDetailsPage = quoteItemPage.isClickSaveItemButton(quoteLineItem);
+    }
+
+    @And("^The Opportunity should be created$")
+    public void theOpportunityShouldBeCreated() {
+        Opportunitie opportunitieAPI = apiOppy.getOppyValuesByAPI();
+        String dateActual = opportunitie.getCloseDate();
+        String[] dateSplit = dateActual.split("/");
+        StringJoiner stringJoiner = new StringJoiner("-");
+        stringJoiner.add(dateSplit[2]);
+        stringJoiner.add(dateSplit[0]);
+        stringJoiner.add(dateSplit[1]);
+        assertEquals(stringJoiner.toString(), opportunitieAPI.getCloseDate());
+        assertEquals(opportunitieAPI.getName(), opportunitie.getName());
+    }
+
+    @When("^The Quote should be displayed in details page$")
+    public void theQuoteShouldBeDisplayedInDetailsPage() {
+    }
+
+    @And("^The Quote shuld be created$")
+    public void theQuoteShuldBeCreated(){
     }
 
     @Then("^the Quotes should be displayed in details page$")

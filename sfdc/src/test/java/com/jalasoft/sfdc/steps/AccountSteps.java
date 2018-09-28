@@ -111,7 +111,7 @@ public class AccountSteps {
         }).forEach(StrategySetInputs::fillField);
 
         accountDetailPage = accountFormPage.clickSaveButton();
-        accountDetailPage.setIdAccount(account);
+        accountDetailPage.getIdAccount(account);
 
     }
 
@@ -133,7 +133,6 @@ public class AccountSteps {
     public void iEditThatAccountWithTheFollowingInformation(List<Account> accountListEdit) {
         accountEdit = accountListEdit.get(0);
         accountEdit.updateAccountName();
-       //accountDetailPage = accountFormPage.saveAccount(accountEdit);
         accountFormPage.saveAccount(accountEdit).stream().filter(input -> {
             try {
                 input.fillField();
@@ -143,8 +142,6 @@ public class AccountSteps {
             }
         }).forEach(StrategySetInputs::fillField);
        accountFormPage.clickSaveButton();
-
-
     }
 
     /**
@@ -195,6 +192,7 @@ public class AccountSteps {
     @And("^I have Account with following information:$")
     public void iCreateByAPINewAccountWithFollowingInformation(List<Account> accountList) {
         account = accountList.get(0);
+
         account.updateAccountName();
         apiAccount = new APIAccount(account);
         apiAccount.createSObjectRecord();

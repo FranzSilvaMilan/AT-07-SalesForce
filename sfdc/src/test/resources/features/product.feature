@@ -1,8 +1,9 @@
+@Product
 Feature: Create a new Product.
 
   Background:
     Given I navigate to Login page
-      And I login as "erik" User
+      And I login as "franz" User
 
   @deleteProduct
   Scenario: Verify that is possible create a new product
@@ -16,7 +17,8 @@ Feature: Create a new Product.
 
   @deleteProduct
   Scenario: Verify that is create a Product with api
-    Given I have a Product with the following information:
+
+    Given I have a Product with the following information
       | Product Name | Product Code | Product Description     | Active | Product Family |
       | laptop gamer | 10101010     | product created for api | false  | None           |
     When I go to Product list Page
@@ -30,7 +32,8 @@ Feature: Create a new Product.
 
   @deleteProduct
   Scenario: Verify that is possible delete a Product
-    Given I have a Product with the following information:
+
+    Given I have a Product with the following information
       | Product Name | Product Code | Product Description | Active | Product Family |
       | computer2    | 123456478    | pc                  | true   | None           |
     When I go to Product list Page

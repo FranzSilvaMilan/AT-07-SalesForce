@@ -34,7 +34,7 @@ public class OpportunitieFormPageClassic extends OpportunitieFormPage {
      */
     @Override
     public OpportunitieDetailsPage gotToSaveButton(Opportunitie opportunitie) {
-        driverTools.setInputField(opportunitiesNameInput, opportunitie.getAccountName());
+        driverTools.setInputField(opportunitiesNameInput, opportunitie.getName());
         driverTools.clickElement(opportunitiesStageInput);
         Select select = new Select(opportunitiesStageInput);
         select.selectByVisibleText(opportunitie.getStage());

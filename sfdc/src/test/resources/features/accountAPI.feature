@@ -1,3 +1,4 @@
+@AccountApi
 Feature: Create Account API
 
   Background:

@@ -3,7 +3,7 @@ Feature: Create a new PriceBook.
 
   Background:
     Given I navigate to Login page
-    And I login as "erik" User
+    And I login as "franz" User
 
   Scenario Outline: Verify that is possible create a new PriceBook
     When I go to PriceBook list Page

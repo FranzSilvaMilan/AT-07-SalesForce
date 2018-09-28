@@ -33,7 +33,7 @@ public class OpportunitieDetailsPageClassic extends OpportunitieDetailsPage {
      */
     @Override
     public boolean isChangeDisplayed(Opportunitie opportunitie) {
-        return driverTools.isElementDisplayed(By.xpath("//div[contains(text(),'" + opportunitie.getAccountName() + "')]"));
+        return driverTools.isElementDisplayed(By.xpath("//div[contains(text(),'" + opportunitie.getName() + "')]"));
     }
 
     /**
@@ -44,5 +44,12 @@ public class OpportunitieDetailsPageClassic extends OpportunitieDetailsPage {
     public QuotesFormPage isNewQuoteSelect() {
         driverTools.clickElement(newQuoteButton);
         return new QuotesFormPageClassic();
+    }
+
+    @Override
+    public void getIdOpportunity(Opportunitie opportunitie) {
+        String url = driver.getCurrentUrl();
+        String[] urlSplit = url.split("/");
+        opportunitie.setId(urlSplit[urlSplit.length - 1]);
     }
 }

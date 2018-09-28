@@ -1,4 +1,4 @@
-
+@Login1
 Feature: Login
   Test successfully and unsuccessfully login and logout
 

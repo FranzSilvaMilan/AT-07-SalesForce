@@ -53,7 +53,7 @@ public class AccountDetailsPageClassic extends AccountDetailsPage {
     }
 
     @Override
-    public void setIdAccount(Account account) {
+    public void getIdAccount(Account account) {
         String url = driver.getCurrentUrl();
         String[] urlSplit = url.split("/");
         account.setId(urlSplit[urlSplit.length - 1]);

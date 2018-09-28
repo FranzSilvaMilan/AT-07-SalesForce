@@ -114,8 +114,8 @@ public class ProductSteps {
      * Create product with API.
      * @param productList fields.
      */
-    @Given("^I have a Product with the following information:$")
-    public void iHaveAProductWithTheFollowingInformation(final List<Product> productList) {
+    @Given("^I have a Product with the following information$")
+    public void iCreateByAPINewProductWithFollowingInformation(final List<Product> productList) {
         product1 = productList.get(0);
         product1.updateProductName();
         allEntities.setProduct(product1);
