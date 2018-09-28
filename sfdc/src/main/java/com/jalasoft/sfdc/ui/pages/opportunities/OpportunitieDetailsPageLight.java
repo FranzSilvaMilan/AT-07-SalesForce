@@ -14,6 +14,11 @@ public class OpportunitieDetailsPageLight extends OpportunitieDetailsPage{
         return null;
     }
 
+    @Override
+    public void getIdOpportunity(Opportunitie opportunitie) {
+
+    }
+
     /**
      * Waits until page object is loaded.
      */
