@@ -4,7 +4,7 @@ Feature: Create a new Oppy.
   Background:
     Given I navigate to Login page
     And I login as "franz" User
-  @deleteProduct @deleteAccountAfter
+
   Scenario: Verify that is possible created a new Opporunity with Quote
     Given I have Account with following information:
         | name     | number | web           | phone | sicCode | fax   | employees |
@@ -30,5 +30,5 @@ Feature: Create a new Oppy.
         | salesPrice | quantity |
         | 20555      | 50       |
     When The Quote should be displayed in details page
-      And The Quote shuld be created
+      And The Quote should be created
 

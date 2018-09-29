@@ -5,6 +5,7 @@ import com.jalasoft.sfdc.ui.PageFactory;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -210,11 +211,11 @@ public class AccountFormPageClassic extends AccountFormPage {
     public Map<AccountEnum, StrategySetInputs> getStrategyStepMap(final Map<AccountEnum, String> values) {
         EnumMap<AccountEnum, StrategySetInputs> strategyMap = new EnumMap<>(AccountEnum.class);
 
-        strategyMap.put(AccountEnum.ACCOUNT_NAME, () ->
-                this.setAccountNameTextField(String.valueOf(values.get(AccountEnum.ACCOUNT_NAME))));
+        strategyMap.put(AccountEnum.name, () ->
+                this.setAccountNameTextField(String.valueOf(values.get(AccountEnum.name))));
 
-        strategyMap.put(AccountEnum.ACCOUNT_NUMBER, () ->
-                this.setAccountNumberTextField(String.valueOf(values.get(AccountEnum.ACCOUNT_NUMBER))));
+        strategyMap.put(AccountEnum.number, () ->
+                this.setAccountNumberTextField(String.valueOf(values.get(AccountEnum.number))));
 
         strategyMap.put(AccountEnum.ACCOUNT_SITE, () ->
                 this.setAccountSiteTextField(String.valueOf(values.get(AccountEnum.ACCOUNT_SITE))));
@@ -234,14 +235,14 @@ public class AccountFormPageClassic extends AccountFormPage {
         strategyMap.put(AccountEnum.RATING, () ->
                 this.setAccountRatingList(String.valueOf(values.get(AccountEnum.RATING))));
 
-        strategyMap.put(AccountEnum.PHONE, () ->
-                this.setAccountPhoneTextField(String.valueOf(values.get(AccountEnum.PHONE))));
+        strategyMap.put(AccountEnum.phone, () ->
+                this.setAccountPhoneTextField(String.valueOf(values.get(AccountEnum.phone))));
 
-        strategyMap.put(AccountEnum.FAX, () ->
-                this.setAccountFaxTextField(String.valueOf(values.get(AccountEnum.FAX))));
+        strategyMap.put(AccountEnum.fax, () ->
+                this.setAccountFaxTextField(String.valueOf(values.get(AccountEnum.fax))));
 
-        strategyMap.put(AccountEnum.WEBSITE, () ->
-                this.setAccountWebsiteTextField(String.valueOf(values.get(AccountEnum.WEBSITE))));
+        strategyMap.put(AccountEnum.web, () ->
+                this.setAccountWebsiteTextField(String.valueOf(values.get(AccountEnum.web))));
 
         strategyMap.put(AccountEnum.TICKER_SYMBOL, () ->
                 this.setAccountTickerSymbolTextField(String.valueOf(values.get(AccountEnum.TICKER_SYMBOL))));
@@ -249,11 +250,11 @@ public class AccountFormPageClassic extends AccountFormPage {
         strategyMap.put(AccountEnum.OWNERSHIP, () ->
                 this.setAccountOwnershipList(String.valueOf(values.get(AccountEnum.OWNERSHIP))));
 
-        strategyMap.put(AccountEnum.EMPLOYEES, () ->
-                this.setAccountEmployeeTextField(String.valueOf(values.get(AccountEnum.EMPLOYEES))));
+        strategyMap.put(AccountEnum.employees, () ->
+                this.setAccountEmployeeTextField(String.valueOf(values.get(AccountEnum.employees))));
 
-        strategyMap.put(AccountEnum.SIC_CODE, () ->
-                this.setAccountSICCodeTextField(String.valueOf(values.get(AccountEnum.SIC_CODE))));
+        strategyMap.put(AccountEnum.siccode, () ->
+                this.setAccountSICCodeTextField(String.valueOf(values.get(AccountEnum.siccode))));
         return strategyMap;
     }
 
@@ -271,14 +272,14 @@ public class AccountFormPageClassic extends AccountFormPage {
 
     @Override
     public List<StrategySetInputs> saveAccount(Account account) {
-        if (account.getName() != null) driverTools.setInputField(accountNameTextField, account.getName());
-        if (account.getNumber() != null) driverTools.setInputField(accountNumberTextField, account.getNumber());
-        if (account.getWeb() != null) driverTools.setInputField(accountWebsite, account.getWeb());
-        if (account.getFax() != null) driverTools.setInputField(accountFax, account.getFax());
-        if (account.getPhone() != null) driverTools.setInputField(accountPhone, account.getPhone());
-        if (account.getSicCode() != null) driverTools.setInputField(accountSICCode, account.getSicCode());
-        if (account.getEmployees() != null) driverTools.setInputField(accountEmployee, account.getEmployees());
-        //driverTools.clickElement(saveButton);
-        return null;
+        List<StrategySetInputs> strategySetInputs = new ArrayList<>();
+        if(account.getName()!=null)strategySetInputs.add(()-> driverTools.setInputField(accountNameTextField, account.getName()));
+        if(account.getNumber()!=null)strategySetInputs.add(()-> driverTools.setInputField(accountNumberTextField, account.getNumber()));
+        if(account.getWeb()!=null)strategySetInputs.add(()-> driverTools.setInputField(accountWebsite, account.getWeb()));
+        if(account.getFax()!=null)strategySetInputs.add(()-> driverTools.setInputField(accountFax, account.getFax()));
+        if(account.getPhone()!=null)strategySetInputs.add(()-> driverTools.setInputField(accountPhone, account.getPhone()));
+        if(account.getSicCode()!=null)strategySetInputs.add(()-> driverTools.setInputField(accountSICCode, account.getSicCode()));
+        if(account.getEmployees()!=null)strategySetInputs.add(()-> driverTools.setInputField(accountEmployee, account.getEmployees()));
+        return strategySetInputs;
     }
 }

@@ -4,22 +4,31 @@ package com.jalasoft.sfdc.ui.pages.account;
  * @author Franz Silva
  * AccountInputs.
  */
+
 public enum AccountEnum {
-    ACCOUNT_NAME,
+   /** private String id;
+    private String name;
+    private String number;
+    private String web;
+    private String fax;
+    private String phone;
+    private String sicCode;
+    private String employees;*/
+    name,
     PARENT_ACCOUNT,
-    ACCOUNT_NUMBER,
+    number,
     ACCOUNT_SITE,
     TYPE,
     INDUSTRY,
     ANNUAL_REVENUE,
     RATING,
-    PHONE,
-    FAX,
-    WEBSITE,
+    phone,
+    fax,
+    web,
     TICKER_SYMBOL,
     OWNERSHIP,
-    EMPLOYEES,
-    SIC_CODE,
+    employees,
+    siccode,
     BILLING_STREET,
     BILLING_POSTAL,
     BILLING_CITY,
