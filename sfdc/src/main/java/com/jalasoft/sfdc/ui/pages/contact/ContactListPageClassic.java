@@ -55,6 +55,7 @@ public class ContactListPageClassic extends ContactListPage {
     @Override
     public ContactDetailsPage clickContactOnList(Contact contact) {
         String accountXpath = "//*[@class=' dataCell  ']//child::a[contains(text(),'" + contact.getLastName()+", "+contact.getFirstName() + "')]";
+        System.out.println(accountXpath + " --------------------------------");
         driverTools.refreshPage();
         driverTools.clickElement(By.xpath(accountXpath));
         return new ContactDetailsPageClassic();

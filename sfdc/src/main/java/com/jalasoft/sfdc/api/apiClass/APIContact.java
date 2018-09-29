@@ -30,15 +30,13 @@ public class APIContact extends APIBase {
         map.put("LastName", contact.getLastName());
         map.put("HomePhone", contact.getHomePhone());
         map.put("Title", contact.getTitle());
-        map.put("MailingStreet", contact.getMailingStreet());
-        map.put("Phone", contact.getPhone());
+        //map.put("MailingStreet", contact.getMailingStreet());
+        //map.put("Phone", contact.getPhone());
         map.put("MobilePhone", contact.getMobile());
         map.put("OtherPhone", contact.getOtherPhone());
-        map.put("LeadSource", contact.getLeadSource());
-        map.put("Languages__c",contact.getLenguaje());
-        map.put("Level__c", contact.getLevel());
-        map.put("Id", contact.getId());
-
+        //map.put("LeadSource", contact.getLeadSource());
+        //map.put("Languages__c",contact.getLenguaje());
+        //map.put("Level__c", contact.getLevel());
         return map;
     }
 
@@ -59,13 +57,12 @@ public class APIContact extends APIBase {
         contactApi.setHomePhone(response.jsonPath().get(CONTACT_HOME_PHONE).toString());
         contactApi.setTitle(response.jsonPath().get(CONTACT_TITLE).toString());
         //contactApi.setMailingStreet(response.jsonPath().get(CONTACT_MAILING_STREET).toString());
-        contactApi.setPhone(response.jsonPath().get(CONTACT_PHONE).toString());
+        //contactApi.setPhone(response.jsonPath().get(CONTACT_PHONE).toString());
         contactApi.setMobile(response.jsonPath().get(CONTACT_MOBILE).toString());
         contactApi.setOtherPhone(response.jsonPath().get(CONTACT_OTHER_PHONE).toString());
         //contactApi.setLeadSource(response.jsonPath().get(CONTACT_LEAD_SOURCE).toString());
         //contactApi.setLenguaje(response.jsonPath().get(CONTACT_lANGUAJE).toString());
         //contactApi.setLevel(response.jsonPath().get(CONTACT_LEVEL).toString());
-        contactApi.setId(response.jsonPath().get(CONTACT_ID).toString());
         return contactApi;
     }
 }

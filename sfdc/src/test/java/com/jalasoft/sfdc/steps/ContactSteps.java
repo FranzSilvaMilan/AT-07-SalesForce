@@ -110,7 +110,6 @@ public class ContactSteps {
     @And("^I edit the Contact with the following information$")
     public void iEditTheContactWithTheFollowingInformation(final List<Contact> contactChanges) {
         this.contact = contactChanges.get(0);
-        contact.updateContactFirstName();
         contactDetailsPage.setNewChangesToContact(contact);
     }
 
