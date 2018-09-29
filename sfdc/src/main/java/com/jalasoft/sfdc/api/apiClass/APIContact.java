@@ -5,6 +5,7 @@ import com.jalasoft.sfdc.entities.Contact;
 
 import java.util.HashMap;
 import java.util.Map;
+import io.restassured.response.Response;
 
 import static com.jalasoft.sfdc.constants.SFDCConstants.*;
 
@@ -38,6 +39,12 @@ public class APIContact extends APIBase {
         //map.put("Languages__c",contact.getLenguaje());
         //map.put("Level__c", contact.getLevel());
         return map;
+    }
+
+    public Response deleteAccountByAPI() {
+        response = apiManager.delete(ACCOUNT, contact.getId());
+        System.out.println("Query response delete: ***************************" + response.asString());
+        return response;
     }
 
     @Override

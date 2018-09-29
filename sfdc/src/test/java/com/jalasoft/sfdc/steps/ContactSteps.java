@@ -6,7 +6,7 @@ import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.AppLauncher;
 import com.jalasoft.sfdc.ui.pages.contact.*;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import cucumber.api.PendingException;
+import io.restassured.response.Response;
 import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -31,6 +31,7 @@ public class ContactSteps {
     private Contact contactAPI;
 
     private APIContact apiContact;
+    private Response response;
 
     //---------------------------------------------------------------------------------------
     //                                      Create a new Contact
@@ -164,9 +165,9 @@ public class ContactSteps {
      */
     @And("^the Contact should be removed$")
     public void theContactShouldBeRemoved(){
-        Contact contactSpected = apiContact.getContactValuesByAPI();
-        System.out.println("ID "+contact.getId());
-        System.out.println("id api "+contactSpected.getId());
+        final String deleteEntity="The requested resource does not exist";
+        response = apiContact.deleteAccountByAPI();
+        assertTrue(response.asString().contains(deleteEntity), "should be return :");
     }
 
     //****************************************************************
