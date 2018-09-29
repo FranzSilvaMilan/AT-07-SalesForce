@@ -47,7 +47,6 @@ public class APIAccount extends APIBase{
         map.put("Phone", account.getPhone());
         map.put("Website", account.getWeb());
         map.put("Fax", account.getFax());
-        map.put("Phone", account.getPhone());
         map.put("NumberOfEmployees", account.getEmployees());
         map.put("Sic", account.getSicCode());
         map.put("AccountNumber",account.getNumber());

@@ -39,8 +39,8 @@ public class AccountDetailsPageClassic extends AccountDetailsPage {
 
     @Override
     public AccountListPage clickDelitButton() {
-        acceptAlertDialog();
         driverTools.clickElement(deleteButton);
+        acceptAlertDialog();
         return new AccountListPageClassic();
     }
 

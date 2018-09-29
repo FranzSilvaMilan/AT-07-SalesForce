@@ -98,6 +98,7 @@ public class OpportunitySteps {
     @When("^I create a new Quote with following information$")
     public void iCreateANewQuoteWithName(List<Quote> quotes) {
         this.quote = quotes.get(0);
+        apiQuote = new APIQuote(quote);
         quotesFormPage = opportunitieDetailsPage.isNewQuoteSelect();
         quotesDetailsPage = quotesFormPage.gotToSaveButton(quote);
         quotesAddProductPage = quotesDetailsPage.addProduct();
@@ -130,10 +131,12 @@ public class OpportunitySteps {
 
     @When("^The Quote should be displayed in details page$")
     public void theQuoteShouldBeDisplayedInDetailsPage() {
+
     }
 
-    @And("^The Quote shuld be created$")
+    @And("^The Quote should be created$")
     public void theQuoteShuldBeCreated(){
+
     }
 
     @Then("^the Quotes should be displayed in details page$")
