@@ -58,13 +58,13 @@ public class APIContact extends APIBase {
         contactApi.setLastName(response.jsonPath().get(CONTACT_LAST_NAME).toString());
         contactApi.setHomePhone(response.jsonPath().get(CONTACT_HOME_PHONE).toString());
         contactApi.setTitle(response.jsonPath().get(CONTACT_TITLE).toString());
-        contactApi.setMailingStreet(response.jsonPath().get(CONTACT_MAILING_STREET).toString());
+        //contactApi.setMailingStreet(response.jsonPath().get(CONTACT_MAILING_STREET).toString());
         contactApi.setPhone(response.jsonPath().get(CONTACT_PHONE).toString());
         contactApi.setMobile(response.jsonPath().get(CONTACT_MOBILE).toString());
         contactApi.setOtherPhone(response.jsonPath().get(CONTACT_OTHER_PHONE).toString());
-        contactApi.setLeadSource(response.jsonPath().get(CONTACT_LEAD_SOURCE).toString());
-        contactApi.setLenguaje(response.jsonPath().get(CONTACT_lANGUAJE).toString());
-        contactApi.setLevel(response.jsonPath().get(CONTACT_LEVEL).toString());
+        //contactApi.setLeadSource(response.jsonPath().get(CONTACT_LEAD_SOURCE).toString());
+        //contactApi.setLenguaje(response.jsonPath().get(CONTACT_lANGUAJE).toString());
+        //contactApi.setLevel(response.jsonPath().get(CONTACT_LEVEL).toString());
         contactApi.setId(response.jsonPath().get(CONTACT_ID).toString());
         return contactApi;
     }

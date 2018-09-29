@@ -1,5 +1,6 @@
 package com.jalasoft.sfdc.steps;
 
+
 import com.jalasoft.sfdc.api.apiClass.APIOppy;
 import com.jalasoft.sfdc.api.apiClass.APIQuote;
 import com.jalasoft.sfdc.entities.AllEntities;
@@ -42,12 +43,17 @@ public class OpportunitySteps {
     private APIQuote apiQuote;
     private QuoteLineItem quoteLineItem;
     private Quote quote;
+    private APIProduct productAPI;
     private AllEntities allEntities;
 
     public OpportunitySteps(AllEntities allEntities) {
         this.allEntities = allEntities;
     }
 
+
+    /**
+     * We will go to the start page of the Classic or Light for add Opportunities.
+     */
     @When("^I go to Opportunities list Page$")
     public void iGoToOpportunitiesListPage() {
         homePage = PageFactory.getHomePage();
@@ -55,11 +61,18 @@ public class OpportunitySteps {
         opportunitieListPage = appLauncher.goToOpportunitiesPage();
     }
 
+    /**
+     * You to have click on the New button.
+     */
     @And("^I click on New Opportunity button$")
     public void iClickOnNewOpportunitie() {
         opportunitieFormPage = opportunitieListPage.gotToNewButton();
     }
 
+    /**
+     * We will make an insertion of data to the class Opportunities.
+     * @param opportunities - class object Opportunities.
+     */
     @When("^I created an Opportunity with the following information$")
     public void iCreatedAnOpportunityWithTheFollowingInformation(List<Opportunitie> opportunities) {
         this.opportunitie = opportunities.get(0);
@@ -70,13 +83,18 @@ public class OpportunitySteps {
         opportunitieDetailsPage.getIdOpportunity(opportunitie);
     }
 
-
-    @Then("^The Opportunity should be displayed in details page$")
+    /**
+     * It is verified if the name of the Opportunity created is displayed.
+     */
+    @Then("^the Opportunity should be displayed in details page$")
     public void theOpportunityShouldBeDisplayedInDetailsPage() {
         assertTrue(opportunitieDetailsPage.isChangeDisplayed(opportunitie));
     }
 
-
+    /**
+     * A new Quote will be created from an Opportunity created with the input data.
+     * @param quotes - class object Quotes
+     */
     @When("^I create a new Quote with following information$")
     public void iCreateANewQuoteWithName(List<Quote> quotes) {
         this.quote = quotes.get(0);
@@ -87,6 +105,10 @@ public class OpportunitySteps {
         quoteItemPage = quotesAddProductPage.isSelectOptionButton(allEntities.getProduct().getProductName());
     }
 
+    /**
+     * The quantity and the standard price will be added to our created Quotes.
+     * @param quotes - class object Quotes.
+     */
     @And("^I add the following line items$")
     public void iAddTheFollowingLineItems(List<QuoteLineItem> quotes) {
         quoteLineItem = quotes.get(0);
@@ -114,6 +136,14 @@ public class OpportunitySteps {
 
     @And("^The Quote should be created$")
     public void theQuoteShuldBeCreated(){
+
+    }
+
+    @Then("^the Quotes should be displayed in details page$")
+    public void theQuotesShouldBeDisplayedInDetailsPage(){
+        //Product productSpected = productAPI.getProductValuesByAPI();
+        assertTrue(quotesDetailsPage.validateQuotesAndProduct(allEntities.getProduct().getPriceBook(),
+                quote.getQuantity()));
 
     }
 }

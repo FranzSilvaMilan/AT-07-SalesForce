@@ -25,6 +25,11 @@ public class QuotesAddProductPageClassic extends QuotesAddProductPage {
 
     }
 
+    /**
+     *
+     * @param nameProduct - name of the product that is save.
+     * @return Item Page Classic.
+     */
     @Override
     public QuoteItemPage  isSelectOptionButton(String nameProduct){
         if(driverTools.isElementDisplayed(selctOptionList)) {

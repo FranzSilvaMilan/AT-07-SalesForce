@@ -9,7 +9,7 @@ Feature: Create a new Product.
   Scenario: Verify that is possible create a new product
     When I go to Product list Page
       And I click a New Product button
-    When I create the Product with the following information
+    When I have a Product with the following information
         | Product Name | Product Code | Product Description | Active | Product Family |
         | laptop       | 123          | product created     | false  | None           |
     Then the Product information should be displayed in Product Details page
@@ -17,6 +17,7 @@ Feature: Create a new Product.
 
   @deleteProduct
   Scenario: Verify that is create a Product with api
+
     Given I have a Product with the following information
       | Product Name | Product Code | Product Description     | Active | Product Family |
       | laptop gamer | 10101010     | product created for api | false  | None           |
@@ -31,6 +32,7 @@ Feature: Create a new Product.
 
   @deleteProduct
   Scenario: Verify that is possible delete a Product
+
     Given I have a Product with the following information
       | Product Name | Product Code | Product Description | Active | Product Family |
       | computer2    | 123456478    | pc                  | true   | None           |
