@@ -306,7 +306,7 @@ public class Contact {
     public String getContactName() {
         SFDCEnums.Skin skin = ServersConfigReader.getInstance().getSkin();
         contactName = skin == SFDCEnums.Skin.LIGHT ? firstName.concat(" ").concat(lastName)
-                :lastName.concat(", ").concat(firstName);
+                :lastName.concat(" ").concat(firstName);
         return contactName;
     }
 

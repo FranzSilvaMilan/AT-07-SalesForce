@@ -31,4 +31,3 @@ Feature: Create a new Oppy.
         | 20555      | 50       |
     When The Quote should be displayed in details page
       And The Quote shuld be created
-

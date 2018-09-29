@@ -137,11 +137,11 @@ public class ContactSteps {
      */
     @And("^the Contact should be created$")
     public void theContactShouldBeCreated() {
-        Contact contactSpected = apiContact.getContactValuesByAPI();
-        assertEquals(contactSpected.getFirstName(),contact.getFirstName());
-        assertEquals(contactSpected.getLastName(),contact.getLastName());
-        assertEquals(contactSpected.getTitle(),contact.getTitle());
-        assertEquals(contactSpected.getMobile(),contact.getMobile());
+        Contact contact = apiContact.getContactValuesByAPI();
+        assertEquals(contact.getFirstName(),contact.getFirstName());
+        assertEquals(contact.getLastName(),contact.getLastName());
+        assertEquals(contact.getTitle(),contact.getTitle());
+        assertEquals(contact.getMobile(),contact.getMobile());
     }
 
 
@@ -163,20 +163,17 @@ public class ContactSteps {
      * Verify contact with API
      * the Contact should be removed
      */
-    @And("^the Contatc should be removed$")
-    public void theContatcShouldBeRemoved() throws Throwable {
+    @And("^the Contact should be removed$")
+    public void theContactShouldBeRemoved(){
         Contact contactSpected = apiContact.getContactValuesByAPI();
         System.out.println("ID "+contact.getId());
         System.out.println("id api "+contactSpected.getId());
-
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
     }
 
     //****************************************************************
     //          Hooks for @create Account api scenarios
     //****************************************************************
-    @After(value = "@deleteContactAfter", order = 999)
+    @After(value = "@deleteContactSteps", order = 999)
     public void afterContactScenario() {
         apiContact.deleteSObjectRecord();
     }
