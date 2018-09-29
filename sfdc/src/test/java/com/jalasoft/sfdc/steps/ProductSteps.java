@@ -66,7 +66,7 @@ public class ProductSteps {
      * Fill required fields.
      * @param product - Name of the Product.
      */
-    @When("^I have a Product with the following information$")
+    @When("^I have a Product with the following information:$")
     public void iFillInRequiredFields(final List<Product> product) {
         product1 = product.get(0);
         product1.updateProductName();
