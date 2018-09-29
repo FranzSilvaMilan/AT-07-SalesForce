@@ -43,7 +43,6 @@ public class OpportunitySteps {
     private APIQuote apiQuote;
     private QuoteLineItem quoteLineItem;
     private Quote quote;
-    private APIProduct productAPI;
     private AllEntities allEntities;
 
     public OpportunitySteps(AllEntities allEntities) {
@@ -86,7 +85,7 @@ public class OpportunitySteps {
     /**
      * It is verified if the name of the Opportunity created is displayed.
      */
-    @Then("^the Opportunity should be displayed in details page$")
+    @Then("^The Opportunity should be displayed in details page$")
     public void theOpportunityShouldBeDisplayedInDetailsPage() {
         assertTrue(opportunitieDetailsPage.isChangeDisplayed(opportunitie));
     }
@@ -136,14 +135,6 @@ public class OpportunitySteps {
 
     @And("^The Quote should be created$")
     public void theQuoteShuldBeCreated(){
-
-    }
-
-    @Then("^the Quotes should be displayed in details page$")
-    public void theQuotesShouldBeDisplayedInDetailsPage(){
-        //Product productSpected = productAPI.getProductValuesByAPI();
-        assertTrue(quotesDetailsPage.validateQuotesAndProduct(allEntities.getProduct().getPriceBook(),
-                quote.getQuantity()));
 
     }
 }
