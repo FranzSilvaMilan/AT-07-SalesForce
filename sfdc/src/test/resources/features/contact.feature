@@ -3,7 +3,7 @@ Feature: Create new contact
 
   Background:
     Given I navigate to Login page
-    And I login as "danny" User
+    And I login as "franz" User
 
   @deleteContact
   Scenario: Verify that is possible create a new contact
